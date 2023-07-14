@@ -1,0 +1,38 @@
+{%extends 'layout.html'%}
+{% block title%}
+Register Page
+{% endblock %}
+
+
+{% block body%}   
+<body class="text-center">
+    
+
+    <div class="container">
+        <h1>Please Create Account </h1>
+       
+        <br>
+        <form method="POST" class="form-register" style="color:white" action="">
+            {{forms.hidden_tag()}}
+            {{forms.username.label()}}
+            {{forms.username(class="form-control", placeholder="User Name")}} <!-- #accept attribute -->
+
+            {{forms.email.label()}}
+            {{forms.email(class="form-control", placeholder="Email")}}
+
+            {{forms.password1.label()}}
+            {{forms.password1(class="form-control", placeholder="Create Password")}}
+
+            {{forms.password2.label()}}
+            {{forms.password2(class="form-control", placeholder="Confirm Password")}}
+
+            <br>
+            {{forms.submit(class="btn btn-outline-success")}}
+        
+        </form>
+
+    </div>
+
+</body>
+        
+{% endblock %}

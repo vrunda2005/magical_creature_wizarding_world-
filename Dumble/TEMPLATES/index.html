@@ -1,0 +1,176 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+index 
+{%endblock %}
+
+
+{% block body %}
+     <div class="banner">
+        <!-- <nav class="navbar">
+            <ul class="nav-list ">
+                <div class="logo"><img src="{{url_for('static',filename='img/pet.jpg')}}"  alt="logo"></div>
+                <li><a href="#home" target="_blank">HOME</a></li>
+                <li><a href="{{url_for('creatures_page')}}" target="_blank">ABOUT</a></li>
+                <li><a href="{{url_for('login_page')}}">LOGIN</a></li>
+                <li><a href="#service">SERVICE</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+
+            </ul>
+            <div class="rightnav ">
+                <input type="text" name="search" id=""search>
+                <button class="btn btn-sm">Search</button>
+            </div>
+        </nav> -->
+
+        <div class="middle">
+            <h1>
+                Magical Creatures in Hogwards   
+            </h1>
+        </div>
+       
+       
+      
+        <div class="box-main">
+                    <div class="firstHalf">
+                        <p class="text-big">Beast</p>
+                        <p class="text-small">
+                           
+                            Beasts: This category includes magical creatures that are typically large, dangerous, and often have violent tendencies. Dragons, Acromantulas (giant spiders), and Manticores fall under this category.
+                            <button class="buttons btn">Watch more About</button>
+                            <button class="buttons btn">Watch video</button>
+                           
+                        </p>
+                        <div>
+                            <img src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
+                    
+                         </div>
+                            
+
+                    </div>
+                        
+                    
+                    <div class="firstHalf">
+                        <div>
+                            <img src="{{url_for('static',filename='img/Dobby_Full_CoS.webp')}}" alt="img">
+                    
+                         </div>
+                        <p class="text-big">Being</p>
+                        <p class="text-small">
+                           
+                            Beings: Beings refer to creatures that possess intelligence and are capable of human-like communication. This category includes creatures like Centaurs, House-Elves, and Veela.
+                            Muggles
+                            wizards and witches
+                            Goblins, vampires, hags, giants, house-elves, veela, and werewolves in their human form were also given this status.
+                            <button class="btn">Watch more About</button>
+                            <button class="btn">Watch video</button>
+                        </p> 
+                    </div>
+
+                    <div class="firstHalf">
+                        <p class="text-big">Spirit</p>
+                        <p class="text-small">Spirits: These are non-corporeal entities that often inhabit specific locations or objects. Examples include Ghosts (such as Nearly Headless Nick), Poltergeists (like Peeves), and Boggarts.
+                        </p>
+                        
+                            <button class="btn">Watch more About</button>
+                            <button class="btn">Watch video</button>
+                        
+                        <div>
+                            <img src="{{url_for('static',filename='img/Ghost_PM.webp')}}" alt="img">
+                    
+                         </div>
+                    </div>
+
+                    <div class="firstHalf">
+                        <div>
+                            <img src="{{url_for('static',filename='img/hippogriff.jpg')}}" alt="img">
+                    
+                         </div>
+                        <p class="text-big">Fantastic Beasts</p>
+                        <p class="text-small">This category comprises a wide range of magical creatures, both small and large, with extraordinary qualities.
+                             It includes creatures like Hippogriffs, Nifflers, Bowtruckles, and Thestrals.
+                        </p>
+                        
+                            <button class="btn">Watch more About</button>
+                            <button class="btn">Watch video</button>
+                     </div>
+
+                    <div class="firstHalf">
+                            <p class="text-big">Dark Creatures</p>
+                            <p class="text-small">Dark creatures are often associated with dark magic or malevolence. 
+                                They include Dementors, Inferi (reanimated corpses controlled by dark wizards), and Werewolves.
+                            </p>
+                            
+                                <button class="btn">Watch more About</button>
+                                <button class="btn">Watch video</button>
+                            <div>
+                                    <img src="{{url_for('static',filename='img/Werewolf.jpg')}}" alt="img">
+                            
+                            </div>
+                     </div>
+
+                    <div class="firstHalf">
+                        <div>
+                            <img src="{{url_for('static',filename='img/images.jpg')}}" alt="img">
+                    
+                         </div>
+                                <p class="text-big">Water Creatures</p>
+                                <p class="text-small">These are magical creatures that dwell primarily in aquatic environments.
+                                     Merpeople, Grindylows, and Kelpies are examples of water creatures.
+                                </p>
+                                
+                                    <button class="btn">Watch more About</button>
+                                    <button class="btn">Watch video</button>
+
+                    </div>
+
+                     <div class="firstHalf">
+                                    <p class="text-big">Domesticated Creatures</p>
+                                    <p class="text-small"> Domesticated creatures are magical animals that are often kept as pets or companions 
+                                        by wizards and witches.
+                                         This category includes creatures like Owls, Cats (such as Crookshanks), and Rats (like Scabbers).
+                                    </p>
+                                    
+                                        <button class="btn">Watch more About</button>
+                                        <button class="btn">Watch video</button>
+
+                                        <div>
+                                            <img src="{{url_for('static',filename='img/pet.jpg')}}" alt="img">
+                                    
+                                         </div>
+
+
+                         </div>
+
+                        <div class="firstHalf">
+                            <div>
+                                <img src="{{url_for('static',filename='img/Whomping Willow.webp')}}" alt="img">
+                        
+                             </div>
+                                        <p class="text-big">Plant Creatures</p>
+                                        <p class="text-small"> These are magical creatures that are either partially or entirely made up of plant matter. 
+                                            
+                                            The Whomping Willow and Venomous Tentacula are examples of plant creatures.
+                                        </p>
+                                        
+                                            <button class="btn">Watch more About</button>
+                                            <button class="btn">Watch video</button>
+                             </div>
+
+
+
+
+                    
+                    
+
+                    
+        </div>
+
+        
+
+
+
+
+
+ </div> 
+{%endblock %}
