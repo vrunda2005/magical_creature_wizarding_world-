@@ -1,6 +1,6 @@
 from Dumble import app
 from Dumble import db 
-from flask import render_template,redirect,url_for
+from flask import render_template,redirect,url_for,flash,get_flashed_messages
 from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm
 
@@ -28,6 +28,10 @@ def register_page():
                                 password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
-        return redirect(url_for('creatures_page'))
+        return redirect(url_for('creatures_page')) #for checking its working or not we have to change it further
+    if form.errors !={}: #if there are not errors form validations 
+        for err_msg in form.errors.values():
+            flash(f'ERROR{err_msg}',category='danger')
+            
 
     return render_template('register.html',forms=form)
