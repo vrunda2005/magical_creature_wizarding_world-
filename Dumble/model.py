@@ -10,12 +10,15 @@ class UserInfo(db.Model,UserMixin): #creted table for database
 
     # def __repr__(self):
     #     return f'User '
+#g=for hash password 
+    @property
+    def password(self):
+            return self.password
 
-#     @property
-#     def password(self):
-#             return self.password
+    @password.setter
+    def password(self, plain_text_password):
+            self.password_hash=bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
-#     @password.setter
-#     def password(self,plain_text_password):
-#             self.password=bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
-
+    def check_password_correction(self,attemted_password):
+           return bcrypt.check_password_hash(self.password_hash,attemted_password)
+                  

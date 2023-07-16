@@ -39,7 +39,6 @@ def logout():
     return redirect(url_for('index'))
 
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -78,10 +77,22 @@ def register_page():
         for err_msg in form.errors.values():
             flash(f'ERROR{err_msg}',category='danger')
             
-
     return render_template('register.html',forms=form)
 
+@app.route("/login",methods=['GET','POST'])
+def login_page():
+    form=LoginForm()
+    if form.validate_on_submit():  #work when click submit  or form is validate
+        #checking var with username 
+        attempted_user=UserInfo.query.get(form.username.data).first()
+        #if none 
+        if attempted_user and attempted_user.check_password_correction(
+            attemted_password=form.password.data):
 
-@app.route("/MyAcc")
-def MyAcc():
-    return render_template("MyAcc.html")
+                login_user(attempted_user)
+                flash('Success! you are logged in {{attempted_user.name}}',category='success')
+                return redirect(url_for('creatures_page'))
+
+        else:
+            flash('username and password not match try another ',category='danger')
+    return render_template('login.html',forms=form)
