@@ -14,10 +14,18 @@ def index():
 def creatures_page():
     return render_template("creatures.html")
 
+@app.route("/beast")
+def beast_page():
+    return render_template("beast.html")
+
 
 @app.route("/login")
 def login_page():
     return render_template("login.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 @app.route("/register", methods=['GET','POST'])
 def register_page():

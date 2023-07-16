@@ -1,37 +1,17 @@
 {% extends 'layout.html' %}
+{% block title%}
+Home
+{% endblock %}
 
-{% block title %}
-index 
-{%endblock %}
+{% block body%}
 
-
-{% block body %}
-     <div class="banner">
-        <!-- <nav class="navbar">
-            <ul class="nav-list ">
-                <div class="logo"><img src="{{url_for('static',filename='img/pet.jpg')}}"  alt="logo"></div>
-                <li><a href="#home" target="_blank">HOME</a></li>
-                <li><a href="{{url_for('creatures_page')}}" target="_blank">ABOUT</a></li>
-                <li><a href="{{url_for('login_page')}}">LOGIN</a></li>
-                <li><a href="#service">SERVICE</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-
-            </ul>
-            <div class="rightnav ">
-                <input type="text" name="search" id=""search>
-                <button class="btn btn-sm">Search</button>
-            </div>
-        </nav> -->
-
-        <div class="middle">
-            <h1>
-                Magical Creatures in Hogwards   
-            </h1>
-        </div>
-       
-       
+<div class="banner container-fluid text-center">
+    <h1 class="banner-title">
+        Magical Creatures in Hogwards
+    </h1>
+</div>            
       
-        <div class="box-main">
+        <!-- <div class="box-main">
                     <div class="firstHalf">
                         <p class="text-big">Beast</p>
                         <p class="text-small">
@@ -156,21 +136,83 @@ index
                                             <button class="btn">Watch more About</button>
                                             <button class="btn">Watch video</button>
                              </div>
-
-
-
-
-                    
-                    
-
                     
         </div>
 
-        
+ </div>  -->
+
+ <section class="container introduction">
+	<h1 class="text-center"> Introduction</h1>
+
+	<div class="row">
+		<div class="col-6">
+			<h2>What is Wizarding World?</h2>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+			</p>
+			
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+		<div class="col-6">
+			<img class="rounded img-fluid float-end" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
+			
+		</div>
+	</div>
+</section>
+
+<hr>
 
 
 
+<section id="beast-kinds" class="beast-kinds container py-5">
+	<h1 class="text-center"> Various Kinds of beasts</h1>
 
+	<div class="row">
+		<div class="col-6">
+			<h2>Beasts</h2>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+			</p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+		<div class="col-6">
+			<img class="rounded img-fluid" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
+		</div>			
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<img class="rounded img-fluid" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
+		</div>	
+		<div class="col-6">
+			<h2>Beasts</h2>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+			</p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<h2>Beasts</h2>
+			<p>
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
+			</p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+		<div class="col-6">
+			<img class="rounded img-fluid" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
+		</div>			
+	</div>
+</section>	
 
- </div> 
 {%endblock %}
