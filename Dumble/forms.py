@@ -4,7 +4,7 @@ from wtforms.validators import Email,Length,EqualTo,DataRequired,ValidationError
 from Dumble.model import UserInfo
 
 
-class RegisterForm(FlaskForm):
+class RegisterForm(FlaskForm):  #form for so that user can enter 
 
     def validate_username(self,username_check):
         user=UserInfo.query.filter_by(username=username_check.data).first()

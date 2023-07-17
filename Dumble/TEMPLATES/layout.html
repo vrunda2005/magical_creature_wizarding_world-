@@ -45,7 +45,7 @@
       <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#beast-kinds">Various types of Creatures</a>
+      <a class="nav-link" href="{{url_for('beast_page')}}">Various types of Creatures</a>
       <!-- Various beast dropdown to be added -->
 
       </li>
@@ -56,10 +56,10 @@
       <a class="nav-link" href="{{url_for('index')}}">Contact</a>
       </li>				  
       <li class="nav-item">
-      <a class="nav-link" href="#">Login</a>
+      <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
       </li>				  
       <li class="nav-item">
-      <a class="nav-link" href="#">Register</a>
+      <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
       </li>				  
   
     </ul>
@@ -79,7 +79,10 @@
 
 	<div class="footer text-center bg-dark">
 		<div class="card-body">
-			Made with ❤️ by Jayraj Derasari & Vrunda Patel
+
+
+      @copyright
+			<!-- Made with  by Jayraj Derasari & Vrunda Patel -->
 		</div>
 	</div>
 
