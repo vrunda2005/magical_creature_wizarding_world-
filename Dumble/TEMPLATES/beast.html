@@ -1,13 +1,22 @@
 {% extends 'layout.html' %}
 {% block body%}
 
-<section class="beast container bg-secondary-subtle my-2 px-5">
-    <div class="row text-center">
-        <div class="col-lg-6 ">
+<section id="beast" class="container bg-secondary-subtle my-5 p-5 rounded-3 border-5">
+    <div class="row">
+        <div class="col-lg-6 text-center">
             <img class="rounded-circle" src="{{url_for('static',filename='img/Werewolf.jpg')}}">
         </div>
         <div class="col-lg-6 my-auto">
-            <h1>Beast Name</h1>
+            <h1 class="text-center p-5">Beast Name</h1>
+            <h3> Special Abilities</h3>
+            <ul>
+                <li>
+                    Fly
+                </li>
+                <li>
+                    Fire balls
+                </li>
+            </ul>
         </div>
     </div>
     <hr>
@@ -40,6 +49,5 @@
     <hr>
 </section>
 
-Hello potter
 {% endblock %}
 

@@ -18,6 +18,9 @@ def creatures_page():
 def beast_page():
     return render_template("beast.html")
 
+@app.route("/encyclopedia")
+def encyclopedia():
+    return render_template("encyclopedia.html")
 
 @app.route("/login")
 def login_page():
