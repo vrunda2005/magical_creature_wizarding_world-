@@ -26,12 +26,6 @@ Register Page
             {{forms.password2.label()}}
             {{forms.password2(class="form-control", placeholder="Confirm Password")}}
 
-            <div class="checkbox mb-3">
-                <h6>Do you have already account?</h6>
-                    <a class="btn btn-sm btn-secondary" href="{{url_for('login_page')}}">
-                    Login 
-                    </a>
-            </div>
             <br>
             {{forms.submit(class="btn btn-outline-success")}}
         

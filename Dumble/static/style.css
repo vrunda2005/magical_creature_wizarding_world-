@@ -7,48 +7,6 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-<<<<<<< HEAD
-}
-
-
-.logo{
-    float: inline-start;
-    width: 120px;
-    cursor: pointer;
-}
-
-.introduction{
-    background: gray;
-    color: antiquewhite;
-    border-radius: 1%;
-    padding: 5% 20%;
-}
-
-.logo img{
-    float:inline-start;
-    width : 70px;
-    height: 70px;
-    border: 6px solid white;
-    border-radius: 100%;    
-}
-
-.navbar{
-	padding: 0px 0px 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.nav-item{
-	padding: 0px 18px;
-	font-size: 15px;
-}
-
-.banner {
-    font-size: large;
-    color: aliceblue;
-    height: 90vh;
-}
-=======
 }
 
 h1{
@@ -157,61 +115,10 @@ h3{
     height: 90vh;
 }
 
->>>>>>> b267ca7 (updated UI of home and other pages)
 .banner-title{
     margin: 35vh auto;
 }
 
-<<<<<<< HEAD
-h2{
-    font-weight: 800;
-	font-size: 1.5rem;
-    font-style: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.creatures{
-    color: aliceblue;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.beast-kinds{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 2% 0%;
-    color: whitesmoke;
-}
-
-.row{
-    padding: 1% 5%;
-}
-
-.creatures{
-    color: aliceblue;
-}
-
-.creatures img{
-    width: 40%;
-    height: 30%;
-}
-
-.various-beasts img{
-    width: 40%;
-    height: 30%;
-}
-
-.footer{
-    width: 100%;
-    color: aliceblue;
-    margin-top: 1%;
-    padding: 1%;
-}
-
-.beast-data p{
-    color: black;
-}
-
-.beast img{
-=======
 .introduction{
     background: gray;
     color: antiquewhite;
@@ -252,7 +159,6 @@ h2{
 }
 
 #beast img{
->>>>>>> b267ca7 (updated UI of home and other pages)
     height: 50vh;
     width: 50vh;
 }
