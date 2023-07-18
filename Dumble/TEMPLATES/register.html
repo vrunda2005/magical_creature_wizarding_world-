@@ -5,7 +5,7 @@ Register Page
 
 
 {% block body%}   
-<body class="text-center">
+<body class="text-center" style="color: white;">
     
 
     <div class="container">
@@ -30,6 +30,8 @@ Register Page
             {{forms.submit(class="btn btn-outline-success")}}
         
         </form>
+        <h6>Do you have already Account ?</h6>
+        <a href="{{url_for('login_page')}}">Login</a>
 
     </div>
 
