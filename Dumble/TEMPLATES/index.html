@@ -4,6 +4,7 @@ Home
 {% endblock %}
 
 {% block body%}
+<<<<<<< HEAD
 
 <div class="banner container-fluid text-center">
     <h1 class="banner-title">
@@ -147,6 +148,22 @@ Home
 	<div class="row">
 		<div class="col-6">
 			<h2>What is Wizarding World?</h2>
+=======
+
+<div class="banner container-fluid text-center">
+    <h1 class="banner-title">
+        Magical Creatures in Hogwards
+    </h1>
+</div>            
+
+
+ <section class="container introduction p-5">
+	<h2 class="text-center"> Introduction</h2>
+
+	<div class="row p-5">
+		<div class="col-6">
+			<h3>What is Wizarding World?</h3>
+>>>>>>> b267ca7 (updated UI of home and other pages)
 			<p>
 				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae excepturi ipsa illo doloremque expedita fugit voluptate sapiente deleniti nemo delectus commodi magni ad dolorum numquam in quidem, hic id recusandae.
 			</p>
@@ -165,6 +182,7 @@ Home
 
 
 
+<<<<<<< HEAD
 <section id="beast-kinds" class="beast-kinds container py-5">
 	<h1 class="text-center"> Various Kinds of beasts</h1>
 
@@ -176,10 +194,20 @@ Home
                             Muggles
                             wizards and witches
                             Goblins, vampires, hags, giants, house-elves, veela, and werewolves in their human form were also given this status.
+=======
+<section id="beast-kinds" class="beast-kinds container">
+    <h2 class="text-center mb-5"> Various Kinds of beasts</h2>
+	<div class="row p-3">
+        <div class="col-6">
+            <h3>Beasts</h3>
+            <p>
+                This category includes magical creatures that are typically large, dangerous, and often have violent tendencies. Dragons, Acromantulas (giant spiders), and Manticores fall under this category.
+>>>>>>> b267ca7 (updated UI of home and other pages)
 			</p>
 			<button type="button" class="btn btn-secondary">Watch more About</button>
 			<button type="button" class="btn btn-secondary">Watch video</button>
 		</div>
+<<<<<<< HEAD
 		<div class="col-6">
 			<img class="rounded img-fluid" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
 		</div>			
@@ -193,23 +221,135 @@ Home
 			<p>
 				Spirits: These are non-corporeal entities that often inhabit specific locations or objects. Examples include Ghosts (such as Nearly Headless Nick), Poltergeists (like Peeves), and Boggarts.
 			</p>
+=======
+		<div class="col-6 thumbnail">
+			<img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
+            <a class="thumbnail-text" href="{{url_for('creatures_page')}}">Beasts</a>
+		</div>			
+	</div>
+
+	<div class="row p-3">
+        <div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Dobby_Full_CoS.webp')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Beings</a>
+        </div>	
+		<div class="col-6">
+            <h3>Being</h3>
+            <p>
+                Beings: Beings refer to creatures that possess intelligence and are capable of human-like communication. This category includes creatures like Centaurs, House-Elves, and Veela.
+                Muggles
+                wizards and witches
+                Goblins, vampires, hags, giants, house-elves, veela, and werewolves in their human form were also given this status.
+            </p>
+>>>>>>> b267ca7 (updated UI of home and other pages)
 			<button type="button" class="btn btn-secondary">Watch more About</button>
 			<button type="button" class="btn btn-secondary">Watch video</button>
 		</div>		
 	</div>
+<<<<<<< HEAD
 	<div class="row">
 		<div class="col-6">
 			<h2>Fantastic Beasts</h2>
 			<p>
 				This category comprises a wide range of magical creatures, both small and large, with extraordinary qualities.
                              It includes creatures like Hippogriffs, Nifflers, Bowtruckles, and Thestrals.
+=======
+    <div class="row p-3">
+        <div class="col-6">
+            <h3>Spirit</h3>
+			<p>
+                Spirits: These are non-corporeal entities that often inhabit specific locations or objects. Examples include Ghosts (such as Nearly Headless Nick), Poltergeists (like Peeves), and Boggarts.
+>>>>>>> b267ca7 (updated UI of home and other pages)
 			</p>
 			<button type="button" class="btn btn-secondary">Watch more About</button>
 			<button type="button" class="btn btn-secondary">Watch video</button>
 		</div>
+<<<<<<< HEAD
 		<div class="col-6">
 			<img class="rounded img-fluid" src="{{url_for('static',filename='img/hippogriff.jpg')}}" alt="img">
 		</div>			
+=======
+		<div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Ghost_PM.webp')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Spirits</a>
+        </div>			
+	</div>
+    <div class="row p-3">
+        <div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/hippogriff.jpg')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Fantastic Beasts</a>
+        </div>		
+		<div class="col-6">
+			<h3>Fantastic Beasts</h3>
+			<p>
+                This category comprises a wide range of magical creatures, both small and large, with extraordinary qualities.
+                It includes creatures like Hippogriffs, Nifflers, Bowtruckles, and Thestrals.
+            </p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+	</div>
+    <div class="row p-3">
+		<div class="col-6">
+			<h3>Dark Creatures</h3>
+			<p>
+                Dark creatures are often associated with dark magic or malevolence. 
+                They include Dementors, Inferi (reanimated corpses controlled by dark wizards), and Werewolves.
+            </p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+		<div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Werewolf.jpg')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Dark Creatures</a>
+        </div>			
+	</div>
+    <div class="row p-3">
+        <div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/images.jpg')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Water Creatures</a>
+        </div>			
+		<div class="col-6">
+            <h3>Water Creatures</h3>
+			<p>
+                These are magical creatures that dwell primarily in aquatic environments.
+                Merpeople, Grindylows, and Kelpies are examples of water creatures.
+			</p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+	</div>
+    <div class="row p-3">
+        <div class="col-lg-6">
+            <h3>Domesticated Creatures</h3>
+			<p>
+                Domesticated creatures are magical animals that are often kept as pets or companions 
+                by wizards and witches.
+                This category includes creatures like Owls, Cats (such as Crookshanks), and Rats (like Scabbers).
+            </p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+		<div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/pet.jpg')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Domesticated Creatures</a>
+        </div>			
+	</div>
+    <div class="row p-3">
+        <div class="col-6 thumbnail">
+            <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Whomping Willow.webp')}}" alt="img">
+            <a href="{{url_for('creatures_page')}}" class="thumbnail-text">Plant Creatures</a>
+        </div>			
+		<div class="col-6">
+			<h3>Plant Creatures</h3>
+			<p>
+                These are magical creatures that are either partially or entirely made up of plant matter.                                             
+                The Whomping Willow and Venomous Tentacula are examples of plant creatures.
+            </p>
+			<button type="button" class="btn btn-secondary">Watch more About</button>
+			<button type="button" class="btn btn-secondary">Watch video</button>
+		</div>
+>>>>>>> b267ca7 (updated UI of home and other pages)
 	</div>
 </section>	
 

@@ -7,6 +7,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+<<<<<<< HEAD
 }
 
 
@@ -47,10 +48,121 @@ body{
     color: aliceblue;
     height: 90vh;
 }
+=======
+}
+
+h1{
+	font-size: 4rem !important;
+}
+
+h2{
+    font-weight: 800;
+	font-size: 2.5rem !important;
+    font-style: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h3{
+    font-weight: 800;
+	font-size: 1.5rem !important;
+    font-style: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* layout */
+.logo{
+    float: inline-start;
+    width: 120px;
+    cursor: pointer;
+}
+
+.logo img{
+    float:inline-start;
+    width : 70px;
+    height: 70px;
+    border: 6px solid white;
+    border-radius: 100%;    
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    background: transparent;
+    border: 0px;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-item{
+	padding: 0px 18px;
+	font-size: 15px;
+}
+
+.thumbnail {
+    position: relative;
+    width: 50%;
+  }
+  
+.thumbnail-img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.thumbnail-text {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 10%;
+}
+
+.thumbnail:hover .thumbnail-img {
+    opacity: 0.3;
+}
+
+.thumbnail:hover .thumbnail-text {
+    opacity: 1; 
+}
+
+.footer{
+    width: 100%;
+    color: aliceblue;
+    margin-top: 1%;
+    padding: 1%;
+}
+
+/* index */
+.banner {
+    color: aliceblue;
+    height: 90vh;
+}
+
+>>>>>>> b267ca7 (updated UI of home and other pages)
 .banner-title{
     margin: 35vh auto;
 }
 
+<<<<<<< HEAD
 h2{
     font-weight: 800;
 	font-size: 1.5rem;
@@ -99,6 +211,48 @@ h2{
 }
 
 .beast img{
+=======
+.introduction{
+    background: gray;
+    color: antiquewhite;
+    border-radius: 1%;
+}
+
+.beast-kinds{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 2% 0%;
+    color: whitesmoke;
+}
+
+.beast-kinds img{
+    height: 300px;
+    width: 500px;
+}
+
+/* beast page */
+.creatures{
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.creatures img{
+    width: 40%;
+    height: 30%;
+}
+
+#various-beasts img{
+    width: 40%;
+    height: 30%;
+}
+
+
+/* beast */
+.beast-data p{
+    color: black;
+}
+
+#beast img{
+>>>>>>> b267ca7 (updated UI of home and other pages)
     height: 50vh;
     width: 50vh;
 }

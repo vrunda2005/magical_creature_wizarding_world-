@@ -1,38 +1,48 @@
-{%extends 'layout.html'%}
-{% block title%}
-Register Page
-{% endblock %}
+{% extends "layout.html" %}
 
+{% block title %}
+login 
+{%endblock %}
 
-{% block body%}   
-<body class="text-center">
-    <div class="container">
-        <form method="POST" class="form-sigin" style="color:white" action="">
-            {{forms.hidden_tag()}}
-            <h1 class="h3 mb-3 font-weight-normal">PLEASE LOGIN</h1>
-            <br>
-            {{forms.username.label()}}
-            {{forms.username(class="form-control", placeholder="User Name")}} <!-- #accept attribute -->
-
-            {{forms.password.label()}}
-            {{forms.password(class="form-control", placeholder=" Password")}}
-
-            <br>
-            <div class="checkbox mb-3">
-                <h6>Do not have account </h6>
-                    <a class="btn btn-sm btn-secondary" href="{{url_for('register_page')}}">
-                    Register 
-                    </a>
-            </div>
-                 {{forms.submit(class="btn btn-lg btn-primary")}}
-        </form>
-
-
+{% block body %}
+<!-- As a link -->
+<!-- <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
     </div>
-    
-
-  
-
+  </nav> -->
+<!-- As a heading -->
+<body class="text-center" style="color: white;">
+    <div class="container">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">USER LOGIN </span>
+        </div>
+      </nav>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword">
+                        </div>
+            </div>
+            <!-- <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                
+            </div> -->
+      </div>
 </body>
+<<<<<<< HEAD
         
 {% endblock %}
+=======
+{% endblock %} 
+>>>>>>> b267ca7 (updated UI of home and other pages)
