@@ -19,6 +19,4 @@ bcrypt=Bcrypt(app)
 login_manager=LoginManager(app)
 
 
-
-
 from Dumble import routes

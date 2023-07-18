@@ -22,3 +22,9 @@ class UserInfo(db.Model,UserMixin): #creted table for database
     def check_password_correction(self,attemted_password):
            return bcrypt.check_password_hash(self.password_hash,attemted_password)
                   
+    def password(self, plain_text_password):
+            self.password_hash=bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
+
+    def check_password_correction(self,attemted_password):
+           return bcrypt.check_password_hash(self.password_hash,attemted_password)
+                  
