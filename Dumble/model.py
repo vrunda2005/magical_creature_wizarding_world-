@@ -1,8 +1,8 @@
 from Dumble import db 
+from flask_login import UserMixin
 
 
-
-class UserInfo(db.Model): #creted table for database 
+class UserInfo(db.Model,UserMixin): #creted table for database 
     id=db.Column(db.Integer(),primary_key=True)
     username=db.Column(db.String(length=30),nullable=False,unique=True)
     email_address=db.Column(db.String(length=50),nullable=False,unique=True)
