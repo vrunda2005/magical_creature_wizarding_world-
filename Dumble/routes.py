@@ -3,6 +3,8 @@ from Dumble import db
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request
 from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm,LoginForm
+from flask_login import login_user
+from Dumble.forms import RegisterForm,LoginForm
 from flask_bcrypt import Bcrypt
 from Dumble import bcrypt
 from flask_login import login_manager,logout_user,login_required, login_user,LoginManager,current_user
@@ -16,20 +18,6 @@ def load_user(user_id):
     return UserInfo.query.get(int(user_id))
 
 
-@app.route("/login",methods=['GET','POST'])
-def login_page():
-    if current_user.is_authenticated:
-        return redirect(url_for('MyAcc'))
-    form=LoginForm()
-    if form.validate_on_submit():
-        user=UserInfo.query.filter_by(username=form.username.data).first()
-        if user:
-            if user and bcrypt.check_password_hash(user.password,form.password.data) is not False:
-                   login_user(user)  
-                   return redirect(url_for('MyAcc'))  
-            else:
-                flash('Login Unsuccessful Make sure you have created account','danger')    
-
     return render_template("login.html",forms=form)
 
 @app.route("/logout")
@@ -37,7 +25,6 @@ def login_page():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
 
 
 @app.route("/")
@@ -81,10 +68,36 @@ def register_page():
         for err_msg in form.errors.values():
             flash(f'ERROR{err_msg}',category='danger')
             
-
     return render_template('register.html',forms=form)
 
+@app.route("/login",methods=['GET','POST'])
+def login_page():
+    form=LoginForm()
+    if form.validate_on_submit():  #work when click submit  or form is validate
+        #checking var with username 
+        attempted_user=UserInfo.query.get(form.username.data).first()
+        #if none 
+        if attempted_user and attempted_user.check_password_correction(
+            attemted_password=form.password.data):
 
-@app.route("/MyAcc")
-def MyAcc():
-    return render_template("MyAcc.html")
+                login_user(attempted_user)
+                flash('Success! you are logged in {{attempted_user.name}}',category='success')
+                return redirect(url_for('creatures_page'))
+
+        else:
+            flash('username and password not match try another ',category='danger')
+    return render_template('login.html',forms=form)
+
+# @app.route("/login",methods=['GET','POST'])
+# def login_page():
+#     if current_user.is_authenticated:
+#         return redirect(url_for('MyAcc'))
+#     form=LoginForm()
+#     if form.validate_on_submit():
+#         user=UserInfo.query.filter_by(username=form.username.data).first()
+#         if user:
+#             if user and bcrypt.check_password_hash(user.password,form.password.data) is not False:
+#                    login_user(user)  
+#                    return redirect(url_for('MyAcc'))  
+#             else:
+#                 flash('Login Unsuccessful Make sure you have created account','danger')    
