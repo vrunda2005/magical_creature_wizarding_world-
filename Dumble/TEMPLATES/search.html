@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+result 
+{%endblock %}
+
+{% block body %}
+You can search 
+<ul>
+    {% for result in results %}
+    <li>
+        {{result}}
+
+        
+    </li>
+    {%endfor%}
+</ul>
+{% endblock %}

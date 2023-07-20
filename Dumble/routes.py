@@ -1,5 +1,6 @@
 from Dumble import app
 from Dumble import db 
+import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request
 from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm,LoginForm
@@ -87,6 +88,135 @@ def login_page():
         else:
             flash('username and password not match try another ',category='danger')
     return render_template('login.html',forms=form)
+
+
+def get_connection():
+    # Connect to your existing database
+    
+    return sqlite3.connect('D:\harry_hermione_ron\instance\demo.db')
+
+@app.route('/')
+def Todo_list():
+    return render_template('search.html', results=get_all_items())
+
+@app.route('/search', methods=['GET'])
+def search():
+    query = request.args.get('query')
+    if not query:
+        # If no search query is provided, show all data
+        results = get_all_items()
+    else:
+        # Filter data based on search query
+        results = search_items(query)
+
+    return render_template('search.html', results=results)
+
+def get_all_items():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT Name FROM magic')
+    items = [row[0] for row in cursor.fetchall()]
+    conn.close()
+    return items
+
+def search_items(query):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT Name FROM magic WHERE Name LIKE ?', ('%' + query + '%',))
+    items = [row[0] for row in cursor.fetchall()]
+    conn.close()
+    return items
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # @app.route("/login",methods=['GET','POST'])
 # def login_page():
