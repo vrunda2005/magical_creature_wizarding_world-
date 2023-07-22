@@ -108,7 +108,7 @@ def get_connection():
 def Todo_list():
     return render_template('search.html', results=get_all_items())
 
-@app.route('/search', methods=['GET'])
+@app.route('/search', methods=['GET','POST'])
 def search():
     query = request.args.get('query')
     if not query:
