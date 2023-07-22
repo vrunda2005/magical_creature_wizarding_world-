@@ -162,3 +162,27 @@ h3{
     height: 50vh;
     width: 50vh;
 }
+
+.hat img{
+    float:inline-start;
+    width : 70px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    margin-right: 1rem;
+    /* width: 4rem;
+    height: 4rem; */
+ 
+}
+
+.table {
+    /* height: 100%;
+    width: auto; */
+    /* background-color: red; */
+    /* {{url_for('static',filename='style.css')}} */
+    background-image: url('img/owl logo.png');
+  
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
