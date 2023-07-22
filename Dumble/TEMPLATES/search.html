@@ -1,3 +1,6 @@
+<!-- This is Search html page for showing all search option -->
+
+
 {% extends "layout.html" %}
 
 {% block title %}
@@ -6,13 +9,14 @@ result
 
 {% block body %}
 You can search 
-<ul>
+<ul style="color: white;">
     {% for result in results %}
     <li>
-        {{result}}
 
-        
+        {{result}}
+      
     </li>
     {%endfor%}
+    
 </ul>
 {% endblock %}

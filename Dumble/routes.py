@@ -12,25 +12,20 @@ from flask_login import login_manager,logout_user,login_required, login_user,Log
 
 login_manager=LoginManager()
 login_manager.init_app(app)
-login_manager.login_view="login"
+login_manager.login_view="login_page"
 
 @login_manager.user_loader
 def load_user(user_id):
     return UserInfo.query.get(int(user_id))
 
 
-    return render_template("login.html",forms=form)
-
-@app.route("/logout")
+   
+#this is condition for user to login to watch all website
+@app.route('/')
 @login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
-@app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template('index.html', username=current_user.username)
+
 
 @app.route("/creatures")
 def creatures_page():
@@ -44,16 +39,16 @@ def beast_page():
 def encyclopedia():
     return render_template("encyclopedia.html")
 
-
-
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
 
+
+#Register code starts 
 @app.route("/register", methods=['GET','POST'])
 def register_page():
     if current_user.is_authenticated:
-        return redirect(url_for('MyAcc'))
+        return redirect(url_for('logged_in'))
     form=RegisterForm()
     if form.validate_on_submit():
       
@@ -71,13 +66,15 @@ def register_page():
             
     return render_template('register.html',forms=form)
 
+#login code starts 
 @app.route("/login",methods=['GET','POST'])
 def login_page():
     form=LoginForm()
     if form.validate_on_submit():  #work when click submit  or form is validate
         #checking var with username 
-        attempted_user=UserInfo.query.get(form.username.data).first()
+        attempted_user=UserInfo.query.filter_by(username=form.username.data).first()
         #if none 
+     
         if attempted_user and attempted_user.check_password_correction(
             attemted_password=form.password.data):
 
@@ -89,11 +86,23 @@ def login_page():
             flash('username and password not match try another ',category='danger')
     return render_template('login.html',forms=form)
 
+# when we logged in it shows this  
+@app.route("/MyAcc")  
+def logged_in():
+    return render_template("MyAcc.html")
 
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash('you have log out ',category='info')
+    return redirect(url_for('index'))
+
+
+# Search function Connect to your existing database  
 def get_connection():
-    # Connect to your existing database
-    
-    return sqlite3.connect('D:\harry_hermione_ron\instance\demo.db')
+    return sqlite3.connect('instance/demo.db')
 
 @app.route('/')
 def Todo_list():
@@ -105,16 +114,18 @@ def search():
     if not query:
         # If no search query is provided, show all data
         results = get_all_items()
+        return render_template('search.html',results=results)
     else:
         # Filter data based on search query
         results = search_items(query)
 
-    return render_template('search.html', results=results)
+    return render_template('beast.html', results=results)
 
 def get_all_items():
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute('SELECT Name FROM magic')
+    
     items = [row[0] for row in cursor.fetchall()]
     conn.close()
     return items
@@ -122,10 +133,13 @@ def get_all_items():
 def search_items(query):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT Name FROM magic WHERE Name LIKE ?', ('%' + query + '%',))
-    items = [row[0] for row in cursor.fetchall()]
+    cursor.execute('SELECT * FROM magic WHERE Name LIKE ?', ('%' + query + '%',))
+    data=cursor.fetchall()
+    items = [row[0] and row[1] and row[3] for row in cursor.fetchall()]
     conn.close()
-    return items
+    return data
+
+
 
 
 

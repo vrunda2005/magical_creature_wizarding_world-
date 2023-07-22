@@ -1,3 +1,8 @@
+# __init__ file is main file for Duble folder
+# Module Initialization: The __init__.py file can also contain Python code that
+# will be executed when the package is imported in run.py (outside Dumble). This initialization code can define variables,
+# import submodules, or perform any other necessary setup.
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from flask_bcrypt import Bcrypt
