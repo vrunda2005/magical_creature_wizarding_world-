@@ -102,7 +102,7 @@ def logout():
 
 # Search function Connect to your existing database  
 def get_connection():
-    return sqlite3.connect('instance/demo.db')
+    return sqlite3.connect('instance/beast.db')
 
 @app.route('/')
 def Todo_list():
@@ -124,7 +124,7 @@ def search():
 def get_all_items():
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT Name FROM magic')
+    cursor.execute('SELECT name FROM Beast')
     
     items = [row[0] for row in cursor.fetchall()]
     conn.close()
@@ -133,7 +133,7 @@ def get_all_items():
 def search_items(query):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM magic WHERE Name LIKE ?', ('%' + query + '%',))
+    cursor.execute('SELECT * FROM Beast WHERE name LIKE ?', ('%' + query + '%',))
     data=cursor.fetchall()
     items = [row[0] and row[1] and row[3] for row in cursor.fetchall()]
     conn.close()
