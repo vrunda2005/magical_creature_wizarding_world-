@@ -3,6 +3,7 @@ from wtforms import StringField,PasswordField,SubmitField
 from wtforms.validators import Email,Length,EqualTo,DataRequired,ValidationError
 from Dumble.model import UserInfo
 
+#Registering and Login classes 
 
 class RegisterForm(FlaskForm):  #form for so that user can enter 
 

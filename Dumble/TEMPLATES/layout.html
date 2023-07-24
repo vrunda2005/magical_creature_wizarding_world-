@@ -33,7 +33,8 @@
 
   
   <nav class="navbar navbar-expand-lg p-3" data-bs-theme="dark">
-    <div class="logo"><img src="{{url_for('static',filename='img/unicorn.jpg')}}" alt="logo"></div>
+    <!-- <div class="logo"><img src="{{url_for('static',filename='img/unicorn.jpg')}}" alt="logo"></div> -->
+    <div class="hat"><img src="	https://static.harrypotterfanzone.com/themes/hpfz/assets/sorting-hat.png" alt="logo"></div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -71,11 +72,15 @@
   
     </ul>
     <form class="d-flex" role="search" action="{{url_for('search')}}" method="GET" >
+      <div class="hat"><img src="{{url_for('static',filename='img/owl logo.png')}}" alt="logo"></div>
+
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 </div>
 </nav>
+
+<video src="https://www.youtube.com/watch?v=yv-UwwOvOzA"></video>
 
 {% block body %}
    
@@ -97,3 +102,9 @@
 </body>
 
 </html>
+
+
+<!-- 
+imgaes 
+snitch url == 	https://static.harrypotterfanzone.com/themes/hpfz/assets/golden-snitch.png
+hat url ==  https://static.harrypotterfanzone.com/themes/hpfz/assets/sorting-hat.png -->
