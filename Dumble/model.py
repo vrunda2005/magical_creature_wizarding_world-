@@ -1,6 +1,8 @@
-from Dumble import db 
+from Dumble import db
 from flask_login import UserMixin
 from Dumble import bcrypt
+
+
 
 
 # For storing data of user in our database and convert it into hash password 

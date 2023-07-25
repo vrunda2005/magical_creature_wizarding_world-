@@ -1,5 +1,5 @@
 from Dumble import app
-from Dumble import db 
+from Dumble import db,beings_table,engine,beast_table
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify
 from Dumble.model import UserInfo
@@ -9,7 +9,7 @@ from Dumble.forms import RegisterForm,LoginForm
 from flask_bcrypt import Bcrypt
 from Dumble import bcrypt
 from flask_login import login_manager,logout_user,login_required, login_user,LoginManager,current_user
-
+from sqlalchemy import select,Column,TEXT
 login_manager=LoginManager()
 login_manager.init_app(app)
 login_manager.login_view="login_page"
@@ -31,7 +31,8 @@ def index():
 def creatures_page():
     conn = get_connection()
     cursor = conn.cursor()
-    
+   
+
     cursor.execute('SELECT * FROM beings')
     
     items = [row for row in cursor.fetchall()]
@@ -113,147 +114,59 @@ def logout():
 def get_connection():
     return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
 
-@app.route('/todo')
-def todo():
-    return render_template('layout.html',results=get_all_items())
+# @app.route('/todo')
+# def todo():
+#     return render_template('layout.html',results=get_all_items())
 
 @app.route('/search', methods=['GET','POST'])
 def search():
-    
     query = request.form.get('query')
     # query = request.args.get('query')
     if not query:
-    # If no search query is provided, show all data
-        results = get_all_items()
-        # return jsonify(results)
-        
+        results = show_users()
         return render_template('layout.html', results=results)
-
-    #     # return render_template('search.html',results=results)
     else:
         # Filter data based on search query
-        results = search_items(query)
-
+        results = perform_search(query)
     return render_template('beast.html', results=results)
 
-def get_all_items():
-    conn = get_connection()
-    cursor = conn.cursor()
-    
-    cursor.execute('SELECT name FROM Beast')
-    
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return items
-
-def search_items(query):
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Beast WHERE name LIKE ? ", ('%' + query + '%',))
-    data=cursor.fetchall()
-    items = [row[0] and row[1] and row[3] for row in cursor.fetchall()]
-    conn.close()
-    return data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @app.route("/login",methods=['GET','POST'])
-# def login_page():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('MyAcc'))
-#     form=LoginForm()
-#     if form.validate_on_submit():
-#         user=UserInfo.query.filter_by(username=form.username.data).first()
-#         if user:
-#             if user and bcrypt.check_password_hash(user.password,form.password.data) is not False:
-#                    login_user(user)  
-#                    return redirect(url_for('MyAcc'))  
-#             else:
-#                 flash('Login Unsuccessful Make sure you have created account','danger')    
+#not for now implemented multiple table database connect 
+# def get_all_items():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT name FROM Beast')
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return items
+
+#not for now implemented multiple table database connect 
+# def search_items(query):
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute("SELECT * FROM Beast WHERE name LIKE ? ", ('%' + query + '%',))
+#     data=cursor.fetchall()
+#     items = [row[0] and row[1] and row[3] for row in cursor.fetchall()]
+#     conn.close()
+#     return data
+
+
+def perform_search(query):
+    with engine.connect() as conn:
+                beast=conn.execute(
+                    beast_table.select().where(beast_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                being = conn.execute(
+                    beings_table.select().where(beings_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                result=beast+being
+    return result
+
+
+def show_users():
+    with engine.connect() as conn:
+        beast = conn.execute(beast_table.select()).fetchall()
+        being = conn.execute(beings_table.select()).fetchall()
+        result=beast+being
+    return result

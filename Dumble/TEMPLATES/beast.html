@@ -5,11 +5,12 @@
 {% extends 'layout.html' %}
 {% block body%}
 {% if results %}
+
 {% for result in results %}
 <section id="beast" class="container bg-secondary-subtle my-5 p-5 rounded-3 border-5" style="color: black;">
     <div class="row">
         <div class="col-lg-6 text-center">
-            <img class="rounded-circle" src="{{result[6]}}" alt="image">
+            <img class="rounded-circle" src="{{result[3]}}" alt="image">
             <!-- <img class="rounded-circle" src="{{url_for('static',filename='img/Werewolf.jpg')}}"> -->
         </div>
         <div class="col-lg-6 my-auto">
@@ -80,11 +81,11 @@
         </h3>
         <p>
             
-            <!-- {{result[2]}} -->
+             {{result[2]}}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque facere repellat dolorum qui itaque, placeat beatae sed. Possimus omnis corporis amet, consequatur sint repellat deserunt accusamus voluptate voluptas non ratione.
         </p>    
     </div>
-    <hr>
+    <hr> 
 </section>
 {% endfor %}
 
