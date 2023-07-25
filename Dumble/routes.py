@@ -1,7 +1,7 @@
 from Dumble import app
 from Dumble import db 
 import sqlite3
-from flask import render_template,redirect,url_for,flash,get_flashed_messages,request
+from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify
 from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm,LoginForm
 from flask_login import login_user
@@ -29,7 +29,16 @@ def index():
 
 @app.route("/creatures")
 def creatures_page():
-    return render_template("creatures.html")
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT * FROM beings')
+    
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+   
+
+    return render_template("creatures.html",items=items)
 
 @app.route("/beast")
 def beast_page():
@@ -102,19 +111,25 @@ def logout():
 
 # Search function Connect to your existing database  
 def get_connection():
-    return sqlite3.connect('instance/beast.db')
+    return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
 
-@app.route('/')
-def Todo_list():
-    return render_template('search.html', results=get_all_items())
+@app.route('/todo')
+def todo():
+    return render_template('layout.html',results=get_all_items())
 
 @app.route('/search', methods=['GET','POST'])
 def search():
-    query = request.args.get('query')
+    
+    query = request.form.get('query')
+    # query = request.args.get('query')
     if not query:
-        # If no search query is provided, show all data
+    # If no search query is provided, show all data
         results = get_all_items()
-        return render_template('search.html',results=results)
+        # return jsonify(results)
+        
+        return render_template('layout.html', results=results)
+
+    #     # return render_template('search.html',results=results)
     else:
         # Filter data based on search query
         results = search_items(query)
@@ -124,24 +139,21 @@ def search():
 def get_all_items():
     conn = get_connection()
     cursor = conn.cursor()
+    
     cursor.execute('SELECT name FROM Beast')
     
-    items = [row[0] for row in cursor.fetchall()]
+    items = [row for row in cursor.fetchall()]
     conn.close()
     return items
 
 def search_items(query):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM Beast WHERE name LIKE ?', ('%' + query + '%',))
+    cursor.execute("SELECT * FROM Beast WHERE name LIKE ? ", ('%' + query + '%',))
     data=cursor.fetchall()
     items = [row[0] and row[1] and row[3] for row in cursor.fetchall()]
     conn.close()
     return data
-
-
-
-
 
 
 

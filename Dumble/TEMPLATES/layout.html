@@ -10,7 +10,11 @@
     </title>
     <link rel="stylesheet "href="{{url_for('static',filename='style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body style="color: white;">
@@ -32,7 +36,7 @@
   {% endwith %}
 
   
-  <nav class="navbar navbar-expand-lg p-3" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg p-3" data-bs-theme="dark">
     <!-- <div class="logo"><img src="{{url_for('static',filename='img/unicorn.jpg')}}" alt="logo"></div> -->
     <div class="hat"><img src="	https://static.harrypotterfanzone.com/themes/hpfz/assets/sorting-hat.png" alt="logo"></div>
 
@@ -50,7 +54,7 @@
             Various kinds of Creatures
           </a>
           <div class="dropdown-menu">
-            <a class="nav-link" href="#">Link 1</a>
+            <a class="nav-link" href="{{url_for('creatures_page')}}">Creatures Beings</a>
             <a class="nav-link" href="#">Link 2</a>
             <a class="nav-link" href="#">Link 3</a>
           </div>
@@ -71,16 +75,70 @@
       </li>				  
   
     </ul>
-    <form class="d-flex" role="search" action="{{url_for('search')}}" method="GET" >
-      <div class="hat"><img src="{{url_for('static',filename='img/owl logo.png')}}" alt="logo"></div>
-
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+      <div class="card">
+        <main>
+          <h5>List
+         
+          </h5>
+          <ul>
+            {% for song in results %}
+                <li>{{ song[0] }}</li>
+            {% endfor %}
+          </ul>
+        </main>
+        <form class="d-flex" role="search" action="/search" method="post" >
+          <section>
+            <section class="hat"><img src="{{url_for('static',filename='img/owl logo.png')}}" alt="logo"></section>
+           
+            <input  id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" >
+            <div id="datalist"></div>
+            
+            <button class="btn btn-outline-success" type="submit" value="Search">Search</button>
+        
+          
+  
+         
+        </form>
+      
+      </div>
+     
+    <!-- Inside <body> -->
+      <!--
+       -->
 </div>
+
+
+
 </nav>
 
 <video src="https://www.youtube.com/watch?v=yv-UwwOvOzA"></video>
+
+
+
+ <script>
+        $(document).ready(function() {
+            $('#searchInput').on('keyup', function() {  // Change the event to keyup
+                var query = $(this).val();
+                if (query.length > 0) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/search',
+                        data: {'query': query},
+                        success: function(response) {
+                            var results = response;
+                            var resultList = $('#datalist');
+                            resultList.text(results.join(', '));
+                        }
+                    });
+                } else {
+                    $('#datalist').empty();
+                }
+            });
+        });
+    </script> 
+
+
+
 
 {% block body %}
    
@@ -97,6 +155,8 @@
 			<!-- Made with  by Jayraj Derasari & Vrunda Patel -->
 		</div>
 	</div>
+
+
 
 
 </body>

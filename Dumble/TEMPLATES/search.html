@@ -9,47 +9,36 @@ result
 
 {% block body %}
 
-<!-- <ul style="color: white;"> -->
-    
-    <!-- <div class="table-responsive"> -->
+<ul style="color: white;"> 
+<div class="container-sm">
+
+
+    <div class="table-responsive">
     
         <table class="table">
             <h1 style="align-items: center;text-align: center;">List of Beasts </h1>
             <thead>
               <tr>
-                <!-- <th scope="col">#</th> -->
+              
                 <th scope="col">Name</th>
-                <!-- <th scope="col">Last</th> -->
-                <!-- <th scope="col">Handle</th> -->
+                 
               </tr>
-            </thead>
-            {% for result in results %}
-            <tbody>
-              <tr>
-                <!-- <th scope="row">hi</th> -->
-                <td>{{result}}</td>
-                <!-- <td>Otto</td> -->
-                <!-- <td>@mdo</td> -->
+             </thead> 
+           {% for result in results %} 
+          <tbody> 
+              <tr> 
+            
+                  <td>{{result[0]}}</td> 
               </tr>
-              <!-- <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr> -->
               {%endfor%}
             </tbody>
           </table>
 
-        <!-- {{result}} -->
       
     
-        <!-- </div> -->
+     </div> 
     
-<!-- </ul> -->
+</ul>
+</div>
+
 {% endblock %}

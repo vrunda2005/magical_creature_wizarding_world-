@@ -13,18 +13,15 @@
             <!-- <img class="rounded-circle" src="{{url_for('static',filename='img/Werewolf.jpg')}}"> -->
         </div>
         <div class="col-lg-6 my-auto">
-            <h2 class="text-center p-5">Beast Name : {{result.Name}}</h2>
+            <h2 class="text-center p-5">Beast Name : {{result[0]}}</h2>
             <h3> Special Abilities</h3>
             <ul>
                
+                    <h3>
+                        {{result[0]}}
+                    </h3>
+              
                
-                
-                <li>
-                    {{result[0]}}
-                </li>
-                <li>
-                   
-                </li>
              
             </ul>
         </div>
@@ -91,9 +88,9 @@
 </section>
 {% endfor %}
 
-{% else%}
+{% else%} 
 no found
-{% endif%}
+{% endif%} 
 
 {% endblock %}
 
