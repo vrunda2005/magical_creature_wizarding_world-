@@ -4,7 +4,9 @@
 # import submodules, or perform any other necessary setup.
 
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy 
+from sqlalchemy import create_engine,MetaData,Table
+from sqlalchemy.orm import sessionmaker
+from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 
@@ -22,6 +24,15 @@ app.config['SECRET_KEY']='95e6991c00be2df05c6671fd'
 #hash password not number 
 bcrypt=Bcrypt(app)
 login_manager=LoginManager(app)
+
+
+engine = create_engine('sqlite:///D:\harry_hermione_ron\website\instance/beast.db')
+metadata = MetaData()
+metadata.reflect(bind=engine)
+beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('Beast', metadata, autoload=True, autoload_with=engine)
+
+
 
 
 from Dumble import routes

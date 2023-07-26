@@ -9,47 +9,24 @@ result
 
 {% block body %}
 
-<!-- <ul style="color: white;"> -->
-    
-    <!-- <div class="table-responsive"> -->
-    
-        <table class="table">
-            <h1 style="align-items: center;text-align: center;">List of Beasts </h1>
-            <thead>
-              <tr>
-                <!-- <th scope="col">#</th> -->
-                <th scope="col">Name</th>
-                <!-- <th scope="col">Last</th> -->
-                <!-- <th scope="col">Handle</th> -->
-              </tr>
-            </thead>
-            {% for result in results %}
-            <tbody>
-              <tr>
-                <!-- <th scope="row">hi</th> -->
-                <td>{{result}}</td>
-                <!-- <td>Otto</td> -->
-                <!-- <td>@mdo</td> -->
-              </tr>
-              <!-- <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr> -->
-              {%endfor%}
-            </tbody>
-          </table>
 
-        <!-- {{result}} -->
-      
-    
-        <!-- </div> -->
-    
-<!-- </ul> -->
+
+  <main>
+    <h5>
+      Magical Creatures
+    </h5>
+    {% for song in result %}
+    <ul class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary">
+      <div class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+       
+        {{ song[0] }}
+      </div>
+    </ul>
+    {% endfor %}
+  </main>
+
+
+
+   
+
 {% endblock %}
