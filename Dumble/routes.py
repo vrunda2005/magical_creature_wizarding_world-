@@ -26,6 +26,10 @@ def load_user(user_id):
 def index():
     return render_template('index.html', username=current_user.username)
 
+@app.route('/layout')
+def layout_page():
+    result=show_users()
+    return render_template('layout.html',result=result)
 
 @app.route("/creatures")
 def creatures_page():

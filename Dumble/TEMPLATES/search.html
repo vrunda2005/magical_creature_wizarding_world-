@@ -9,36 +9,24 @@ result
 
 {% block body %}
 
-<ul style="color: white;"> 
-<div class="container-sm">
 
 
-    <div class="table-responsive">
-    
-        <table class="table">
-            <h1 style="align-items: center;text-align: center;">List of Beasts </h1>
-            <thead>
-              <tr>
-              
-                <th scope="col">Name</th>
-                 
-              </tr>
-             </thead> 
-           {% for result in results %} 
-          <tbody> 
-              <tr> 
-            
-                  <td>{{result[0]}}</td> 
-              </tr>
-              {%endfor%}
-            </tbody>
-          </table>
+  <main>
+    <h5>
+      Magical Creatures
+    </h5>
+    {% for song in result %}
+    <ul class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary">
+      <div class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+       
+        {{ song[0] }}
+      </div>
+    </ul>
+    {% endfor %}
+  </main>
 
-      
-    
-     </div> 
-    
-</ul>
-</div>
+
+
+   
 
 {% endblock %}
