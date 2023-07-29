@@ -19,3 +19,9 @@ class UserInfo(db.Model,UserMixin): #creted table for database
     def check_password_correction(self,attemted_password):
            return bcrypt.check_password_hash(self.password,attemted_password)
                   
+class FavoriteItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"FavoriteItem(id={self.id})"

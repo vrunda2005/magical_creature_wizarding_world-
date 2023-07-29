@@ -16,7 +16,9 @@ db=SQLAlchemy(app)
 
 app.app_context().push()
 
-
+with app.app_context():
+        db.create_all() 
+        
 app.config['SECRET_KEY']='95e6991c00be2df05c6671fd'
 #secret key is required for post method beacuse we are submiting form 
 
@@ -30,9 +32,8 @@ engine = create_engine('sqlite:///D:\harry_hermione_ron\website\instance/beast.d
 metadata = MetaData()
 metadata.reflect(bind=engine)
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
-beast_table = Table('Beast', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('beast_new', metadata, autoload=True, autoload_with=engine)
 
-
-
+ 
 
 from Dumble import routes

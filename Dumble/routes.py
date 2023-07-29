@@ -1,8 +1,8 @@
 from Dumble import app
 from Dumble import db,beings_table,engine,beast_table
 import sqlite3
-from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify
-from Dumble.model import UserInfo
+from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
+from Dumble.model import UserInfo,FavoriteItem
 from Dumble.forms import RegisterForm,LoginForm
 from flask_login import login_user
 from Dumble.forms import RegisterForm,LoginForm
@@ -10,6 +10,14 @@ from flask_bcrypt import Bcrypt
 from Dumble import bcrypt
 from flask_login import login_manager,logout_user,login_required, login_user,LoginManager,current_user
 from sqlalchemy import select,Column,TEXT
+
+from flask_wtf import FlaskForm
+from wtforms import SubmitField
+from wtforms.validators import DataRequired
+from flask_wtf.csrf import CSRFProtect
+
+
+
 login_manager=LoginManager()
 login_manager.init_app(app)
 login_manager.login_view="login_page"
@@ -31,23 +39,69 @@ def layout_page():
     result=show_users()
     return render_template('layout.html',result=result)
 
-@app.route("/creatures")
-def creatures_page():
+@app.route("/beings")
+def beings_page():
     conn = get_connection()
     cursor = conn.cursor()
-   
-
     cursor.execute('SELECT * FROM beings')
-    
     items = [row for row in cursor.fetchall()]
     conn.close()
-   
+    return render_template("beings.html",items=items)
 
-    return render_template("creatures.html",items=items)
+@app.route("/domesticate")
+def domesticate_page():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM domesticate')
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+    return render_template("beast.html",items=items)
+
+@app.route("/plant")
+def plant_page():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM plant')
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+    return render_template("beast.html",items=items)
+
+@app.route("/darkcreatures")
+def darkcreatures_page():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM dark')
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+    return render_template("beast.html",items=items)
+
+@app.route("/watercreatures")
+def watercreatures_page():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM water')
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+    return render_template("beast.html",items=items)
+
+@app.route("/spirit")
+def spirit_page():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM spirit') 
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+    return render_template("spirit.html",items=items)
 
 @app.route("/beast")
 def beast_page():
-    return render_template("beast.html")
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM beast_new')
+    items = [row for row in cursor.fetchall()]
+    conn.close()
+    return render_template("beast.html",items=items)
+   
 
 @app.route("/encyclopedia")
 def encyclopedia():
@@ -94,7 +148,7 @@ def login_page():
 
                 login_user(attempted_user)
                 flash('Success! you are logged in {{attempted_user.name}}',category='success')
-                return redirect(url_for('creatures_page'))
+                
 
         else:
             flash('username and password not match try another ',category='danger')
@@ -132,7 +186,7 @@ def search():
     else:
         # Filter data based on search query
         results = perform_search(query)
-    return render_template('beast.html', results=results)
+    return render_template('seacr_creatures.html', results=results)
 
 #not for now implemented multiple table database connect 
 # def get_all_items():
@@ -174,3 +228,5 @@ def show_users():
         being = conn.execute(beings_table.select()).fetchall()
         result=beast+being
     return result
+
+

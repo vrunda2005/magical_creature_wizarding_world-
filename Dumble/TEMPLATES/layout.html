@@ -54,8 +54,8 @@
             Various kinds of Creatures
           </a>
           <div class="dropdown-menu">
-            <a class="nav-link" href="{{url_for('creatures_page')}}">Creatures Beings</a>
-            <a class="nav-link" href="#">Link 2</a>
+            <a class="nav-link" href="{{url_for('beings_page')}}">Creatures Beings</a>
+            <a class="nav-link" href="{{url_for('spirit_page')}}">Link 2</a>
             <a class="nav-link" href="#">Link 3</a>
           </div>
 
@@ -74,12 +74,12 @@
       <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
       </li>				  
       
-      <!-- <li class="nav-item">
-        <form method="POST" action="/layout">
-          <button type="submit" name="show_list" value="1">Show List</button>
+      <li class="nav-item">
+        <form method="POST" action="#">
+          <button type="submit" >add fav</button>
         </form>
         
-      </li> -->
+      </li>
       <!-- new something list  -->
       <li class="nav-item">
       <main class="d-flex flex-nowrap" style="width: 80px;">
@@ -117,6 +117,10 @@
 </div>
 </nav>
 <video src="E:\Prgrams\Project 1.mov"></video>
+
+
+    
+
  <script>
         $(document).ready(function() {
             $('#searchInput').on('keyup', function() {  // Change the event to keyup
