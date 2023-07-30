@@ -28,7 +28,7 @@ bcrypt=Bcrypt(app)
 login_manager=LoginManager(app)
 
 
-engine = create_engine('sqlite:///D:\harry_hermione_ron\website\instance/beast.db')
+engine = create_engine('sqlite:///instance/beast.db')
 metadata = MetaData()
 metadata.reflect(bind=engine)
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
