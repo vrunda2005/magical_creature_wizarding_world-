@@ -9,23 +9,23 @@ body{
     background-position: center;
 }
 
-h1{
-	font-size: 4rem !important;
+/* h1{
+	font-size: 12;
 }
 
 h2{
     font-weight: 800;
-	font-size: 2.5rem !important;
+	font-size: 2.5rem;
     font-style: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+} */
 
-h3{
+/* h3{
     font-weight: 800;
-	font-size: 1.5rem !important;
+	font-size: 1.5rem ;
     font-style: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+} */
 
 /* layout */
 .logo{
@@ -62,7 +62,7 @@ h3{
     justify-content: space-between;
 }
 
-header {
+.header {
     position: sticky;
     top: 0;
     /* background-color:#a6aaa6; */
@@ -217,7 +217,7 @@ img:hover {
     display: inline-block;
   }
   
-  .img-overlay {
+.img-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -362,3 +362,17 @@ img:hover {
 .tag-button:active {
   background-color: #d0d0d0;
 }
+
+
+
+/* Encyclopedia page*/
+.card:hover {
+    box-shadow: 10px 5px grey;
+    border: 2px solid gray;
+}
+
+.card{
+    display: inline-block;
+
+}
+
