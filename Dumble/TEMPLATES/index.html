@@ -4,7 +4,26 @@ Home
 {% endblock %}
 
 {% block body%}
+<link rel="stylesheet" href="{{url_for('static',filename='new.css')}}">
 
+<div id="wand">
+	<div class="cap"></div>
+</div>
+  
+  <div id="tiles">
+	<div class="tile">
+	  <i class="fa-solid fa-image"></i>
+	  <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/02/Harry-Potter-The-10-Scariest-Monsters-Magical-Creatures-Ranked-featured-image-2.jpg" />
+	</div>
+	<div class="tile">
+	  <i class="fa-solid fa-image"></i>
+	  <img src="https://img.buzzfeed.com/buzzfeed-static/static/2020-03/31/19/enhanced/901deb2432c1/original-115-1585682562-15.jpg?crop=1200:630;0,0%26downsize=1250:*" />
+	</div>
+	<div class="tile">
+	  <i class="fa-solid fa-image"></i>
+	  <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2021/05/Harry-Potter-Friends-Feature.jpg?format=auto&quality=80" />
+	</div>
+  </div>
 <div class="banner container-fluid text-center">
     <h1 class="banner-title">
         Magical Creatures in Hogwards
@@ -49,7 +68,7 @@ Home
 		</div>
 		<div class="col-6 thumbnail">
 			<img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
-            <a class="thumbnail-text" href="{{url_for('beast_page')}}">Beasts</a>
+            <a class="thumbnail-text" href="{{url_for('beast_page',name='beast')}}">Beasts</a>
 		</div>			
 	</div>
 
@@ -162,4 +181,5 @@ Home
 	</div>
 </section>	
 
+<script src='https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js'></script><script  src="static/script.js"></script>
 {%endblock %}

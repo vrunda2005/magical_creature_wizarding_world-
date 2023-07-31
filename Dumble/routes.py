@@ -46,7 +46,7 @@ def beings_page():
     cursor.execute('SELECT * FROM beings')
     items = [row for row in cursor.fetchall()]
     conn.close()
-    return render_template("beings.html",items=items)
+    return render_template("beast.html",items=items)
 
 @app.route("/domesticate")
 def domesticate_page():
@@ -91,17 +91,49 @@ def spirit_page():
     cursor.execute('SELECT * FROM spirit') 
     items = [row for row in cursor.fetchall()]
     conn.close()
-    return render_template("spirit.html",items=items)
+    return render_template("beast.html",items=items)
+def get_connection():
+    return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
 
-@app.route("/beast")
-def beast_page():
+# @app.route("/beast")
+# def beast_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     rows = cursor.fetchall()
+#     cursor.execute('SELECT * FROM beast')
+#     items = [row for row in cursor.fetchall()]
+#     column_names = [description[0] for description in cursor.description]
+#     # info=downloading_data()
+#     # col=[name for name in info]
+#     cursor.close()
+#     conn.close()
+#     return render_template("beast.html",items=items)
+
+#creature page 
+@app.route("/beast/<string:name>")
+def beast_page(name):
+    name=name
+    conn = sqlite3.connect('instance/beast.db')
+    cursor = conn.cursor()
+    cursor.execute(f'''
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM {name} 
+    ''')
+    item = cursor.fetchall()
+    column_names = [description[0] for description in cursor.description]
+    info=downloading_data(name)
+    conn.close()
+    return render_template('beast.html', items=item,name=name,column_names=column_names,info=info)
+
+
+#to show  information or defination about creature 
+def downloading_data(name):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM beast_new')
-    items = [row for row in cursor.fetchall()]
+    cursor.execute(f'SELECT info FROM {name} LIMIT 1;')
+    items = cursor.fetchone()
     conn.close()
-    return render_template("beast.html",items=items)
-   
+    return items
+
 
 @app.route("/encyclopedia")
 def encyclopedia():
@@ -169,8 +201,7 @@ def logout():
 
 
 # Search function Connect to your existing database  
-def get_connection():
-    return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
+
 
 # @app.route('/todo')
 # def todo():
@@ -230,3 +261,37 @@ def show_users():
     return result
 
 
+
+
+
+@app.route('/more/<string:item_id>')
+def show_more(item_id):
+    conn = sqlite3.connect('instance/beast.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beast WHERE name=?
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beings WHERE name=?
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM spirit WHERE name=?
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM water WHERE name=?
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM dark WHERE name=?
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM plant WHERE name=?
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM domesticate WHERE name=?
+    UNION
+    SELECT name,NULL as description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM fanatastic WHERE name=?
+    ''', (item_id,item_id,item_id,item_id,item_id,item_id,item_id,item_id))
+    
+    # cursor.execute("SELECT * FROM beast_new,water,beings_new WHERE name=?", (item_id,))
+    # cursor.execute("SELECT * FROM water WHERE name=?", (item_id,))
+    # cursor.execute("SELECT * FROM beings_new WHERE name=?", (item_id))
+    item = cursor.fetchall()
+    # column_names = [description[0] for description in cursor.description]
+    
+    conn.close()
+
+    return render_template('watchmore.html', item=item)

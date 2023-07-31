@@ -9,6 +9,7 @@
         {% endblock %}
     </title>
     <link rel="stylesheet "href="{{url_for('static',filename='style.css')}}">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
@@ -18,6 +19,7 @@
 
 </head>
 <body style="color: white;">
+  
   <!-- #grabbing flash messages to show error -->
   {% with messages=get_flashed_messages(with_categories=true) %}  
     {% if messages %}
@@ -35,7 +37,9 @@
 
   {% endwith %}
 
+
   
+<header class="sticky">
 <nav class="navbar navbar-expand-lg p-3" data-bs-theme="dark">
     <!-- <div class="logo"><img src="{{url_for('static',filename='img/unicorn.jpg')}}" alt="logo"></div> -->
     <div class="hat"><img src="	https://static.harrypotterfanzone.com/themes/hpfz/assets/sorting-hat.png" alt="logo"></div>
@@ -54,19 +58,19 @@
             Various kinds of Creatures
           </a>
           <div class="dropdown-menu">
-            <a class="nav-link" href="{{url_for('beings_page')}}">Creatures Beings</a>
-            <a class="nav-link" href="{{url_for('spirit_page')}}">Link 2</a>
-            <a class="nav-link" href="#">Link 3</a>
+            <a class="nav-link" href="{{url_for('beast_page',name='beast')}}">Creatures Beast</a>
+            <a class="nav-link" href="{{url_for('beast_page',name='beings')}}">Creatures Beings</a>
+            <a class="nav-link" href="{{url_for('beast_page',name='spirit')}}">Creatures Spirit</a>
           </div>
 
       </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="#">Encyclopedia</a>
+      <a class="nav-link" href="{{url_for('encyclopedia')}}">Encyclopedia</a>
       </li>				  
-      <li class="nav-item">
+      <!-- <li class="nav-item">
       <a class="nav-link" href="{{url_for('index')}}">Contact</a>
-      </li>				  
+      </li>				   -->
       <li class="nav-item">
       <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
       </li>				  
@@ -75,21 +79,22 @@
       </li>				  
       
       <li class="nav-item">
-        <form method="POST" action="#">
-          <button type="submit" >add fav</button>
-        </form>
-        
-      </li>
+        <form class="d-flex" role="search" action="/search" method="post" >
+            <section class="hat"><img src="{{url_for('static',filename='img/owl logo.png')}}" alt="logo"></section>           
+            <input  id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" style="width: 150px;" >
+            <div id="datalist"></div>            
+            <button class="btn btn-outline-success" type="submit" value="Search">Search</button> 
+        </form>      
+    </li>
       <!-- new something list  -->
       <li class="nav-item">
       <main class="d-flex flex-nowrap" style="width: 80px;">
         <!-- <h1 class="visually-hidden">Sidebars examples</h1> -->
-          <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+          <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: auto;">
 
         
-          <a href="/layout" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <!-- <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
-            <span class="fs-4">Show List </span>
+          <a href="/layout" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" style="width: 100px;">
+            show list
           </a> 
         
           <div class="list-group list-group-flush border-bottom scrollarea">
@@ -106,20 +111,51 @@
       </main>
     </li>
       
-   <li class="nav-item">
-        <form class="d-flex" role="search" action="/search" method="post" >
-            <section class="hat"><img src="{{url_for('static',filename='img/owl logo.png')}}" alt="logo"></section>           
-            <input  id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" style="width: 150px;" >
-            <div id="datalist"></div>            
-            <button class="btn btn-outline-success" type="submit" value="Search">Search</button> 
-        </form>      
-    </li>
+   
 </div>
 </nav>
+</header>
 <video src="E:\Prgrams\Project 1.mov"></video>
 
+ 
 
-    
+
+<!-- partial:index.partial.html -->
+
+<!-- partial -->
+ 
+
+
+
+
+<!-- <h1>Bookmarks</h1>
+    <form action="/add_bookmark" method="post">
+        <label for="url">Names</label>
+        <input type="text" name="url" id="url" required>
+        <button type="submit">Bookmark</button>
+    </form>
+    <h2>Bookmarked URLs:</h2>
+    <ul>
+        {% for bookmark in bookmarks %}
+        <li>{{ bookmark[1] }}</li>
+        {% endfor %}
+    </ul>  -->
+
+
+     <!-- <h1>Animal Names</h1>
+    <ul>
+        {% for animal in animals %}
+        <li>
+            <a href="/add_bookmark/{{ animal[0] }}">{{ animal[1] }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+     -->
+
+
+
+     <!-- Assuming you have a button with the id="bookmark-button" -->
+
 
  <script>
         $(document).ready(function() {
@@ -145,7 +181,23 @@
 
 <script src="sidebars.js"></script>
 
-
+<script>
+  document.getElementById("watchMoreButton").addEventListener("click", function() {
+      // Send an AJAX request to the server to fetch additional information about the element
+      fetch('/more_info')
+      .then(response => response.json())
+      .then(data => {
+          const additionalInfoContainer = document.getElementById("additionalInfoContainer");
+          additionalInfoContainer.innerHTML = `
+              <h2>${data.name}</h2>
+              <p>${data.additional_info}</p>
+          `;
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  });
+</script>
 {% block body %}
    
 

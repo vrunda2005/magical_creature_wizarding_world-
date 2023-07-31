@@ -1,0 +1,105 @@
+<!-- This is Creatures html page when user search something it shows output of it  -->
+
+{% extends 'layout.html' %}
+{% block body%}
+
+{% if item %}
+{% for result in item %}          
+
+<section id="beast" class="container bg-secondary-subtle my-5 p-5 rounded-3 border-5" style="color: black;">
+    <div class="row">
+    
+        <div class="col-lg-6 text-center">
+            <img class="rounded-circle" src="{{result[9]}}" alt="Img">
+            <!-- <img class="rounded-circle" src="{{url_for('static',filename='img/Werewolf.jpg')}}"> -->
+        </div>
+        <div class="col-lg-6 my-auto">
+            <h2 class="text-center p-5"> Creature name : {{result[0]}}</h2>
+            <h3> Special abilities</h3>
+            <ul>
+               
+                    <h3>
+                        {{result[4]}}
+                    </h3>
+            </ul>
+        </div>
+       
+    </div>
+     <hr>
+     <div class="beast-data">
+        <h3>
+            description </h3>
+        <p>
+           {{result[1]}}
+        </p>
+    </div>
+    <hr>
+    <div class="beast-data">
+        <h3>
+            Habitate
+        </h3>
+        <p>
+           {{result[2]}}
+        </p>
+    </div>
+    <hr>
+    <div class="beast-data">
+        <h3>
+            behavior: 
+        </h3>
+        <p>
+           {{result[3]}}
+        </p>
+    </div>
+    <hr>
+    
+    <div class="beast-data">
+        <h3>
+            Reproduction
+        </h3>
+        <p>
+           {{result[5]}}
+        </p>
+    </div>
+    <hr>
+    <div class="beast-data">
+        <h3>
+            magical_significance
+        </h3>
+        <p>
+            {{result[6]}}
+        </p>
+    </div>
+    <hr> 
+    <div class="beast-data">
+        <h3>
+            history 
+        </h3>
+        <p>
+            
+             {{result[7]}}
+        </p>    
+    </div> 
+    <hr> 
+    <div class="beast-data">
+        <h3>
+            Interaction With human Wizards 
+        </h3>
+        <p>
+            
+             {{result[8]}}
+        </p>    
+    </div> 
+    <hr> 
+</section>
+
+
+
+{% endfor %}
+
+{% else%} 
+no found
+{% endif %}
+
+{% endblock %}
+

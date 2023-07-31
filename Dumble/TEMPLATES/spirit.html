@@ -20,8 +20,13 @@ Spirit
 					<h3>
 						 {{result[0]}}
 					</h3>
+          <!-- {%for item in items %}
+            {{ item }} (<a href="{{ url_for('show_more', item_id=item[0]) }}">Watch More</a>)
+            {%endfor%}   -->
 					<img class="rounded img-fluid thumbnail-img" src="{{result[3]}}" >
 					<h3>{{result[0]}}</h3>
+          <a href="{{ url_for('show_more', item_id=item[0]) }}">watch more</a>
+          <!-- <button></button> -->
 					<p>
 						{{result[1]}}
 					

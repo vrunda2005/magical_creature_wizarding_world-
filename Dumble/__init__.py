@@ -32,8 +32,9 @@ engine = create_engine('sqlite:///D:\harry_hermione_ron\website\instance/beast.d
 metadata = MetaData()
 metadata.reflect(bind=engine)
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
-beast_table = Table('beast_new', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
 
  
 
 from Dumble import routes
+
