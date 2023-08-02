@@ -1,5 +1,5 @@
 from Dumble import app
-from Dumble import db,beings_table,engine,beast_table
+from Dumble import db,beings_table,engine,beast_table,spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
 from Dumble.model import UserInfo,FavoriteItem
@@ -30,70 +30,69 @@ def load_user(user_id):
    
 #this is condition for user to login to watch all website
 @app.route('/')
-@login_required
 def index():
-    return render_template('index.html', username=current_user.username)
+    return render_template('index.html')
 
 @app.route('/layout')
 def layout_page():
     result=show_users()
     return render_template('layout.html',result=result)
-
-@app.route("/beings")
-def beings_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM beings')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/domesticate")
-def domesticate_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM domesticate')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/plant")
-def plant_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM plant')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/darkcreatures")
-def darkcreatures_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM dark')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/watercreatures")
-def watercreatures_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM water')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/spirit")
-def spirit_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM spirit') 
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
 def get_connection():
-    return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
+    return sqlite3.connect('instance/beast.db')
+
+# @app.route("/beings")
+# def beings_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM beings')
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return render_template("beast.html",items=items)
+
+# @app.route("/domesticate")
+# def domesticate_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM domesticate')
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return render_template("beast.html",items=items)
+
+# @app.route("/plant")
+# def plant_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM plant')
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return render_template("beast.html",items=items)
+
+# @app.route("/darkcreatures")
+# def darkcreatures_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM dark')
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return render_template("beast.html",items=items)
+
+# @app.route("/watercreatures")
+# def watercreatures_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM water')
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return render_template("beast.html",items=items)
+
+# @app.route("/spirit")
+# def spirit_page():
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM spirit') 
+#     items = [row for row in cursor.fetchall()]
+#     conn.close()
+#     return render_template("beast.html",items=items)
 
 # @app.route("/beast")
 # def beast_page():
@@ -110,9 +109,9 @@ def get_connection():
 #     return render_template("beast.html",items=items)
 
 #creature page 
-@app.route("/beast/<string:name>")
-def beast_page(name):
-    name=name
+@app.route("/creatures/<string:name>")
+def creatures_page(name):
+    name = name
     conn = sqlite3.connect('instance/beast.db')
     cursor = conn.cursor()
     cursor.execute(f'''
@@ -122,7 +121,7 @@ def beast_page(name):
     column_names = [description[0] for description in cursor.description]
     info=downloading_data(name)
     conn.close()
-    return render_template('beast.html', items=item,name=name,column_names=column_names,info=info)
+    return render_template('creatures.html', items=item,name=name,column_names=column_names,info=info)
 
 
 #to show  information or defination about creature 
@@ -257,7 +256,14 @@ def show_users():
     with engine.connect() as conn:
         beast = conn.execute(beast_table.select()).fetchall()
         being = conn.execute(beings_table.select()).fetchall()
-        result=beast+being
+        spirit = conn.execute(spirit_table.select()).fetchall()
+        dark = conn.execute(dark_table.select()).fetchall()
+        plant = conn.execute(plant_table.select()).fetchall()
+        domesticate = conn.execute(domesticate_table.select()).fetchall()
+        fantasticate = conn.execute(fantastic_table.select()).fetchall()
+        water = conn.execute(water_table.select()).fetchall()
+        
+        result=beast+being+spirit+dark+plant+domesticate+fantasticate+water
     return result
 
 
@@ -283,7 +289,7 @@ def show_more(item_id):
     UNION
     SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM domesticate WHERE name=?
     UNION
-    SELECT name,NULL as description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM fanatastic WHERE name=?
+    SELECT name,NULL as description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM fantastic WHERE name=?
     ''', (item_id,item_id,item_id,item_id,item_id,item_id,item_id,item_id))
     
     # cursor.execute("SELECT * FROM beast_new,water,beings_new WHERE name=?", (item_id,))

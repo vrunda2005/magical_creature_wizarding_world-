@@ -68,14 +68,14 @@ Home
 		</div>
 		<div class="col-6 thumbnail">
 			<img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
-            <a class="thumbnail-text" href="{{url_for('beast_page',name='beast')}}">Beasts</a>
+            <a class="thumbnail-text" href="{{url_for('creatures_page',name='beast')}}">Beasts</a>
 		</div>			
 	</div>
 
 	<div class="row p-3">
         <div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Dobby_Full_CoS.webp')}}" alt="img">
-            <a href="{{url_for('beings_page')}}" class="thumbnail-text">Beings</a>
+            <a href="{{url_for('creatures_page',name='beings')}}" class="thumbnail-text">Beings</a>
         </div>	
 		<div class="col-6">
             <h3>Being</h3>
@@ -100,13 +100,13 @@ Home
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Ghost_PM.webp')}}" alt="img">
-            <a href="{{url_for('spirit_page')}}" class="thumbnail-text">Spirits</a>
+            <a href="{{url_for('creatures_page',name='spirit')}}" class="thumbnail-text">Spirits</a>
         </div>			
 	</div>
     <div class="row p-3">
         <div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/hippogriff.jpg')}}" alt="img">
-            <a href="#" class="thumbnail-text">Fantastic Beasts</a>
+            <a href="{{url_for('creatures_page',name='fantastic')}}" class="thumbnail-text">Fantastic Beasts</a>
         </div>		
 		<div class="col-6">
 			<h3>Fantastic Beasts</h3>
@@ -130,13 +130,13 @@ Home
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Werewolf.jpg')}}" alt="img">
-            <a href="{{url_for('darkcreatures_page')}}" class="thumbnail-text">Dark Creatures</a>
+            <a href="{{url_for('creatures_page',name='dark')}}" class="thumbnail-text">Dark Creatures</a>
         </div>			
 	</div>
     <div class="row p-3">
         <div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/images.jpg')}}" alt="img">
-            <a href="{{url_for('watercreatures_page')}}" class="thumbnail-text">Water Creatures</a>
+            <a href="{{url_for('creatures_page',name='water')}}" class="thumbnail-text">Water Creatures</a>
         </div>			
 		<div class="col-6">
             <h3>Water Creatures</h3>
@@ -161,13 +161,13 @@ Home
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/pet.jpg')}}" alt="img">
-            <a href="{{url_for('domesticate_page')}}" class="thumbnail-text">Domesticated Creatures</a>
+            <a href="{{url_for('creatures_page',name='domesticate')}}" class="thumbnail-text">Domesticated Creatures</a>
         </div>			
 	</div>
     <div class="row p-3">
         <div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Whomping Willow.webp')}}" alt="img">
-            <a href="{{url_for('plant_page')}}" class="thumbnail-text">Plant Creatures</a>
+            <a href="{{url_for('creatures_page',name='plant')}}" class="thumbnail-text">Plant Creatures</a>
         </div>			
 		<div class="col-6">
 			<h3>Plant Creatures</h3>

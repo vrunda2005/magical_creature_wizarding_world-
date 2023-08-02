@@ -17,6 +17,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
+
+
 </head>
 <body style="color: white;">
   
@@ -58,9 +63,14 @@
             Various kinds of Creatures
           </a>
           <div class="dropdown-menu">
-            <a class="nav-link" href="{{url_for('beast_page',name='beast')}}">Creatures Beast</a>
-            <a class="nav-link" href="{{url_for('beast_page',name='beings')}}">Creatures Beings</a>
-            <a class="nav-link" href="{{url_for('beast_page',name='spirit')}}">Creatures Spirit</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='beast')}}">Beast Creatures</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='beings')}}">Beings Creatures</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='spirit')}}">Spirits</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='water')}}">Water Creatures</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='dark')}}">Dark Creatures</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='domesticate')}}">Domestic Creatures</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='fantastic')}}">Fantastic Creatures</a>
+            <a class="nav-link" href="{{url_for('creatures_page',name='plant')}}">Plant Creatures</a>
           </div>
 
       </li>
@@ -98,11 +108,11 @@
           </a> 
         
           <div class="list-group list-group-flush border-bottom scrollarea">
-            {% for song in result %}
+            {% for creatures in result %}
             <ul class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary">
                 <a href="#" class="nav-link active" aria-current="page">
                   <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                  {{song[0]}}
+                  {{creatures[0]}}
                 </a>
             </ul>
             {%endfor%}

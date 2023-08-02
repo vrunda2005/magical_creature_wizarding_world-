@@ -31,10 +31,15 @@ login_manager=LoginManager(app)
 engine = create_engine('sqlite:///instance/beast.db')
 metadata = MetaData()
 metadata.reflect(bind=engine)
+
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
 beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
-
- 
+spirit_table = Table('spirit', metadata, autoload=True, autoload_with=engine)
+dark_table = Table('dark', metadata, autoload=True, autoload_with=engine)
+domesticate_table = Table('domesticate', metadata, autoload=True, autoload_with=engine)
+plant_table = Table('plant', metadata, autoload=True, autoload_with=engine)
+fantastic_table = Table('fantastic', metadata, autoload=True, autoload_with=engine)
+water_table = Table('water', metadata, autoload=True, autoload_with=engine)
 
 from Dumble import routes
 
