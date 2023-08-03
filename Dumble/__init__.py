@@ -31,6 +31,7 @@ login_manager=LoginManager(app)
 engine = create_engine('sqlite:///instance/beast.db')
 metadata = MetaData()
 metadata.reflect(bind=engine)
+
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
 beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
 
