@@ -103,7 +103,8 @@ Beast
               <p>{{item[3]}}</p>
               <p>{{item[4]}}</p>
               <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>
-          
+              <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button" id="button">BOOKmark</a>
+              <a href="{{ url_for('showbookmark')}}" class="tag-button" id="button">Show Bookmark</a>
             <!-- </div>  -->
         
         </div> 

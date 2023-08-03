@@ -2,14 +2,14 @@ from Dumble import app
 from Dumble import db,beings_table,engine,beast_table
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
-from Dumble.model import UserInfo,FavoriteItem
+from Dumble.model import UserInfo,Bookmark
 from Dumble.forms import RegisterForm,LoginForm
 from flask_login import login_user
 from Dumble.forms import RegisterForm,LoginForm
 from flask_bcrypt import Bcrypt
 from Dumble import bcrypt
 from flask_login import login_manager,logout_user,login_required, login_user,LoginManager,current_user
-from sqlalchemy import select,Column,TEXT
+from sqlalchemy import select,Column,TEXT,text
 
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
@@ -92,6 +92,7 @@ def spirit_page():
     items = [row for row in cursor.fetchall()]
     conn.close()
     return render_template("beast.html",items=items)
+
 def get_connection():
     return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
 
@@ -295,3 +296,69 @@ def show_more(item_id):
     conn.close()
 
     return render_template('watchmore.html', item=item)
+
+#here starts bookmark table which is in data.db 
+# def create_tables():
+#     with sqlite3.connect('instance/data.db') as conn:
+#         cursor = conn.cursor()
+#         cursor.execute('''
+#             CREATE TABLE bookmarks (
+#                 user_id INTEGER,
+#                 creature_id INTEGER,
+#                 FOREIGN KEY (user_id) REFERENCES user_info (username),
+#                 FOREIGN KEY (creature_id) REFERENCES beast (id),
+#                 UNIQUE (user_id, creature_id)
+#             )
+#         ''')
+#         conn.commit()
+# create_tables()
+
+
+#this function check if user is  authenticated or not
+def is_user_logged_in():
+    return current_user.is_authenticated
+
+@app.route('/bookmarks/add<string:name>')
+def add_bookmark(name):
+    if is_user_logged_in():
+        user_id = current_user.id
+        # item_id = request.json['item_id']
+    
+        with sqlite3.connect('instance/data.db') as conn:
+            cursor = conn.cursor()
+            try:
+                cursor.execute('INSERT INTO bookmarks (user_id, creature_id) VALUES (?, ?)', (user_id, name))
+                conn.commit()
+                flash('message: Bookmark added successfully!',category='success')
+                # return "message: Bookmark added successfully!"
+            except sqlite3.IntegrityError:
+                flash('message: B"Bookmark already exists!',category='success')
+                
+    else:
+        flash('message: "Please log in to add bookmarks',category='danger')
+    return render_template('index.html')
+        
+    
+
+
+#show function mai thode loche hee 
+@app.route('/showbookmark')
+@login_required
+def showbookmark():
+    user_id = current_user.id
+
+    with sqlite3.connect('instance/data.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT beast.*,
+                   bookmarks.user_id
+            FROM beast
+            JOIN bookmarks ON beast.name = bookmarks.creature_id
+            WHERE bookmarks.user_id = ?
+        ''', (user_id,))
+        bookmarked_beasts = cursor.fetchall()
+
+    return render_template('books.html', bookmarked_beasts=bookmarked_beasts,user_id=user_id)
+
+
+

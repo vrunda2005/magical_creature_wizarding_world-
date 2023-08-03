@@ -34,7 +34,12 @@ metadata.reflect(bind=engine)
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
 beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
 
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
+# app.config['SQLALCHEMY_BINDS'] = {
+#     'second_db': 'sqlite:///beast.db'
+# }
+
 
 from Dumble import routes
 
