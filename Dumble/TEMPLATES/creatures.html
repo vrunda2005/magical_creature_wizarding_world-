@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-Beast
+Creatures {{name}}
 {%endblock %}
 
 {% block body %}           
@@ -13,79 +13,73 @@ Beast
 		</h1>
 		<img src="{{url_for('static',filename='img/acromantula.jpg')}}" class="rounded img-fluid m-4">
 		<p>
-			Creatures Data: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
+			{{info}}
 		</p>        
 	</div>
 </section>
 
-
+<main class="main">
+        
   <section class="card-area">
-    
-    {% for item in items %}
-    {% if loop.index == 1 %}
-    {% else %}
-    {% endif %}
-    <!-- Card: City  -->
-    <section class="card-section">
-        <div class="card">
-            <div class="flip-card">
-                <div class="flip-card__container">
-                    <div class="card-front">
-                        <div class="card-front__tp card-front__tp--city">
-                        <h2 class="card-front__heading">
-                        	{{item[0]}}
-	                    </h2>
+    {% for item in limited_data %}
+      <!-- Card: City -->
+      <section class="card-section">
+          <div class="card">
+              <div class="flip-card">
+                  <div class="flip-card__container">
+                      <div class="card-front">
+                          <div class="card-front__tp card-front__tp--city">
+                              
+                         <h2 class="card-front__heading">
+                          <!-- Beast  -->
+                          {{item[0]}}
+                      </h2>
+                      <p class="card-front__text-price">
+                          <!-- content -->
+                          <!-- {{info}} -->
+                      </p>
+                          </div>
 
-						  <!-- <img class="m-5 rounded img-fluid" src="{{item[9]}}" alt="Slide {{ loop.index }}"> -->
-						   <!-- <p>{{ item[1] }}</p>
-							<p>{{item[2]}}</p>
-							  <p>{{item[3]}}</p>
-							  <p>{{item[4]}}</p> -->
-							  <!-- <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a> -->
-				
+                          <div class="card-front__bt">
+                              <p class="card-front__text-view card-front__text-view--city">
+                                  View me
+                              </p>
+                          </div>
+                      </div>
+                      <div class="card-back">
+                          <img src={{item[9]}} class="video__container" alt="img">
+                          <!-- <video class="video__container" autoplay muted loop>
+                              <source class="video__media" src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b47bbd6992dd6c1c&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                          </video> -->
+                      </div>
+                  </div>
+              </div>
 
-						<!-- <p class="card-front__text-price">
-							do you want to know more about {{name}}
-						</p> -->
-                        </div>
+              <div class="inside-page">
+                  <div class="inside-page__container">
+                      <h3 class="inside-page__heading inside-page__heading--city">
+                          {{item[1]}}
+                      </h3>
+                      <p class="inside-page__text">
+                         {{item[2]}}
+                      </p>
+                      <a href="#" class="inside-page__btn inside-page__btn--city">View deals</a>
+                  </div>
+              </div>
+          </div>
+        </section>
+    {%endfor%}
+  </section>
+      
+</main>
 
-                        <!-- <div class="card-front__bt">
-                            <p class="card-front__text-view card-front__text-view--city">
-                                then hover
-                            </p>
-                        </div> -->
-                    </div>
-                    <div class="card-back">
-                        <img src="https://pa1.aminoapps.com/5941/41e62543f6c501b26eb2190b6a0d7fece9c56689_hq.gif"  alt="img">
-                    </div>
-                </div>
-            </div>
 
-            <div class="inside-page">
-                <div class="inside-page__container">
-                    <h3 class="inside-page__heading inside-page__heading--city">
-                        {{info}}
-                    </h3>
-                    <p class="inside-page__text">
-                       {{info}}
-                    </p>
-                    <a href="#" class="inside-page__btn inside-page__btn--city">View deals</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    {% endfor %}
- <!-- All creatures -->
 
 
 
 
  
- <section id="various-beasts" class="m-5 p-5">
+<section id="various-beasts" class="m-5 p-5">
   <div class="container text-center">
     <div id="beast-carousel" class="carousel slide bg-secondary" data-bs-ride="carousel">
       <div class="carousel-inner px-5">
@@ -103,6 +97,9 @@ Beast
               <p>{{item[3]}}</p>
               <p>{{item[4]}}</p>
               <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>
+              <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button" id="button">BOOKmark</a>
+              <a href="{{ url_for('showbookmark')}}" class="tag-button" id="button">Show Bookmark</a>
+              
           
             <!-- </div>  -->
         

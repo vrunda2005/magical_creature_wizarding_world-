@@ -12,14 +12,14 @@ html { font-size: 90%; }
 
 .card-area{
 height: 1000px;
-width: 1000px;
+width: 1000px; 
+ }
 
-}
-main {
+.main {
  
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  position: relative;
+  position: absolute;
 }
 
 /* Typography =======================*/
@@ -164,17 +164,21 @@ main {
 
 /* Layout Structure=========================================*/
 
+
+
+
 .main {
   /* background: linear-gradient(
     to bottom right,
     #e6e5e3,
     #877f6f
   ); */
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  /* flex-direction: column; */
   justify-content: center;
-  height: 80%;
+  height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 /* Container to hold all cards in one place */

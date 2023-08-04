@@ -1,3 +1,27 @@
+/* Mobile devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+  body {
+    font-size: 16px; /* Example of adjusting font size for mobile devices */
+  }
+}
+
+/* Tablets (768px to 1023px) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    width: 90%; /* Example of adjusting container width for tablets */
+  }
+}
+
+/* Desktops and larger screens (1024px and above) */
+@media only screen and (min-width: 1024px) {
+  .body {
+    width: 1200px; /* Example of setting a fixed container width for desktops */
+  }
+}
+
+
+
+
 *{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

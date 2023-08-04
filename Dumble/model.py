@@ -20,10 +20,10 @@ class UserInfo(db.Model,UserMixin): #creted table for database
     def check_password_correction(self,attemted_password):
            return bcrypt.check_password_hash(self.password,attemted_password)
                   
-class Bookmark(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(1000), db.ForeignKey('user_info.id'), nullable=False)
-    name = db.Column(db.String(100))
+# class Bookmark(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.String(1000), db.ForeignKey('user_info.username'), nullable=False)
+#     creature_id = db.Column(db.String(100),db.ForeignKey('beast.id'))
 
     
     

@@ -2,7 +2,7 @@ from Dumble import app
 from Dumble import db,beings_table,engine,beast_table,spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
-from Dumble.model import UserInfo,Bookmark
+from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm,LoginForm
 from flask_login import login_user
 from Dumble.forms import RegisterForm,LoginForm
@@ -35,133 +35,13 @@ def index():
 
 @app.route('/layout')
 def layout_page():
+    # username=current_user.id
     result=show_users()
     return render_template('layout.html',result=result)
 
-@app.route("/beings")
-def beings_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM beings')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/domesticate")
-def domesticate_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM domesticate')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/plant")
-def plant_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM plant')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/darkcreatures")
-def darkcreatures_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM dark')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/watercreatures")
-def watercreatures_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM water')
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
-
-@app.route("/spirit")
-def spirit_page():
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM spirit') 
-    items = [row for row in cursor.fetchall()]
-    conn.close()
-    return render_template("beast.html",items=items)
 
 def get_connection():
     return sqlite3.connect('instance/beast.db')
-
-# @app.route("/beings")
-# def beings_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT * FROM beings')
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return render_template("beast.html",items=items)
-
-# @app.route("/domesticate")
-# def domesticate_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT * FROM domesticate')
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return render_template("beast.html",items=items)
-
-# @app.route("/plant")
-# def plant_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT * FROM plant')
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return render_template("beast.html",items=items)
-
-# @app.route("/darkcreatures")
-# def darkcreatures_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT * FROM dark')
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return render_template("beast.html",items=items)
-
-# @app.route("/watercreatures")
-# def watercreatures_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT * FROM water')
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return render_template("beast.html",items=items)
-
-# @app.route("/spirit")
-# def spirit_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT * FROM spirit') 
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return render_template("beast.html",items=items)
-
-# @app.route("/beast")
-# def beast_page():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     rows = cursor.fetchall()
-#     cursor.execute('SELECT * FROM beast')
-#     items = [row for row in cursor.fetchall()]
-#     column_names = [description[0] for description in cursor.description]
-#     # info=downloading_data()
-#     # col=[name for name in info]
-#     cursor.close()
-#     conn.close()
-#     return render_template("beast.html",items=items)
 
 #creature page 
 @app.route("/creatures/<string:name>")
@@ -170,13 +50,14 @@ def creatures_page(name):
     conn = sqlite3.connect('instance/beast.db')
     cursor = conn.cursor()
     cursor.execute(f'''
-    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM {name} 
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img,info FROM {name} 
     ''')
     item = cursor.fetchall()
     column_names = [description[0] for description in cursor.description]
     info=downloading_data(name)
+    limited_data = item[:5]
     conn.close()
-    return render_template('creatures.html', items=item,name=name,column_names=column_names,info=info)
+    return render_template('creatures.html', items=item,name=name,column_names=column_names,info=info,limited_data=limited_data)
 
 
 #to show  information or defination about creature 
@@ -191,12 +72,33 @@ def downloading_data(name):
 
 @app.route("/encyclopedia")
 def encyclopedia():
-    return render_template("encyclopedia.html")
+    conn = sqlite3.connect('instance/beast.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beast 
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beings 
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM spirit 
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM water 
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM dark 
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM plant 
+    UNION
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM domesticate 
+    UNION
+    SELECT name,NULL as description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM fantastic 
+    ''')
+    item = cursor.fetchall()    
+    conn.close()
+    
+    return render_template("encyclopedia.html",result=item)
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-
 
 #Register code starts 
 @app.route("/register", methods=['GET','POST'])
@@ -223,6 +125,8 @@ def register_page():
 #login code starts 
 @app.route("/login",methods=['GET','POST'])
 def login_page():
+    if current_user.is_authenticated:
+        return redirect(url_for('logged_in'))
     form=LoginForm()
     if form.validate_on_submit():  #work when click submit  or form is validate
         #checking var with username 
@@ -242,6 +146,7 @@ def login_page():
 
 # when we logged in it shows this  
 @app.route("/MyAcc")  
+@login_required
 def logged_in():
     return render_template("MyAcc.html")
 
@@ -256,10 +161,6 @@ def logout():
 
 # Search function Connect to your existing database  
 
-
-# @app.route('/todo')
-# def todo():
-#     return render_template('layout.html',results=get_all_items())
 
 @app.route('/search', methods=['GET','POST'])
 def search():
@@ -346,32 +247,26 @@ def show_more(item_id):
     UNION
     SELECT name,NULL as description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM fantastic WHERE name=?
     ''', (item_id,item_id,item_id,item_id,item_id,item_id,item_id,item_id))
-    
-    # cursor.execute("SELECT * FROM beast_new,water,beings_new WHERE name=?", (item_id,))
-    # cursor.execute("SELECT * FROM water WHERE name=?", (item_id,))
-    # cursor.execute("SELECT * FROM beings_new WHERE name=?", (item_id))
-    item = cursor.fetchall()
-    # column_names = [description[0] for description in cursor.description]
-    
+    item = cursor.fetchall()    
     conn.close()
-
     return render_template('watchmore.html', item=item)
 
 #here starts bookmark table which is in data.db 
-# def create_tables():
-#     with sqlite3.connect('instance/data.db') as conn:
-#         cursor = conn.cursor()
-#         cursor.execute('''
-#             CREATE TABLE bookmarks (
-#                 user_id INTEGER,
-#                 creature_id INTEGER,
-#                 FOREIGN KEY (user_id) REFERENCES user_info (username),
-#                 FOREIGN KEY (creature_id) REFERENCES beast (id),
-#                 UNIQUE (user_id, creature_id)
-#             )
-#         ''')
-#         conn.commit()
-# create_tables()
+def create_tables():
+    with sqlite3.connect('instance/data.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+            CREATE TABLE if NOT exists bookmark(
+                user_id TEXT,
+                creature_id TEXT,
+                FOREIGN KEY (user_id) REFERENCES user_info (username),
+                FOREIGN KEY (creature_id) REFERENCES beast (id),
+                UNIQUE (user_id, creature_id)
+            )
+        ''')
+        conn.commit()
+
+create_tables()
 
 
 #this function check if user is  authenticated or not
@@ -381,13 +276,13 @@ def is_user_logged_in():
 @app.route('/bookmarks/add<string:name>')
 def add_bookmark(name):
     if is_user_logged_in():
-        user_id = current_user.id
+        user_id = current_user.username
         # item_id = request.json['item_id']
     
         with sqlite3.connect('instance/data.db') as conn:
             cursor = conn.cursor()
             try:
-                cursor.execute('INSERT INTO bookmarks (user_id, creature_id) VALUES (?, ?)', (user_id, name))
+                cursor.execute('INSERT INTO bookmark (user_id, creature_id) VALUES (?, ?)', (user_id, name))
                 conn.commit()
                 flash('message: Bookmark added successfully!',category='success')
                 # return "message: Bookmark added successfully!"
@@ -405,16 +300,17 @@ def add_bookmark(name):
 @app.route('/showbookmark')
 @login_required
 def showbookmark():
-    user_id = current_user.id
+    user_id = current_user.username
 
     with sqlite3.connect('instance/data.db') as conn:
         cursor = conn.cursor()
+        
         cursor.execute('''
             SELECT beast.*,
-                   bookmarks.user_id
+                   bookmark.user_id
             FROM beast
-            JOIN bookmarks ON beast.name = bookmarks.creature_id
-            WHERE bookmarks.user_id = ?
+            JOIN bookmark ON beast.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
         ''', (user_id,))
         bookmarked_beasts = cursor.fetchall()
 
@@ -422,3 +318,39 @@ def showbookmark():
 
 
 
+# @app.route('/remove_favorite/<string:favorite_id>')
+# @login_required
+# def remove_favorite(favorite_id):
+#     favorite_to_remove = Bookmark.query.get(favorite_id)
+#     if favorite_to_remove.user_id == current_user.id:
+#         db.session.delete(favorite_to_remove)
+#         db.session.commit()
+#     return "done"
+
+
+# @app.route('/remove_favorite/<string:favorite_id>')
+# @login_required
+# def remove_favorite(favorite_id):
+#     # user_id = current_user.username
+
+#     # with sqlite3.connect('instance/data.db') as conn:
+
+#     try:
+#             conn = sqlite3.connect('instance/data.db')
+#             cursor = conn.cursor()
+#             # cursor.execute('DELETE FROM bookmark (user_id, creature_id) VALUES (?, ?)', (user_id, favorite_id))
+#             delete_query = f"DELETE FROM bookmark WHERE name = ?;"
+#             cursor.execute(delete_query, (favorite_id,))
+#             # deleate_query=f"DELETE FROM beast WHERE {favorite_id}"
+#             # cursor.execute(deleate_query)
+#             # bookmarked_beasts = cursor.fetchall()
+#             conn.commit()
+#             cursor.close()
+#             conn.close()
+
+#             flash("Deleated successfully ",category="success")
+#     except sqlite3.Error as e:
+#             flash("error ") 
+    # return "done"
+
+#i have to change user_id there ref id to name
