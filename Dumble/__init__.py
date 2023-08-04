@@ -34,6 +34,12 @@ metadata.reflect(bind=engine)
 
 beings_table = Table('beings', metadata, autoload=True, autoload_with=engine)
 beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
+spirit_table = Table('beast', metadata, autoload=True, autoload_with=engine)
+dark_table = Table('beast', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
+beast_table = Table('beast', metadata, autoload=True, autoload_with=engine)
 
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
