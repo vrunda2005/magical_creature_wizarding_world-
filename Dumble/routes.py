@@ -1,5 +1,6 @@
 from Dumble import app
-from Dumble import db,beings_table,engine,beast_table,spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
+from Dumble import db,beings_table,engine,beast_table
+#spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
 from Dumble.model import UserInfo
@@ -212,14 +213,15 @@ def show_users():
     with engine.connect() as conn:
         beast = conn.execute(beast_table.select()).fetchall()
         being = conn.execute(beings_table.select()).fetchall()
-        spirit = conn.execute(spirit_table.select()).fetchall()
-        dark = conn.execute(dark_table.select()).fetchall()
-        plant = conn.execute(plant_table.select()).fetchall()
-        domesticate = conn.execute(domesticate_table.select()).fetchall()
-        fantasticate = conn.execute(fantastic_table.select()).fetchall()
-        water = conn.execute(water_table.select()).fetchall()
+        # spirit = conn.execute(spirit_table.select()).fetchall()
+        # dark = conn.execute(dark_table.select()).fetchall()
+        # plant = conn.execute(plant_table.select()).fetchall()
+        # domesticate = conn.execute(domesticate_table.select()).fetchall()
+        # fantasticate = conn.execute(fantastic_table.select()).fetchall()
+        # water = conn.execute(water_table.select()).fetchall()
         
-        result=beast+being+spirit+dark+plant+domesticate+fantasticate+water
+        result=beast+being
+        # +spirit+dark+plant+domesticate+fantasticate+water
     return result
 
 

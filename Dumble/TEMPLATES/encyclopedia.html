@@ -6,60 +6,30 @@ Encyclopedia
 
 {% block body %}
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
-<title>View Holiday Deals</title>
-<link rel="stylesheet" href="static/card.css">
-
-<main class="main">
-     <section class="card-area">
-        {%for item in result %}
-            <!-- <section class="card-section"> -->
-                <div class="card">
-                    <div class="flip-card">
-                        <div class="flip-card__container">
-                            <div class="card-front">
-                                <div class="card-front__tp card-front__tp--city">
-                               <h2 class="card-front__heading">
-                                Beast
-                                {{item[0]}}
-                            </h2>
-                            <p class="card-front__text-price">
-                                content
-                            </p>
-                                </div>
-
-                                <div class="card-front__bt">
-                                    <p class="card-front__text-view card-front__text-view--city">
-                                        View me
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <!-- <img src="img/acromantula.jpg" class="video__container" alt="img"> -->
-                                <video class="video__container" autoplay muted loop>
-                                    <source class="video__media" src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b47bbd6992dd6c1c&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="inside-page">
-                        <div class="inside-page__container">
-                            <h3 class="inside-page__heading inside-page__heading--city">
-                                For urban lovers
-                            </h3>
-                            <p class="inside-page__text">
-                               As cities never sleep, there are always something going on, no matter what time!
-                            </p>
-                            <a href="#" class="inside-page__btn inside-page__btn--city">View deals</a>
-                        </div>
-                    </div>
-                </div>
-        <!-- </section> -->
-        {%endfor%}
-    </section>            
-</main>
-
-
+    <section class="container encyclopedia text-center">
+        <div class="card">
+            <div class="content">
+              <div class="front">
+                Name
+              </div>
+              <div class="back">
+                Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quos ut porro laboriosam maxime nesciunt animi soluta expedita odit unde vitae ab quod tempore est itaque voluptates, fugiat labore adipisci.
+                
+              </div>
+            </div>
+          </div>
+    </section>
+    <section class="container encyclopedia">
+        <div class="card">
+            <div class="content">
+              <div class="front">
+                Front
+              </div>
+              <div class="back">
+                Back!
+              </div>
+            </div>
+          </div>
+    </section>
 
 {%endblock %}
