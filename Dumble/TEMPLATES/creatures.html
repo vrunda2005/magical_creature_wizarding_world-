@@ -6,6 +6,27 @@ Creatures Type Name
 
 {% block body %}
 
+<section id="creatures-content" class="container creatures text-center">
+  <h1>
+    Creatures type
+  </h1>
+  <div class="row">
+    <div class="col p-3 m-3">
+      <img src="{{url_for('static',filename='img/acromantula.jpg')}}" class="rounded img-fluid m-4">
+    </div>
+    <div class="col p-3 m-3">
+      <p>
+        Creatures Data: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia cumque quia minima vitae iste. Provident officia cum repellat quaerat amet neque doloribus iste eaque enim nostrum nemo suscipit, sed incidunt? 
+      </p>        
+    </div>
+	</div>
+</section>
+
+
 <h3 class="container creatures text-center">Beings In hogwards </h3>
 <br>
 
@@ -14,7 +35,7 @@ Creatures Type Name
 	<div class="row">
 		<section id="creatures-content" class="container creatures text-center"></section>
 		{% for result in items %}
-		<div class="col-lg-4">
+		<!-- <div class="col-lg-4">
 			
 				<div class="pt-3">
 					<h3>
@@ -28,7 +49,22 @@ Creatures Type Name
 					</p>        
 				</div>
 			
-			</div>
+			</div> -->
+
+
+
+
+      <div class="card p-3 m-3" style="width: 30%; background-color: transparent;">
+        <img src="{{result[3]}}" class="card-img-top" alt="...">
+        <div class="card-body">
+					<h3 class="text-center">
+            {{result[0]}}
+         </h3>
+         <p>
+          {{result[1]}}
+        </p> 
+        </div>
+      </div>
 		{%endfor%}
 	</section>
 	</div>
@@ -48,7 +84,7 @@ Creatures Type Name
       {% else %}
       <div class="carousel-item">
       {% endif %}
-        <img class="m-5 rounded img-fluid" src="{{item[3] }}" alt="Slide {{ loop.index }}">
+        <img class="m-5 rounded img-fluid" src="{{item[3]}}" alt="Slide {{ loop.index }}">
         <!-- <div class="carousel-caption"> -->
           <h3>{{ item[0] }}</h3>
           <p>{{ item[1] }}</p>

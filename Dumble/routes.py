@@ -116,7 +116,7 @@ def logout():
 
 # Search function Connect to your existing database  
 def get_connection():
-    return sqlite3.connect('D:\harry_hermione_ron\website\instance/beast.db')
+    return sqlite3.connect('instance/beast.db')
 
 # @app.route('/todo')
 # def todo():
