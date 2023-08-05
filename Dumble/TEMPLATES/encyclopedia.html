@@ -6,20 +6,33 @@ Encyclopedia
 
 {% block body %}
 
-    <section class="container encyclopedia text-center">
+<section class="container encyclopedia text-center">
+    {%for item in encyclopedia %}
         <div class="card">
             <div class="content">
-              <div class="front">
-                Name
+              <div class="front" style="background-image: url('{{item[9]}}');">
+
+                 
+                      {{item[0]}}
+                 
+                  
               </div>
+                   
               <div class="back">
-                Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quos ut porro laboriosam maxime nesciunt animi soluta expedita odit unde vitae ab quod tempore est itaque voluptates, fugiat labore adipisci.
+                <p>Description: {{item[1]}}</p>
+                <p>habitat: {{item[2]}}</p>
+                
+                <p>abilities": {{item[3]}}</p>
+                
+                <p>interaction_with_human_wizards: {{item[4]}}</p>
+                
                 
               </div>
             </div>
           </div>
+          {%endfor%}
     </section>
-    <section class="container encyclopedia">
+    <!-- <section class="container encyclopedia">
         <div class="card">
             <div class="content">
               <div class="front">
@@ -30,6 +43,6 @@ Encyclopedia
               </div>
             </div>
           </div>
-    </section>
+    </section> -->
 
 {%endblock %}

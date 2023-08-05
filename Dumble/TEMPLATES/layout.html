@@ -34,11 +34,8 @@
             </button>
             {{message}}
           </div>
-        
-
       {% endfor %}
     {% endif %}
-
   {% endwith %}
 
 
@@ -87,7 +84,9 @@
       <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
       </li>	
       <li class="nav-item">
-        <section class="hat"><img src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=Ql6UUNosrWAY0w&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-icons-logos-emojis-users-2400.png&ehk=8agkVrs8bo9zafVF9Qk4%2bFqv5IwaEZrb8DwX%2ftfJtNc%3d&risl=&pid=ImgRaw&r=0" alt="logo"></section> 
+        <section class="hat">
+          
+        <img src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=Ql6UUNosrWAY0w&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-icons-logos-emojis-users-2400.png&ehk=8agkVrs8bo9zafVF9Qk4%2bFqv5IwaEZrb8DwX%2ftfJtNc%3d&risl=&pid=ImgRaw&r=0" alt="userlogo"></section> 
         <a class="nav-link">{{current_user.username}}</a>
       </li>				  
       
@@ -100,7 +99,7 @@
         </form>      
     </li>
       <!-- new something list  -->
-      <li class="nav-item">
+      <li>
       <main class="d-flex flex-nowrap" style="width: 80px;">
         <!-- <h1 class="visually-hidden">Sidebars examples</h1> -->
           <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: auto;">
@@ -129,43 +128,6 @@
 </nav>
 </header>
 <!-- <video src="E:\Prgrams\Project 1.mov"></video> -->
-
- 
-
- 
-
-
-
-
-<!-- <h1>Bookmarks</h1>
-    <form action="/add_bookmark" method="post">
-        <label for="url">Names</label>
-        <input type="text" name="url" id="url" required>
-        <button type="submit">Bookmark</button>
-    </form>
-    <h2>Bookmarked URLs:</h2>
-    <ul>
-        {% for bookmark in bookmarks %}
-        <li>{{ bookmark[1] }}</li>
-        {% endfor %}
-    </ul>  -->
-
-
-     <!-- <h1>Animal Names</h1>
-    <ul>
-        {% for animal in animals %}
-        <li>
-            <a href="/add_bookmark/{{ animal[0] }}">{{ animal[1] }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-     -->
-
-
-
-     <!-- Assuming you have a button with the id="bookmark-button" -->
-
-
  <script>
         $(document).ready(function() {
             $('#searchInput').on('keyup', function() {  // Change the event to keyup
@@ -207,10 +169,9 @@
       });
   });
 </script>
+
 {% block body %}
    
-
-
 {% endblock %}
       
 

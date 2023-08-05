@@ -42,12 +42,13 @@ def layout_page():
 
 
 def get_connection():
-    return sqlite3.connect('instance/beast.db')
+    return sqlite3.connect('instance/data.db')
 
 #creature page 
 @app.route("/creatures/<string:name>")
 def creatures_page(name):
-    name = name
+    
+    
     conn = sqlite3.connect('instance/beast.db')
     cursor = conn.cursor()
     cursor.execute(f'''
@@ -95,7 +96,7 @@ def encyclopedia():
     item = cursor.fetchall()    
     conn.close()
     
-    return render_template("encyclopedia.html",result=item)
+    return render_template("encyclopedia.html",encyclopedia=item)
 
 @app.route("/contact")
 def contact():
@@ -299,13 +300,22 @@ def add_bookmark(name):
 
 
 #show function mai thode loche hee 
-@app.route('/showbookmark')
+@app.route('/showbookmark/')
 @login_required
 def showbookmark():
+    
     user_id = current_user.username
 
     with sqlite3.connect('instance/data.db') as conn:
         cursor = conn.cursor()
+    #     query=f'''SELECT {table}.*,
+    #                bookmark.user_id
+    #         FROM {table}
+    #         JOIN bookmark ON {table}.name = bookmark.creature_id
+    #         WHERE bookmark.user_id = ?
+            
+
+    #         '''
         
         cursor.execute('''
             SELECT beast.*,
@@ -313,46 +323,33 @@ def showbookmark():
             FROM beast
             JOIN bookmark ON beast.name = bookmark.creature_id
             WHERE bookmark.user_id = ?
-        ''', (user_id,))
-        bookmarked_beasts = cursor.fetchall()
+            UNION
+            SELECT beings.*,
+                   bookmark.user_id
+            FROM beings
+            JOIN bookmark ON beings.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+        ''', (user_id,user_id))
 
+        # cursor.execute(query,(user_id,))
+        bookmarked_beasts = cursor.fetchall()
+        # conn.commit()
+        # conn.close()
     return render_template('books.html', bookmarked_beasts=bookmarked_beasts,user_id=user_id)
 
+@app.route('/delete_bookmark/<string:bookmark_id>')
+def delete_bookmark(bookmark_id):
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
 
-
-# @app.route('/remove_favorite/<string:favorite_id>')
-# @login_required
-# def remove_favorite(favorite_id):
-#     favorite_to_remove = Bookmark.query.get(favorite_id)
-#     if favorite_to_remove.user_id == current_user.id:
-#         db.session.delete(favorite_to_remove)
-#         db.session.commit()
-#     return "done"
-
-
-# @app.route('/remove_favorite/<string:favorite_id>')
-# @login_required
-# def remove_favorite(favorite_id):
-#     # user_id = current_user.username
-
-#     # with sqlite3.connect('instance/data.db') as conn:
-
-#     try:
-#             conn = sqlite3.connect('instance/data.db')
-#             cursor = conn.cursor()
-#             # cursor.execute('DELETE FROM bookmark (user_id, creature_id) VALUES (?, ?)', (user_id, favorite_id))
-#             delete_query = f"DELETE FROM bookmark WHERE name = ?;"
-#             cursor.execute(delete_query, (favorite_id,))
-#             # deleate_query=f"DELETE FROM beast WHERE {favorite_id}"
-#             # cursor.execute(deleate_query)
-#             # bookmarked_beasts = cursor.fetchall()
-#             conn.commit()
-#             cursor.close()
-#             conn.close()
-
-#             flash("Deleated successfully ",category="success")
-#     except sqlite3.Error as e:
-#             flash("error ") 
-    # return "done"
-
-#i have to change user_id there ref id to name
+        # Execute a DELETE query to remove the bookmark with the given bookmark_id
+        cursor.execute("DELETE FROM bookmark WHERE creature_id=?", (bookmark_id,))
+        conn.commit()
+        conn.close()
+        
+        flash("message Bookmark deleted successfully.",category='success')
+    except Exception as e:
+        return flash("you have not added to fav")
+    
+    return redirect('creatures.html')

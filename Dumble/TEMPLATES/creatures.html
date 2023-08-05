@@ -5,20 +5,20 @@ Creatures {{name}}
 {%endblock %}
 
 {% block body %}           
-
+<link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
 <section id="creatures-content" class="container creatures text-center">
 	<div class="pt-3">
 		<h1 class="text-capitalize">
 			{{name}}
 		</h1>
-		<img src="{{url_for('static',filename='img/acromantula.jpg')}}" class="rounded img-fluid m-4">
+		<img src="https://www.hp-lexicon.org/wp-content/uploads/2016/04/Pottermore-Magical-Creatures-Hippogriffs.jpg" class="rounded img-fluid m-4">
 		<p>
 			{{info}}
 		</p>        
 	</div>
 </section>
 
-<main class="main">
+<main>
         
   <section class="card-area">
     {% for item in limited_data %}
@@ -47,7 +47,7 @@ Creatures {{name}}
                           </div>
                       </div>
                       <div class="card-back">
-                          <img src={{item[9]}} class="video__container" alt="img">
+                          <img src={{item[9]}} class="img" alt="img">
                           <!-- <video class="video__container" autoplay muted loop>
                               <source class="video__media" src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b47bbd6992dd6c1c&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
                           </video> -->
@@ -98,11 +98,9 @@ Creatures {{name}}
               <p>{{item[4]}}</p>
               <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>
               <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button" id="button">BOOKmark</a>
-              <a href="{{ url_for('showbookmark')}}" class="tag-button" id="button">Show Bookmark</a>
-              
-          
-            <!-- </div>  -->
-        
+              <a href="{{ url_for('showbookmark') }}" class="tag-button" id="button">Show Bookmark</a>
+              <a href="{{ url_for('delete_bookmark',bookmark_id=item[0]) }}" class="tag-button" id="button">Delete Bookmark</a>
+              {{name}}       
         </div> 
         {% endfor %}
       </div>
