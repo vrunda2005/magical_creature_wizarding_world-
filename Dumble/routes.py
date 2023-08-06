@@ -54,7 +54,7 @@ def creatures_page(name):
     item = cursor.fetchall()
     column_names = [description[0] for description in cursor.description]
     info=downloading_data(name)
-    limited_data = item[:5]
+    limited_data = item[:4]
     conn.close()
     return render_template('creatures.html', items=item,name=name,column_names=column_names,info=info,limited_data=limited_data)
 
@@ -224,7 +224,7 @@ def show_users():
 #for showing list 
 @app.route('/more/<string:item_id>')
 def show_more(item_id):
-    conn = sqlite3.connect('instance/beast.db')
+    conn = sqlite3.connect('instance/data.db')
     cursor = conn.cursor()
     cursor.execute('''
     SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beast WHERE name=?

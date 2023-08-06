@@ -5,6 +5,7 @@ Home
 
 {% block body%}
 <link rel="stylesheet" href="{{url_for('static',filename='new.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
 
 <div id="wand">
 	<div class="cap"></div>
@@ -85,8 +86,8 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
             <p>
                 This category includes magical creatures that are typically large, dangerous, and often have violent tendencies. Dragons, Acromantulas (giant spiders), and Manticores fall under this category.
 			</p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			<a href="{{url_for('creatures_page',name='beast')}}" class="tag-button" id="button">watch more</a>
+			
 		</div>
 		<div class="col-6 thumbnail">
 			<img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
@@ -107,8 +108,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 wizards and witches
                 Goblins, vampires, hags, giants, house-elves, veela, and werewolves in their human form were also given this status.
             </p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			
 		</div>		
 	</div>
     <div class="row p-3">
@@ -117,8 +117,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
 			<p>
                 Spirits: These are non-corporeal entities that often inhabit specific locations or objects. Examples include Ghosts (such as Nearly Headless Nick), Poltergeists (like Peeves), and Boggarts.
 			</p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Ghost_PM.webp')}}" alt="img">
@@ -136,8 +135,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 This category comprises a wide range of magical creatures, both small and large, with extraordinary qualities.
                 It includes creatures like Hippogriffs, Nifflers, Bowtruckles, and Thestrals.
             </p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			
 		</div>
 	</div>
     <div class="row p-3">
@@ -147,8 +145,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 Dark creatures are often associated with dark magic or malevolence. 
                 They include Dementors, Inferi (reanimated corpses controlled by dark wizards), and Werewolves.
             </p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Werewolf.jpg')}}" alt="img">
@@ -166,8 +163,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 These are magical creatures that dwell primarily in aquatic environments.
                 Merpeople, Grindylows, and Kelpies are examples of water creatures.
 			</p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			
 		</div>
 	</div>
     <div class="row p-3">
@@ -178,8 +174,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 by wizards and witches.
                 This category includes creatures like Owls, Cats (such as Crookshanks), and Rats (like Scabbers).
             </p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+			
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/pet.jpg')}}" alt="img">
@@ -197,8 +192,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 These are magical creatures that are either partially or entirely made up of plant matter.                                             
                 The Whomping Willow and Venomous Tentacula are examples of plant creatures.
             </p>
-			<button type="button" class="btn btn-secondary">Watch more About</button>
-			<button type="button" class="btn btn-secondary">Watch video</button>
+
 		</div>
 	</div>
 </section>	
