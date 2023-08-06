@@ -44,16 +44,16 @@ login
             <form method="POST" class="form-signin">
                 {{ forms.hidden_tag() }}
                 {{ forms.username.label() }}
-                <!-- Username: <input class="form-control m-3" type="text" placeholder="username" label="User"> -->
+               
                 {{ forms.username(class="form-control", placeholder="User Name") }}
-                <!-- Password: <input class="form-control m-3" type="password" placeholder="Password"> -->
+               
                 {{ forms.password.label() }}
                 {{ forms.password(class="form-control", placeholder="Password") }}
 
-                <!-- <button class="btn btn-primary m-3">Confirm</button><br>   -->
+               
                 {{ forms.submit(class="tag-button") }}                  
             </form>
-            <a  href="{{ url_for('register_page') }}" class="tag-button" id="button">Register new account</a>
+            <a href="{{ url_for('register_page') }}"class="tag-button" id="button">Register new account</a>
         </div>
         <div class="col">
             <img src="https://awol.com.au/wp-content/uploads/2016/03/sign.jpg"></img>

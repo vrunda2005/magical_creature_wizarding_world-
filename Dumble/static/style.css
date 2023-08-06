@@ -382,12 +382,12 @@ img:hover {
 
 /* Add some visual effects on hover */
 .tag-button:hover {
-  background-color: #e0e0e0;
+  background-color: #f59ae1;
 }
 
 /* Add more styles when the button is active (clicked) */
 .tag-button:active {
-  background-color: #a87b7b;
+  background-color: #9967db;
 }
 
 
@@ -448,3 +448,34 @@ img:hover {
   line-height: 30px;
 }
 
+.btn-primary{
+  border-radius:4px;
+  background-color:#ff425f;
+}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{
+  background-color:#de2c48 !important;
+  box-shadow:none;
+}
+.link:hover {
+  color:#de2c48 !important;
+  box-shadow:none;
+}
+.login .card{
+  
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+}
+.login img{
+  height: 100%;
+  width: 100%;
+}
+.m-3{
+  /* background-color: blue; */
+  background: linear-gradient(
+    to bottom,
+    #bce2ec,
+    #0f497b
+  );
+}

@@ -139,7 +139,7 @@ def login_page():
             attemted_password=form.password.data):
 
                 login_user(attempted_user)
-                flash('Success! you are logged in {{attempted_user.name}}',category='success')
+                flash(f'Success! you are logged in {current_user.username}',category='success')
                 
 
         else:
