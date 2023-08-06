@@ -4,7 +4,7 @@
 Creatures {{name}}
 {%endblock %}
 
-{% block body %}           
+{% block body %}     
 <link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
 <section id="creatures-content" class="container creatures text-center">
 	<div class="pt-3">
@@ -58,6 +58,7 @@ Creatures {{name}}
               <div class="inside-page">
                   <div class="inside-page__container">
                       <h3 class="inside-page__heading inside-page__heading--city">
+
                           {{item[1]}}
                       </h3>
                       <p class="inside-page__text">
@@ -91,16 +92,21 @@ Creatures {{name}}
         {% endif %}
           <img class="m-5 rounded img-fluid" src="{{item[9]}}" alt="Slide {{ loop.index }}">
             <!-- <div class="carousel-caption">   -->
-           <h3>{{ item[0] }}</h3>
-           <p>{{ item[1] }}</p>
-            <p>{{item[2]}}</p>
-              <p>{{item[3]}}</p>
-              <p>{{item[4]}}</p>
+              <h3>{{ item[0] }}</h3>
+              <p><h3>Description:</h3>  {{ item[1] }}</p>
+                <p><h3>habitat :</h3>  {{item[2]}}</p>
+              <p><h3>behavior:</h3>{{item[3]}}</p>
+              <p><h3>abilities :</h3>{{item[4]}}</p>
               <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>
-              <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button" id="button">BOOKmark</a>
-              <a href="{{ url_for('showbookmark') }}" class="tag-button" id="button">Show Bookmark</a>
+              <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button" id="button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>      
+                   Bookmark</a>
+              <!-- <a href="{{ url_for('showbookmark') }}" class="tag-button" id="button">
+
+                Show Bookmark</a> -->
+              <!-- <i class="fa-solid fa-bookmark"></i> -->
               <a href="{{ url_for('delete_bookmark',bookmark_id=item[0]) }}" class="tag-button" id="button">Delete Bookmark</a>
-              {{name}}       
+                    
         </div> 
         {% endfor %}
       </div>
@@ -117,8 +123,4 @@ Creatures {{name}}
     </div>
   </div>
  </section> 
-
-
- 
-
 {% endblock %} 

@@ -11,22 +11,14 @@ Encyclopedia
         <div class="card">
             <div class="content">
               <div class="front" style="background-image: url('{{item[9]}}');">
-
-                 
-                      {{item[0]}}
-                 
-                  
-              </div>
-                   
+                      {{item[0]}}                  
+              </div>                   
               <div class="back">
                 <p>Description: {{item[1]}}</p>
                 <p>habitat: {{item[2]}}</p>
-                
-                <p>abilities": {{item[3]}}</p>
-                
+                <p>abilities": {{item[3]}}</p>                
                 <p>interaction_with_human_wizards: {{item[4]}}</p>
-                
-                
+                <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>                
               </div>
             </div>
           </div>

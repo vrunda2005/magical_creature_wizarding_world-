@@ -2,22 +2,39 @@
 *,
 *::after,
 *::before {
-  
   box-sizing: inherit;
   margin: 0;
   padding: 0;
  
 }
 
-html { font-size: 90%; }
+@media only screen and (max-width: 768px){ 
+  .card-area {
+   flex-direction: column;
+   /* overflow: hidden; */
+   flex-wrap: wrap;
+   
+    /* Example of adjusting container width for tablets  */
+ }
+.container{
+  overflow: hidden;
 
-.card-area{
-height: 1000px;
-width: 1000px; 
+}
+}
+ .card-section{
+      display: flex;
+      overflow: hidden;
+      flex-wrap: wrap;
  }
 
+html { font-size: 90%; }
+
+/* .card-area{
+height: 1000px;
+width: 1000px; 
+ } */
+
 .main {
- 
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   position: absolute;
@@ -165,18 +182,7 @@ width: 1000px;
 }
 
 /* Layout Structure=========================================*/
-@media only screen and (max-width: 768px) {
-  .main {
-    width: 1200px;
-      font-size: 14px;
-      color: gray;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .body {
-    width: 1200px; /* Example of setting a fixed container width for desktops */
-  }
-}
+
 
 
 
@@ -189,7 +195,7 @@ width: 1000px;
   ); */
   display:flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   height: 100%;
   width: 100%;
   overflow: hidden;
