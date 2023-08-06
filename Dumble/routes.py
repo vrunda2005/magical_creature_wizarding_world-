@@ -294,7 +294,7 @@ def add_bookmark(name):
                 
     else:
         flash('message: "Please log in to add bookmarks',category='danger')
-    return render_template('index.html')
+    return redirect(url_for('creatures_page',name='beast'))
         
     
 
@@ -339,17 +339,29 @@ def showbookmark():
 
 @app.route('/delete_bookmark/<string:bookmark_id>')
 def delete_bookmark(bookmark_id):
+
     try:
-        conn = get_connection()
+        conn = sqlite3.connect('instance/data.db')
         cursor = conn.cursor()
 
-        # Execute a DELETE query to remove the bookmark with the given bookmark_id
-        cursor.execute("DELETE FROM bookmark WHERE creature_id=?", (bookmark_id,))
-        conn.commit()
-        conn.close()
-        
-        flash("message Bookmark deleted successfully.",category='success')
+        # Check if the bookmark ID exists in the Bookmark table
+        cursor.execute("SELECT COUNT(*) FROM bookmark WHERE bookmark.creature_id = ?", (bookmark_id,))
+        count = cursor.fetchone()[0]
+
+        if count > 0:
+            # Delete the bookmark with the specific ID if it exists
+            cursor.execute("DELETE FROM bookmark WHERE bookmark.creature_id = ?", (bookmark_id,))
+            conn.commit()
+            conn.close()
+            flash("message Bookmark deleted successfully.",category='success')
+        else:
+            conn.close()
+            flash("you have not added to fav",category='danger')
+        # db.session.delete(bookmark_id)
+        # db.session.commit()
+        # flash(f"Bookmark with ID {bookmark_id} deleted successfully.", 'success')
     except Exception as e:
-        return flash("you have not added to fav")
-    
-    return redirect('creatures.html')
+        db.session.rollback()
+        flash(f"Error occurred while deleting bookmark: {str(e)}", 'danger')
+
+    return render_template('creatures.html')  
