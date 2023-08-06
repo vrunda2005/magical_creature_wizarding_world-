@@ -7,7 +7,7 @@ login
 {%endblock %}
 
 {% block body %}
-
+<!-- 
 <body class="text-center" style="color: white;">
   <div class="container">
     <form method="POST" class="form-signin" style="color:white">
@@ -35,6 +35,30 @@ login
 
     </form>
     </div>
-</body>
+</body> -->
+<div class="container login card">
+    <div class="row">  
+        <div class="m-3 col p-3 text-center">
+            <h1 class="font-weight-bold m-3">Login</h1>
+            <h4 class="p-3">Welcome back we are happy to see you again!</h4>
+            <form method="POST" class="form-signin">
+                {{ forms.hidden_tag() }}
+                {{ forms.username.label() }}
+                <!-- Username: <input class="form-control m-3" type="text" placeholder="username" label="User"> -->
+                {{ forms.username(class="form-control", placeholder="User Name") }}
+                <!-- Password: <input class="form-control m-3" type="password" placeholder="Password"> -->
+                {{ forms.password.label() }}
+                {{ forms.password(class="form-control", placeholder="Password") }}
+
+                <!-- <button class="btn btn-primary m-3">Confirm</button><br>   -->
+                {{ forms.submit(class="tag-button") }}                  
+            </form>
+            <a  href="{{ url_for('register_page') }}" class="tag-button" id="button">Register new account</a>
+        </div>
+        <div class="col">
+            <img src="https://awol.com.au/wp-content/uploads/2016/03/sign.jpg"></img>
+        </div>
+    </div>
+</div>
 
 {% endblock %} 
