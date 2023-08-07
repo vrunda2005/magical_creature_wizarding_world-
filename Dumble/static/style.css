@@ -1,38 +1,6 @@
-<<<<<<< HEAD
-/* Mobile devices (up to 767px) */
-/* @media only screen and (max-width: 767px) {
-  body {
-    font-size: 16px; /* Example of adjusting font size for mobile devices */
-  /* } */
-/* } */
-
-/* Tablets (768px to 1023px) */
-/* @media only screen and (min-width: 768px) and (max-width: 1023px) { */
-  /* .container {
-    width: 90%; /* Example of adjusting container width for tablets 
-  }
-} 
-
- Desktops and larger screens (1024px and above)
-@media only screen and (min-width: 1024px) {
-  .body {
-    width: 1200px; /* Example of setting a fixed container width for desktops 
-  }
-} */
-
-
-@font-face{
-  font-family: 'MyFont';
-  src: url("\font\HarryP-MVZ6w.ttf") format('truetype');
-}
-
-*{
-  font-family: 'MyFont';
-=======
 @font-face {
   font-family: 'MyFont';
   src: url("D:/harry_hermione_ron/website/Dumble/static/harry-p-font (1)/HarryP-MVZ6w.ttf") format('truetype');
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 }
 
 
@@ -46,7 +14,6 @@ body{
     
 }
 
-<<<<<<< HEAD
 h1{
 	font-size: 12;
 }
@@ -64,33 +31,6 @@ h3{
     font-style: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-=======
-
-/* Mobile devices (up to 767px)  */
- @media only screen and (max-width: 767px) {
-  body {
-    font-size: 16px; /* Example of adjusting font size for mobile devices */
-   } 
- } 
-
-/* Tablets (768px to 1023px) */
- @media only screen and (min-width: 768px) and (max-width: 1023px) { 
-   .container {
-    width: 90%; 
-     /* Example of adjusting container width for tablets  */
-  }
-} 
-
- /* Desktops and larger screens (1024px and above) */
-@media only screen and (min-width: 1024px) {
-  .body {
-    width: 1200px; 
-    /* /* Example of setting a fixed container width for desktops  */
-  }
-
-}
-
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 
 /* layout */
 
@@ -108,12 +48,9 @@ h3{
 }
 
 .navbar{
-<<<<<<< HEAD
   width: 100%;
 }
-.nav-item{
-=======
-   
+.nav-item{   
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -239,30 +176,6 @@ h3{
     width: 50vh;
 }
 
-<<<<<<< HEAD
-
-=======
-.hat img{
-    float:inline-start;
-    width : 70px;
-    height: 70px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    display: block;
-    margin-right: 1rem; 
-}
-
-.userlogo img{
-  float:inline-start;
-  width : 50px;
-  height: 50px;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  display: block;
-  margin-right: 1rem; 
-  
-}
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 .table {
     background-image: url('img/owl logo.png');
     background-repeat: no-repeat; 
@@ -363,9 +276,7 @@ img:hover {
   
   
   
-  
-/* 
-  
+
   /* Search Option styles */
   .search-container {
     position: relative;
@@ -407,42 +318,10 @@ img:hover {
     color: inherit;
   }
   
-<<<<<<< HEAD
 
 /* styles.css */
 
 /* Set basic styles for the anchor tag (button) */
-=======
-  /* Basic button styling */
-  .tag-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #96b8dc;
-    color: #0e0808;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Hover effect */
-  .tag-button:hover {
-    background-color: #83c520;
-  }
-/* Set basic styles for the anchor tag button */
-/* .tag-button {
-  display: inline-block;
-  padding: 6px 12px;
-  background-color: #8bcbcd;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #333;
-  text-decoration: none; /* Remove underline for anchor tags 
-  cursor: pointer;
-}
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 
  Add some visual effects on hover 
 .tag-button:hover {

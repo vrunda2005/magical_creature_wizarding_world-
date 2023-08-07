@@ -88,48 +88,7 @@
 }
 html { font-size: 80%; }
 
-<<<<<<< HEAD
 .main { 
-=======
-.main {
-  /* background: linear-gradient(
-    to bottom right,
-    #e6e5e3,
-    #877f6f
-  ); */
-  display:flex;
-  /* flex-direction: column; */
-  justify-content: left;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Container to hold all cards in one place */
-.card-area {
-  align-items: center;
-  display: flex;
-  /* flex-wrap: wrap; */
-  position: relative;
-  height: auto;
-  width: auto;
-  justify-content: space-evenly;
-  padding: 1rem;
-}
-
-/* Card ============================================*/
-
-/* Area to hold an individual card */
-.card-section {
-  position: relative;
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
-}
-.main {
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   position: absolute;

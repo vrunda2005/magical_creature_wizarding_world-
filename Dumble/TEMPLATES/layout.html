@@ -22,12 +22,8 @@
 
 
 </head>
-<<<<<<< HEAD
 <body>
   
-=======
-<body style="color: white;" class="container">  
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
   <!-- #grabbing flash messages to show error -->
   {% with messages=get_flashed_messages(with_categories=true) %}  
     {% if messages %}
@@ -68,13 +64,6 @@
           <a class="nav-link" href="{{url_for('creatures_page',name='plant')}}">Plant Creatures</a>
         </div>
       </li>
-<<<<<<< HEAD
-      <li class="nav-item m-3">
-        <a class="nav-link" href="{{url_for('encyclopedia')}}">Encyclopedia</a>
-      </li>				  
-      <li class="nav-item m-3">
-        <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
-=======
 
       <li class="nav-item">
       <a class="nav-link" href="{{url_for('encyclopedia')}}">Encyclopedia</a>
@@ -84,12 +73,10 @@
       </li>				  
       <li class="nav-item">
       <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
       </li>				  
       <li class="nav-item m-3">
         <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
       </li>	
-<<<<<<< HEAD
     </ul>
 
       <div class="m-3 text-center float-end">
@@ -120,94 +107,16 @@
               </ul>
               {%endfor%}
             </div>
-=======
-      <li class="nav-item">
-        <section class="userlogo">
-        <img src="https://th.bing.com/th/id/R.6b0022312d41080436c52da571d5c697?rik=Ql6UUNosrWAY0w&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-icons-logos-emojis-users-2400.png&ehk=8agkVrs8bo9zafVF9Qk4%2bFqv5IwaEZrb8DwX%2ftfJtNc%3d&risl=&pid=ImgRaw&r=0" alt="userlogo"></section> 
-        <a class="nav-link">{{current_user.username}}</a>
-      </li>				  
-      
-      <li class="nav-item">
-        <form class="d-flex" role="search" action="/search" method="post" >
-            <section class="hat"><img src="{{url_for('static',filename='img/owl logo.png')}}" alt="logo"></section>           
-            <input  id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" style="width: 150px;" >
-            <div id="datalist"></div>            
-            <button class="btn btn-outline-success" type="submit" value="Search">Search</button> 
-        </form>      
-    </li>
-      <!-- new something list  -->
-      <li>
-      <main class="d-flex flex-nowrap" style="width: 80px;">
-          <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: auto;">
-          <a href="/layout" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" style="width: 100px;">
-            show list
-          </a> 
-          <div class="list-group list-group-flush border-bottom scrollarea">
-            {% for creatures in result %}
-            <ul class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary">
-                <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                  {{creatures[0]}}
-                </a>
-            </ul>
-            {%endfor%}
-          </div>
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
           </div>      
         </div>
       </div>
   </div>
 </nav>
-<<<<<<< HEAD
-</section>
-
-
-<!-- <video src="E:\Prgrams\Project 1.mov"></video> -->
- <script>
-        $(document).ready(function() {
-            $('#searchInput').on('keyup', function() {  // Change the event to keyup
-                var query = $(this).val();
-                if (query.length > 0) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/search',
-                        data: {'query': query},
-                        success: function(response) {
-                            var results = response;
-                            var resultList = $('#datalist');
-                            resultList.text(results.join(', '));
-                        }
-                    });
-                } else {
-                    $('#datalist').empty();
-                }
-            });
-        });
-    </script> 
-=======
 </header>
 
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 
 <script src="sidebars.js"></script>
 
-<!-- <script>
-  document.getElementById("watchMoreButton").addEventListener("click", function() {
-      // Send an AJAX request to the server to fetch additional information about the element
-      fetch('/more_info')
-      .then(response => response.json())
-      .then(data => {
-          const additionalInfoContainer = document.getElementById("additionalInfoContainer");
-          additionalInfoContainer.innerHTML = `
-              <h2>${data.name}</h2>
-              <p>${data.additional_info}</p>
-          `;
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-  });
-</script> -->
 
 {% block body %}
    
@@ -215,18 +124,9 @@
       
 
 	<div class="footer text-center bg-dark mt-5">
-<<<<<<< HEAD
     @copyright
     <!-- Made with  by Jayraj Derasari & Vrunda Patel -->
   </div>
-=======
-		<div class="card-body">
-      @copyright
-			<!-- Made with  by Jayraj Derasari & Vrunda Patel -->
-		</div>
-	</div>
-
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 </body>
 </html>
 

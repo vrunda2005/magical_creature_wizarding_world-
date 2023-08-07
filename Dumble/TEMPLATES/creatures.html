@@ -17,53 +17,6 @@ Creatures {{name}}
 		</p>        
 	</div>
 </section>
-<<<<<<< HEAD
-<section class="card-area">
-  {% for item in limited_data %}
-    <!-- Card: City -->
-    <section class="card-section ">
-        <div class="card">
-            <div class="flip-card">
-                <div class="flip-card__container">
-                    <div class="card-front">
-                        <div class="card-front__tp card-front__tp--city">
-                        <h2 class="card-front__heading">
-                        <!-- Beast  -->
-                        {{item[0]}}
-                    </h2>
-                    <p class="card-front__text-price">
-                        <!-- content -->
-                        <!-- {{info}} -->
-                    </p>
-                        </div>
-                        <div class="card-front__bt">
-                            <p class="card-front__text-view card-front__text-view--city">
-                                View me
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <img src={{item[9]}} class="img" alt="img">
-                        <!-- <video class="video__container" autoplay muted loop>
-                            <source class="video__media" src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b47bbd6992dd6c1c&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
-                        </video> -->
-                    </div>
-                </div>
-            </div>
-            <div class="inside-page">
-                <div class="inside-page__container">
-                    <h3 class="inside-page__heading inside-page__heading--city">
-                        {{item[1]}}
-                    </h3>
-                    <p class="inside-page__text">
-                        {{item[2]}}
-                    </p>
-                    <a href="#" class="inside-page__btn inside-page__btn--city">View deals</a>
-                </div>
-            </div>
-        </div>
-      </section>
-=======
 <main>
         
   <section class="card-area">
@@ -108,7 +61,6 @@ Creatures {{name}}
               </div>
           </div>
         </section>
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
     {%endfor%}
 </section>
 
@@ -126,7 +78,6 @@ Creatures {{name}}
         {% endif %}
           <img class="m-5 rounded img-fluid" src="{{item[9]}}" alt="Slide {{ loop.index }}">
             <!-- <div class="carousel-caption">   -->
-<<<<<<< HEAD
            <h3>{{ item[0] }}</h3>
            <p>{{ item[1] }}</p>
             <p>{{item[2]}}</p>
@@ -139,26 +90,9 @@ Creatures {{name}}
                 <i class="fa fa-bookmark"></i>
                 Bookmark
               </a>
-              <a href="{{ url_for('showbookmark') }}" class="tag-button btn btn-info" id="button">
-                <i class="fa fa-bookmark"></i>
-                Show Bookmark</a>
               <a href="{{ url_for('delete_bookmark',bookmark_id=item[0]) }}" class="tag-button btn btn-info" id="button">
                 <i class="fa fa-bookmark"></i>
                 Delete Bookmark</a>
-=======
-              <h3>{{ item[0] }}</h3>
-              <p><h3>Description:</h3>  {{ item[1] }}</p>
-                <p><h3>habitat :</h3>  {{item[2]}}</p>
-              <p><h3>behavior:</h3>{{item[3]}}</p>
-              <p><h3>abilities :</h3>{{item[4]}}</p>
-              <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>
-              <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button" id="button">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"> 
-                  <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/>
-                </svg> Bookmark
-              </a>
-              <a href="{{ url_for('delete_bookmark',bookmark_id=item[0]) }}" class="tag-button" id="button">Delete Bookmark</a>                    
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
         </div> 
         {% endfor %}
       </div>
@@ -175,8 +109,4 @@ Creatures {{name}}
     </div>
   </div>
  </section> 
-<<<<<<< HEAD
-
-=======
->>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 {% endblock %} 
