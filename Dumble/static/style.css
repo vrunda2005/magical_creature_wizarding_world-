@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'MyFont';
-  src: url("D:/harry_hermione_ron/website/Dumble/static/harry-p-font (1)/HarryP-MVZ6w.ttf") format('truetype');
+  src: url("font/HarryP-MVZ6w.ttf") format('truetype');
 }
 
 
@@ -10,28 +10,35 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-family: 'MyFont';
-    
+    font-family: cursive;   
 }
+p{
+  font-size: 15px;
+  font-family: cursive;   
 
+}
 h1{
-	font-size: 12;
+  font-family: 'MyFont';   
+	font-size: 80px;
 }
 
 h2{
-    font-weight: 800;
-	  font-size: 2.5rem;
+  font-family: 'MyFont';   
+  font-weight: 800;
+	  font-size: 75px;
     font-style: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h3{
     font-weight: 800;
-  	font-size: 1.5rem ;
+  	font-size: 50px ;
     font-style: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'MyFont';   
+  }
+.btn{
+  font-size: 20px ;
+  padding: 5px;
 }
-
 /* layout */
 
 .dropdown-menu {
@@ -125,7 +132,6 @@ h3{
 
 .banner {
     color: aliceblue;
-    height: 90vh;
 }
 
 .banner-title{

@@ -18,23 +18,12 @@ Encyclopedia
                 <p>habitat: {{item[2]}}</p>
                 <p>abilities": {{item[3]}}</p>                
                 <p>interaction_with_human_wizards: {{item[4]}}</p>
-                <a href="{{ url_for('show_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>                
+                <a href="{{ url_for('watch_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>                
               </div>
             </div>
           </div>
           {%endfor%}
     </section>
-    <!-- <section class="container encyclopedia">
-        <div class="card">
-            <div class="content">
-              <div class="front">
-                Front
-              </div>
-              <div class="back">
-                Back!
-              </div>
-            </div>
-          </div>
-    </section> -->
+
 
 {%endblock %}

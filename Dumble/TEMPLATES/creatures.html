@@ -3,9 +3,9 @@
 {% block title %}
 Creatures {{name}}
 {%endblock %}
+<link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
 
 {% block body %}     
-<link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
 <section id="creatures-content" class="container creatures text-center">
 	<div class="pt-3">
 		<h1 class="text-capitalize">
@@ -13,13 +13,13 @@ Creatures {{name}}
 		</h1>
 		<img src="https://media.harrypotterfanzone.com/harry-potter-magical-creatures-1260x0-c-default.jpg" class="rounded img-fluid m-4">
 		<p>
-			{{info}}
+			<!-- {{info}} -->
 		</p>        
 	</div>
 </section>
 <main>
         
-  <section class="card-area">
+  <section class="container card-area">
     {% for item in limited_data %}
       <section class="card-section">
           <div class="card">
@@ -55,7 +55,7 @@ Creatures {{name}}
                       <p class="inside-page__text">
                          {{item[2]}}
                       </p>
-                      <a href="{{ url_for('show_more', item_id=item[0]) }}" class="inside-page__btn inside-page__btn--city tag-button" id="button">watch more</a>
+                      <a href="{{ url_for('watch_more', item_id=item[0]) }}" class="inside-page__btn inside-page__btn--city tag-button" id="button">watch more</a>
 
                   </div>
               </div>
@@ -87,8 +87,8 @@ Creatures {{name}}
                 <i class="fa-solid fa-up-right-from-square"></i>               
                 Watch More!</a>
               <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button btn btn-info" id="button">
-                <i class="fa fa-bookmark"></i>
-                Bookmark
+                <i class="fa-solid fa-bookmark"></i>
+                                Bookmark
               </a>
               <a href="{{ url_for('delete_bookmark',bookmark_id=item[0]) }}" class="tag-button btn btn-info" id="button">
                 <i class="fa fa-bookmark"></i>
