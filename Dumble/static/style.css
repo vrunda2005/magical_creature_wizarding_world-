@@ -1,16 +1,18 @@
 @font-face {
   font-family: 'MyFont';
-  src: url("D:/harry_hermione_ron/website/Dumble/static/harry-p-font (1)/HarryP-MVZ6w.ttf") format('truetype');
+  src: url("C:/Users/VRUNDA PATEL/ownloads/parry-hotter/ParryHotter.ttf") format('truetype');
 }
 
-
+*{
+  font-family: 'MyFont',cursive;
+}
 
 body{
     background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url('img/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    font-family: 'MyFont';
+    font-family: 'MyFont',cursive;
     
 }
 
