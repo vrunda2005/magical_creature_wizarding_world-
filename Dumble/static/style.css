@@ -15,8 +15,8 @@ body{
 p{
   font-size: 15px;
   font-family: cursive;   
-
 }
+
 h1{
   font-family: 'MyFont';   
 	font-size: 80px;
@@ -42,25 +42,25 @@ h3{
 /* layout */
 
 .dropdown-menu {
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    z-index: 1;
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
-    /* background: transparent; */
-    border: 0px;
+  display: block;
+  border: 0px;
 }
-
 .navbar{
   width: 100%;
 }
 .nav-item{   
     display: flex;
+    font-size: 25px !important;
     align-items: center;
-    justify-content: space-between;
+    margin: 5%;
+    justify-content: space-between !important;
     
 }
 .col-6,.col-lg-6{
@@ -68,15 +68,7 @@ h3{
   padding: 20px;
   padding-top: 50px;
   align-items: center;
-}
-
-.header {
-  width: 1000px;
-    position: sticky;
-    top: 0;
-    font-family: 'MyFont';
-  }
-  
+}  
 
 .nav-item{
 	padding: 2px 1px;
@@ -90,8 +82,8 @@ h3{
 .footer{
   width: 100%;
   color: aliceblue;
-  margin-top: 1%;
-  padding: 1%;
+  bottom: 0;
+  position:fixed;
 }
 /* index */
 .thumbnail {

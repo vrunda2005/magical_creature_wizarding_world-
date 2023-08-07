@@ -1,9 +1,14 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url("static/harry-p-font (1)/HarryP-MVZ6w.ttf") format('truetype');
+}
 body {  
   /* background: rgb(77, 80, 92); */
   height: auto;
   overflow: auto;
   display: grid;
   place-items: center;
+  font-family: 'MyFont';
 }
 
 * {
