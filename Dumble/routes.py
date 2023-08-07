@@ -1,6 +1,5 @@
 from Dumble import app
-from Dumble import db,beings_table,engine,beast_table
-#spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
+from Dumble import db,beings_table,engine,beast_table, spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
 from Dumble.model import UserInfo
@@ -47,8 +46,6 @@ def get_connection():
 #creature page 
 @app.route("/creatures/<string:name>")
 def creatures_page(name):
-    
-    
     conn = sqlite3.connect('instance/beast.db')
     cursor = conn.cursor()
     cursor.execute(f'''
@@ -98,10 +95,6 @@ def encyclopedia():
     
     return render_template("encyclopedia.html",encyclopedia=item)
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
 #Register code starts 
 @app.route("/register", methods=['GET','POST'])
 def register_page():
@@ -134,14 +127,10 @@ def login_page():
         #checking var with username 
         attempted_user=UserInfo.query.filter_by(username=form.username.data).first()
         #if none 
-     
         if attempted_user and attempted_user.check_password_correction(
             attemted_password=form.password.data):
-
                 login_user(attempted_user)
                 flash(f'Success! you are logged in {current_user.username}',category='success')
-                
-
         else:
             flash('username and password not match try another ',category='danger')
     return render_template('login.html',forms=form)
@@ -176,24 +165,6 @@ def search():
         results = perform_search(query)
     return render_template('seacr_creatures.html', results=results)
 
-#not for now implemented multiple table database connect 
-# def get_all_items():
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute('SELECT name FROM Beast')
-#     items = [row for row in cursor.fetchall()]
-#     conn.close()
-#     return items
-
-#not for now implemented multiple table database connect 
-# def search_items(query):
-#     conn = get_connection()
-#     cursor = conn.cursor()
-#     cursor.execute("SELECT * FROM Beast WHERE name LIKE ? ", ('%' + query + '%',))
-#     data=cursor.fetchall()
-#     items = [row[0] and row[1] and row[3] for row in cursor.fetchall()]
-#     conn.close()
-#     return data
 
 
 def perform_search(query):
@@ -214,23 +185,22 @@ def show_users():
     with engine.connect() as conn:
         beast = conn.execute(beast_table.select()).fetchall()
         being = conn.execute(beings_table.select()).fetchall()
-        # spirit = conn.execute(spirit_table.select()).fetchall()
-        # dark = conn.execute(dark_table.select()).fetchall()
-        # plant = conn.execute(plant_table.select()).fetchall()
-        # domesticate = conn.execute(domesticate_table.select()).fetchall()
-        # fantasticate = conn.execute(fantastic_table.select()).fetchall()
-        # water = conn.execute(water_table.select()).fetchall()
+        spirit = conn.execute(spirit_table.select()).fetchall()
+        dark = conn.execute(dark_table.select()).fetchall()
+        plant = conn.execute(plant_table.select()).fetchall()
+        domesticate = conn.execute(domesticate_table.select()).fetchall()
+        fantasticate = conn.execute(fantastic_table.select()).fetchall()
+        water = conn.execute(water_table.select()).fetchall()
         
-        result=beast+being
-        # +spirit+dark+plant+domesticate+fantasticate+water
+        result=beast+being+spirit+dark+plant+domesticate+fantasticate+water
     return result
 
 
 
 
 
-@app.route('/more/<string:item_id>')
-def show_more(item_id):
+@app.route('/<string:item_id>')
+def watch_more(item_id):
     conn = sqlite3.connect('instance/beast.db')
     cursor = conn.cursor()
     cursor.execute('''
@@ -280,8 +250,6 @@ def is_user_logged_in():
 def add_bookmark(name):
     if is_user_logged_in():
         user_id = current_user.username
-        # item_id = request.json['item_id']
-    
         with sqlite3.connect('instance/data.db') as conn:
             cursor = conn.cursor()
             try:
@@ -290,8 +258,7 @@ def add_bookmark(name):
                 flash('message: Bookmark added successfully!',category='success')
                 # return "message: Bookmark added successfully!"
             except sqlite3.IntegrityError:
-                flash('message: B"Bookmark already exists!',category='success')
-                
+                flash('message: B"Bookmark already exists!',category='success')       
     else:
         flash('message: "Please log in to add bookmarks',category='danger')
     return redirect(url_for('creatures_page',name='beast'))
@@ -303,7 +270,6 @@ def add_bookmark(name):
 @app.route('/showbookmark/')
 @login_required
 def showbookmark():
-    
     user_id = current_user.username
 
     with sqlite3.connect('instance/data.db') as conn:

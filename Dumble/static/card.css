@@ -16,8 +16,7 @@ height: 1000px;
 width: 1000px; 
  }
 
-.main {
- 
+.main { 
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   position: absolute;
