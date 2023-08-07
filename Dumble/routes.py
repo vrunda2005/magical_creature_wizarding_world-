@@ -1,7 +1,7 @@
 from Dumble import app
-from Dumble import db,beings_table,engine,beast_table,spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
+from Dumble import db,beings_table,engine,beast_table, spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
 import sqlite3
-from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
+from flask import render_template,redirect,url_for,flash,get_flashed_messages,request
 from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm,LoginForm
 from flask_login import login_user
@@ -49,7 +49,7 @@ def creatures_page(name):
     conn = sqlite3.connect('instance/data.db')
     cursor = conn.cursor()
     cursor.execute(f'''
-    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img,info FROM {name} 
+    SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM {name} 
     ''')
     item = cursor.fetchall()
     column_names = [description[0] for description in cursor.description]
@@ -95,10 +95,6 @@ def encyclopedia():
     
     return render_template("encyclopedia.html",encyclopedia=item)
 
-# @app.route("/contact")
-# def contact():
-#     return render_template("contact.html")
-
 #Register code starts 
 @app.route("/register", methods=['GET','POST'])
 def register_page():
@@ -113,7 +109,7 @@ def register_page():
         #storing data to our database 
         db.session.add(user_to_create)
         db.session.commit()
-        return redirect(url_for('login_page')) #for checking its working or not we have to change it further
+        return redirect(url_for('login_page'))
     if form.errors !={}: #if there are not errors form validations 
         for err_msg in form.errors.values():
             flash(f'ERROR{err_msg}',category='danger')
@@ -132,7 +128,6 @@ def login_page():
         #if none 
         if attempted_user and attempted_user.check_password_correction(
             attemted_password=form.password.data):
-
                 login_user(attempted_user)
                 flash(f'Success! you are logged in {current_user.username}',category='success')    
         else:
@@ -145,7 +140,6 @@ def login_page():
 def logged_in():
     return render_template("MyAcc.html")
 
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -155,8 +149,6 @@ def logout():
 
 
 # Search function Connect to your existing database  
-
-
 @app.route('/search', methods=['GET','POST'])
 def search():
     query = request.form.get('query')
@@ -167,7 +159,9 @@ def search():
     else:
         # Filter data based on search query
         results = perform_search(query)
-    return render_template('seacr_creatures.html', results=results)
+    return render_template('searchResults.html', results=results)
+
+
 
 def perform_search(query):
     with engine.connect() as conn:
@@ -218,12 +212,12 @@ def show_users():
         fantasticate = conn.execute(fantastic_table.select()).fetchall()
         water = conn.execute(water_table.select()).fetchall()
         
-        result=beast+being+spirit+dark+fantasticate+domesticate+water+plant
+        result=beast+being+spirit+dark+plant+domesticate+fantasticate+water
     return result
 
-#for showing list 
-@app.route('/more/<string:item_id>')
-def show_more(item_id):
+
+@app.route('/<string:item_id>')
+def watch_more(item_id):
     conn = sqlite3.connect('instance/data.db')
     cursor = conn.cursor()
     cursor.execute('''
@@ -261,7 +255,6 @@ def create_tables():
             )
         ''')
         conn.commit()
-
 create_tables()
 
 
@@ -272,7 +265,7 @@ def is_user_logged_in():
 @app.route('/bookmarks/add<string:name>')
 def add_bookmark(name):
     if is_user_logged_in():
-        user_id = current_user.username    
+        user_id = current_user.username
         with sqlite3.connect('instance/data.db') as conn:
             cursor = conn.cursor()
             try:
@@ -281,7 +274,7 @@ def add_bookmark(name):
                 flash('message: Bookmark added successfully!',category='success')
                 # return "message: Bookmark added successfully!"
             except sqlite3.IntegrityError:
-                flash('message: B"Bookmark already exists!',category='danger')                
+                flash('message: B"Bookmark already exists!',category='success')       
     else:
         flash('message: "Please log in to add bookmarks',category='danger')
     return redirect(url_for('creatures_page',name='beast'))
@@ -290,7 +283,6 @@ def add_bookmark(name):
 @app.route('/showbookmark/')
 @login_required
 def showbookmark():
-    
     user_id = current_user.username
 
     with sqlite3.connect('instance/data.db') as conn:
@@ -364,7 +356,7 @@ def showbookmark():
         bookmarked_beasts = cursor.fetchall()
         # conn.commit()
         # conn.close()
-    return render_template('books.html', bookmarked_beasts=bookmarked_beasts,user_id=user_id)
+    return render_template('bookmarkedCreatures.html', bookmarked_beasts=bookmarked_beasts,user_id=user_id)
 
 @app.route('/delete_bookmark/<string:bookmark_id>')
 def delete_bookmark(bookmark_id):
@@ -394,3 +386,4 @@ def delete_bookmark(bookmark_id):
         flash(f"Error occurred while deleting bookmark: {str(e)}", 'danger')
 
     return render_template('creatures.html')  
+ 

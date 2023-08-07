@@ -11,7 +11,7 @@ Home
 	<div class="cap"></div>
 </div>
   
-  <div id="tiles">
+  <div id="tiles" class="text-center">
 	<div class="tile">
 	  <i class="fa-solid fa-image"></i>
 	  <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/02/Harry-Potter-The-10-Scariest-Monsters-Magical-Creatures-Ranked-featured-image-2.jpg" />
@@ -38,33 +38,32 @@ Home
 	<div class="row p-5">
 		<div class="col-6">
 			<h3>What is Wizarding World?</h3>
-			<p>
+<p>
 				The Wizarding World takes place in a parallel magical civilization that coexists with the non-magical (Muggle) world but is concealed from the general public. It is a magical world where witches and wizards learn magic at Hogwarts School of Witchcraft and Wizardry, magical animals wander, and a sophisticated network of magical organizations and societies exists. It includes all of the magical components, locations, characters, and events that makeup Harry Potter's universe.
-			<br>
+				<br>
 				The following are important aspects of the Wizarding World:
-			<br>
-			<hr>
-			1. Hogwarts School of Witchcraft and Wizardry:Harry Potter and the School of Witchcraft and Wizardry: The well-known school where young witches and wizards receive magical training and learn about the magical world.
-			<br>
- 2. Magical Creatures: House elves, goblins, centaurs, dragons, hippogriffs, and other magical creatures can be found in the Wizarding World.
- <br>
-3. Magic Communities: Diagon Alley and Hogsmeade are hidden wizarding neighborhoods and villages where magical persons may buy goods and socialise.
-<br>
+				<br>
+				<hr>
+				1. Hogwarts School of Witchcraft and Wizardry:Harry Potter and the School of Witchcraft and Wizardry: The well-known school where young witches and wizards receive magical training and learn about the magical world.
+				<br>
+				2. Magical Creatures: House elves, goblins, centaurs, dragons, hippogriffs, and other magical creatures can be found in the Wizarding World.
+				<br>
+				3. Magic Communities: Diagon Alley and Hogsmeade are hidden wizarding neighborhoods and villages where magical persons may buy goods and socialise.
+				<br>
 
 
-4. Ministry of Magic: The British government's governing body for magical matters, responsible for keeping order and regulating magical practises.
+				4. Ministry of Magic: The British government's governing body for magical matters, responsible for keeping order and regulating magical practises.
 
-<br>
+				<br>
 
-5. Quidditch: A broomstick-based wizarding sport.
-<br>
+				5. Quidditch: A broomstick-based wizarding sport.
+				<br>
 
-<hr>
-Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pose substantial risks to the magical community in the Wizarding World.
+				<hr>
+				Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pose substantial risks to the magical community in the Wizarding World.
 			</p>
 			<button type="button" class="btn btn-secondary">
-				
-				<a href="https://www.youtube.com/watch?v=Iej7CcjiVn8" class="tag-button">watch video</a>
+				<a href="https://www.youtube.com/watch?v=Iej7CcjiVn8" class="btn btn-secondary tag-button">watch video</a>
 			</button>
 		</div>
 		<div class="col-6">
@@ -86,8 +85,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
             <p>
                 This category includes magical creatures that are typically large, dangerous, and often have violent tendencies. Dragons, Acromantulas (giant spiders), and Manticores fall under this category.
 			</p>
-			<a href="{{url_for('creatures_page',name='beast')}}" class="tag-button" id="button">watch more</a>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='beast')}}">Watch more</a>
 		</div>
 		<div class="col-6 thumbnail">
 			<img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/acromantula.jpg')}}" alt="img">
@@ -108,7 +106,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 wizards and witches
                 Goblins, vampires, hags, giants, house-elves, veela, and werewolves in their human form were also given this status.
             </p>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='beings')}}">Watch more </a>
 		</div>		
 	</div>
     <div class="row p-3">
@@ -117,7 +115,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
 			<p>
                 Spirits: These are non-corporeal entities that often inhabit specific locations or objects. Examples include Ghosts (such as Nearly Headless Nick), Poltergeists (like Peeves), and Boggarts.
 			</p>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='spirit')}}">Watch more </a>
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Ghost_PM.webp')}}" alt="img">
@@ -135,7 +133,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 This category comprises a wide range of magical creatures, both small and large, with extraordinary qualities.
                 It includes creatures like Hippogriffs, Nifflers, Bowtruckles, and Thestrals.
             </p>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='fantastic')}}">Watch more </a>
 		</div>
 	</div>
     <div class="row p-3">
@@ -145,7 +143,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 Dark creatures are often associated with dark magic or malevolence. 
                 They include Dementors, Inferi (reanimated corpses controlled by dark wizards), and Werewolves.
             </p>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='dark')}}">Watch more </a>
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/Werewolf.jpg')}}" alt="img">
@@ -163,18 +161,18 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 These are magical creatures that dwell primarily in aquatic environments.
                 Merpeople, Grindylows, and Kelpies are examples of water creatures.
 			</p>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='water')}}">Watch more </a>
 		</div>
 	</div>
     <div class="row p-3">
-        <div class="col-lg-6">
+        <div class="col-6">
             <h3>Domesticated Creatures</h3>
 			<p>
                 Domesticated creatures are magical animals that are often kept as pets or companions 
                 by wizards and witches.
                 This category includes creatures like Owls, Cats (such as Crookshanks), and Rats (like Scabbers).
             </p>
-			
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='domestic')}}">Watch more </a>
 		</div>
 		<div class="col-6 thumbnail">
             <img class="rounded img-fluid thumbnail-img" src="{{url_for('static',filename='img/pet.jpg')}}" alt="img">
@@ -192,7 +190,7 @@ Dark Arts and Dark Wizards:  evil magic and evil wizards like Lord Voldemort pos
                 These are magical creatures that are either partially or entirely made up of plant matter.                                             
                 The Whomping Willow and Venomous Tentacula are examples of plant creatures.
             </p>
-
+			<a role="button" class="btn btn-secondary" href="{{url_for('creatures_page',name='plant')}}">Watch more </a>
 		</div>
 	</div>
 </section>	
