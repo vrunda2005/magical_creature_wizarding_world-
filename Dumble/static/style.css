@@ -46,15 +46,17 @@ h3{
 /* layout */
 
 .dropdown-menu {
+  
   display: none;
   position: absolute;
-  min-width: 160px;
+  /* min-width: 160px; */
   z-index: 1;
 }
 
 .dropdown:hover .dropdown-menu {
+  margin-top: 55%;
   display: block;
-  border: 0px;
+  border: 10px;
 }
 .navbar{
   width: 100%;
@@ -63,6 +65,7 @@ h3{
     display: flex;
     font-size: 25px !important;
     align-items: center;
+   
     margin: 5%;
     justify-content: space-between !important;
     
