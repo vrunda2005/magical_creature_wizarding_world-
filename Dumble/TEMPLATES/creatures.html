@@ -3,9 +3,10 @@
 {% block title %}
 Creatures {{name}}
 {%endblock %}
-<link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">
 
-{% block body %}     
+
+{% block body %} 
+<link rel="stylesheet" href="{{url_for('static',filename='card.css')}}">    
 <section id="creatures-content" class="container creatures text-center">
 	<div class="pt-3">
 		<h1 class="text-capitalize">
@@ -13,7 +14,7 @@ Creatures {{name}}
 		</h1>
 		<img src="https://media.harrypotterfanzone.com/harry-potter-magical-creatures-1260x0-c-default.jpg" class="rounded img-fluid m-4">
 		<p>
-			<!-- {{info}} -->
+			{{info}}
 		</p>        
 	</div>
 </section>
@@ -27,9 +28,18 @@ Creatures {{name}}
                       <div class="card-front">
                           <div class="card-front__tp card-front__tp--city">
                           <h2 class="card-front__heading">
+<<<<<<< HEAD
+                          
+                            {{item[0]}}
+                          </h2>
+                      
+                          </div>
+
+=======
                           {{item[0]}}
                       </h2>
                       </div>
+>>>>>>> b15c5be9751925c3fd6e3d6640980f0546ce841e
                           <div class="card-front__bt">
                               <p class="card-front__text-view card-front__text-view--city">
                                   View me

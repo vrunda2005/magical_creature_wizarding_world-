@@ -1,7 +1,7 @@
 from Dumble import app
 from Dumble import db,beings_table,engine,beast_table, spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
 import sqlite3
-from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
+from flask import render_template,redirect,url_for,flash,get_flashed_messages,request
 from Dumble.model import UserInfo
 from Dumble.forms import RegisterForm,LoginForm
 from flask_login import login_user
@@ -53,10 +53,10 @@ def creatures_page(name):
     ''')
     item = cursor.fetchall()
     column_names = [description[0] for description in cursor.description]
-    # info=downloading_data(name)
+    info=downloading_data(name)
     limited_data = item[:4]
     conn.close()
-    return render_template('creatures.html', items=item,name=name,column_names=column_names,limited_data=limited_data)
+    return render_template('creatures.html', items=item,name=name,column_names=column_names,info=info,limited_data=limited_data)
 
 
 #to show  information or defination about creature 
@@ -109,7 +109,7 @@ def register_page():
         #storing data to our database 
         db.session.add(user_to_create)
         db.session.commit()
-        return redirect(url_for('login_page')) #for checking its working or not we have to change it further
+        return redirect(url_for('login_page'))
     if form.errors !={}: #if there are not errors form validations 
         for err_msg in form.errors.values():
             flash(f'ERROR{err_msg}',category='danger')
@@ -140,7 +140,6 @@ def login_page():
 def logged_in():
     return render_template("MyAcc.html")
 
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -150,8 +149,6 @@ def logout():
 
 
 # Search function Connect to your existing database  
-
-
 @app.route('/search', methods=['GET','POST'])
 def search():
     query = request.form.get('query')
@@ -162,7 +159,7 @@ def search():
     else:
         # Filter data based on search query
         results = perform_search(query)
-    return render_template('seacr_creatures.html', results=results)
+    return render_template('searchResults.html', results=results)
 
 
 
@@ -219,9 +216,6 @@ def show_users():
     return result
 
 
-
-
-
 @app.route('/<string:item_id>')
 def watch_more(item_id):
     conn = sqlite3.connect('instance/data.db')
@@ -261,7 +255,6 @@ def create_tables():
             )
         ''')
         conn.commit()
-
 create_tables()
 
 
@@ -363,7 +356,7 @@ def showbookmark():
         bookmarked_beasts = cursor.fetchall()
         # conn.commit()
         # conn.close()
-    return render_template('books.html', bookmarked_beasts=bookmarked_beasts,user_id=user_id)
+    return render_template('bookmarkedCreatures.html', bookmarked_beasts=bookmarked_beasts,user_id=user_id)
 
 @app.route('/delete_bookmark/<string:bookmark_id>')
 def delete_bookmark(bookmark_id):
@@ -393,9 +386,13 @@ def delete_bookmark(bookmark_id):
         flash(f"Error occurred while deleting bookmark: {str(e)}", 'danger')
 
     return render_template('creatures.html')  
+<<<<<<< HEAD
+ 
+=======
 
 
 @app.route('/showList')
 def showList():
     result=show_users()
     return render_template("showList.html", result=result)
+>>>>>>> b15c5be9751925c3fd6e3d6640980f0546ce841e

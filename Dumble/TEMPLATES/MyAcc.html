@@ -8,8 +8,10 @@ Quiz
 {%endblock %}
 
 {% block body %}
-<body class="container" style="text-decoration-thickness: 10px; color: white;">
+<body class="container" style="text-decoration-thickness: 10px; color: rgb(224, 216, 216);">
     hey you are logged in 
+    DO you want to show your bookmarks 
+    <a class="btn btn-sm btn-secondary" href="{{url_for('showbookmark') }}">showbookmark</a>
 
 <div class="checkbox mb-3">
     <!-- <a class="btn btn-sm btn-secondary" href="{{url_for('showbookmark') }}">Boookmark </a> -->
