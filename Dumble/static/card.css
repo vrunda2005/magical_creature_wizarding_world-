@@ -86,14 +86,6 @@
     width: 100%;
   }
 }
-html { font-size: 80%; }
-
-.main { 
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  position: absolute;
-  overflow: hidden;
-}
 
 /* Typography =======================*/
 
@@ -101,7 +93,7 @@ html { font-size: 80%; }
 
 /* Main heading for card's front cover */
 .card-front__heading {
-  font-size: 1.5rem;
+  font-size: 3rem;
   margin-top: .25rem;
 }
 

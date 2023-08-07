@@ -1,0 +1,19 @@
+
+{% extends 'layout.html' %}
+{% block body%}
+
+<section id="showList" class="container rounded-2 p-5 bg-white">
+    <div class="showList">
+            {% for creatures in result %}
+            <ul class="d-flex list-group">
+                <li class="list-group-item">
+                    <a href="{{ url_for('watch_more', item_id=creatures[0]) }}" class="text-secondary">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        {{creatures[0]}}
+                    </a>
+                </li>
+            </ul>
+            {%endfor%}
+    </div>
+</section>
+{% endblock %}
