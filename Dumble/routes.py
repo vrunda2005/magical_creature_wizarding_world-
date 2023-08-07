@@ -1,5 +1,9 @@
 from Dumble import app
+<<<<<<< HEAD
 from Dumble import db,beings_table,engine,beast_table, spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
+=======
+from Dumble import db,beings_table,engine,beast_table,spirit_table,dark_table,domesticate_table, fantastic_table, plant_table, water_table
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 import sqlite3
 from flask import render_template,redirect,url_for,flash,get_flashed_messages,request,jsonify,g,session
 from Dumble.model import UserInfo
@@ -46,7 +50,11 @@ def get_connection():
 #creature page 
 @app.route("/creatures/<string:name>")
 def creatures_page(name):
+<<<<<<< HEAD
     conn = sqlite3.connect('instance/beast.db')
+=======
+    conn = sqlite3.connect('instance/data.db')
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
     cursor = conn.cursor()
     cursor.execute(f'''
     SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img,info FROM {name} 
@@ -54,7 +62,7 @@ def creatures_page(name):
     item = cursor.fetchall()
     column_names = [description[0] for description in cursor.description]
     info=downloading_data(name)
-    limited_data = item[:5]
+    limited_data = item[:4]
     conn.close()
     return render_template('creatures.html', items=item,name=name,column_names=column_names,info=info,limited_data=limited_data)
 
@@ -71,7 +79,7 @@ def downloading_data(name):
 
 @app.route("/encyclopedia")
 def encyclopedia():
-    conn = sqlite3.connect('instance/beast.db')
+    conn = sqlite3.connect('instance/data.db')
     cursor = conn.cursor()
     cursor.execute('''
     SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beast 
@@ -95,6 +103,13 @@ def encyclopedia():
     
     return render_template("encyclopedia.html",encyclopedia=item)
 
+<<<<<<< HEAD
+=======
+# @app.route("/contact")
+# def contact():
+#     return render_template("contact.html")
+
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 #Register code starts 
 @app.route("/register", methods=['GET','POST'])
 def register_page():
@@ -102,7 +117,6 @@ def register_page():
         return redirect(url_for('logged_in'))
     form=RegisterForm()
     if form.validate_on_submit():
-      
         hash_password=bcrypt.generate_password_hash(form.password1.data) #entered password converts into hash password
         user_to_create=UserInfo(username=form.username.data,
                                 email_address=form.email.data,
@@ -130,7 +144,11 @@ def login_page():
         if attempted_user and attempted_user.check_password_correction(
             attemted_password=form.password.data):
                 login_user(attempted_user)
+<<<<<<< HEAD
                 flash(f'Success! you are logged in {current_user.username}',category='success')
+=======
+                flash(f'Success! you are logged in {current_user.username}',category='success')    
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
         else:
             flash('username and password not match try another ',category='danger')
     return render_template('login.html',forms=form)
@@ -165,8 +183,11 @@ def search():
         results = perform_search(query)
     return render_template('seacr_creatures.html', results=results)
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
 def perform_search(query):
     with engine.connect() as conn:
                 beast=conn.execute(
@@ -177,7 +198,31 @@ def perform_search(query):
                     beings_table.select().where(beings_table.c.name.ilike(f'%{query}%'))
                 ).fetchall()
 
-                result=beast+being
+                spirit = conn.execute(
+                    spirit_table.select().where(spirit_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                water = conn.execute(
+                    water_table.select().where(water_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                plant = conn.execute(
+                    plant_table.select().where(plant_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                dark = conn.execute(
+                    dark_table.select().where(dark_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                domesticate = conn.execute(
+                    domesticate_table.select().where(domesticate_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                fantasticate= conn.execute(
+                    fantastic_table.select().where(fantastic_table.c.name.ilike(f'%{query}%'))
+                ).fetchall()
+
+                result=beast+being+spirit+dark+fantasticate+domesticate+water+plant
     return result
 
 
@@ -192,6 +237,7 @@ def show_users():
         fantasticate = conn.execute(fantastic_table.select()).fetchall()
         water = conn.execute(water_table.select()).fetchall()
         
+<<<<<<< HEAD
         result=beast+being+spirit+dark+plant+domesticate+fantasticate+water
     return result
 
@@ -202,6 +248,15 @@ def show_users():
 @app.route('/<string:item_id>')
 def watch_more(item_id):
     conn = sqlite3.connect('instance/beast.db')
+=======
+        result=beast+being+spirit+dark+fantasticate+domesticate+water+plant
+    return result
+
+#for showing list 
+@app.route('/more/<string:item_id>')
+def show_more(item_id):
+    conn = sqlite3.connect('instance/data.db')
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
     cursor = conn.cursor()
     cursor.execute('''
     SELECT name,description,habitat,behavior,abilities,reproduction,magical_significance,history,interaction_with_human_wizards,img FROM beast WHERE name=?
@@ -249,7 +304,11 @@ def is_user_logged_in():
 @app.route('/bookmarks/add<string:name>')
 def add_bookmark(name):
     if is_user_logged_in():
+<<<<<<< HEAD
         user_id = current_user.username
+=======
+        user_id = current_user.username    
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
         with sqlite3.connect('instance/data.db') as conn:
             cursor = conn.cursor()
             try:
@@ -258,15 +317,16 @@ def add_bookmark(name):
                 flash('message: Bookmark added successfully!',category='success')
                 # return "message: Bookmark added successfully!"
             except sqlite3.IntegrityError:
+<<<<<<< HEAD
                 flash('message: B"Bookmark already exists!',category='success')       
+=======
+                flash('message: B"Bookmark already exists!',category='danger')                
+>>>>>>> 72569bd8354f8d4f5b8be045923f0f3fddb36bf6
     else:
         flash('message: "Please log in to add bookmarks',category='danger')
     return redirect(url_for('creatures_page',name='beast'))
         
     
-
-
-#show function mai thode loche hee 
 @app.route('/showbookmark/')
 @login_required
 def showbookmark():
@@ -295,7 +355,49 @@ def showbookmark():
             FROM beings
             JOIN bookmark ON beings.name = bookmark.creature_id
             WHERE bookmark.user_id = ?
-        ''', (user_id,user_id))
+            UNION
+            SELECT spirit.*,
+                   bookmark.user_id
+            FROM spirit
+            JOIN bookmark ON spirit.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+            
+            UNION
+            SELECT dark.*,
+                   bookmark.user_id
+            FROM dark
+            JOIN bookmark ON dark.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+                       
+            UNION
+            SELECT plant.*,
+                   bookmark.user_id
+            FROM plant
+            JOIN bookmark ON plant.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+                       
+            UNION
+            SELECT water.*,
+                   bookmark.user_id
+            FROM water
+            JOIN bookmark ON water.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+                       
+            UNION
+            SELECT domesticate.*,
+                   bookmark.user_id
+            FROM domesticate
+            JOIN bookmark ON domesticate.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+                       
+            UNION
+            SELECT fantastic.*,
+                   bookmark.user_id
+            FROM fantastic
+            JOIN bookmark ON fantastic.name = bookmark.creature_id
+            WHERE bookmark.user_id = ?
+                       
+        ''', (user_id,user_id,user_id,user_id,user_id,user_id,user_id,user_id))
 
         # cursor.execute(query,(user_id,))
         bookmarked_beasts = cursor.fetchall()
