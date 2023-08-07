@@ -8,7 +8,7 @@ Encyclopedia
 <link rel="stylesheet" href="{{url_for('static',filename='new.css')}}">
 <section class="container encyclopedia text-center">
     {%for item in encyclopedia %}
-        <div class="card">
+        <div class="card encyclopedia-card">
             <div class="content">
               <div class="front" style="background-image: url('{{item[9]}}');">
                       {{item[0]}}                  

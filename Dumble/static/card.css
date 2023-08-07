@@ -24,6 +24,7 @@
     width: auto;
     height: auto;
     padding: auto;
+    align-items: center;
     
     /* overflow: hidden;
     flex-wrap: wrap; */
@@ -75,7 +76,7 @@
     height: auto;
     width: 1024px;
     justify-content: space-evenly;
-    padding: 1rem;
+    padding: 5rem;
   }
   .card-section {
     position: relative;
@@ -136,7 +137,8 @@ html { font-size: 80%; }
 
 /* Front cover */
 
-.card-front__tp { color: #e8ede3; }
+.card-front__tp { color: #e8ede3;
+height: 30rem; }
 
 /* For pricing text on card front cover */
 .card-front__text-price {
@@ -248,10 +250,10 @@ html { font-size: 80%; }
 
   background-color: rgba(0,0,0, .05);
   box-shadow: -.1rem 1.7rem 6.6rem -3.2rem rgba(0,0,0,0.5);
-  height: 15rem;
+  height: 30rem;
   position: relative;
   transition: all 1s ease;
-  width: 15rem;
+  width: 20rem;
 }
 
 /* Flip card - covering both the front and inside front page */
@@ -264,7 +266,7 @@ html { font-size: 80%; }
   right: 0;
   transition: all 1s ease;
   visibility: hidden;
-  width: 195rem;
+  width: 15rem;
   z-index: 100;
 }
 
@@ -282,7 +284,7 @@ html { font-size: 80%; }
   transform-origin: left;
   transform-style: preserve-3d;
   transition: all 1s ease;
-  width: 1000px;
+  width: 100%;
 }
 
 .card-front,
@@ -300,9 +302,10 @@ html { font-size: 80%; }
 /* container for the front side */
 .card-front {
   background-color: #fafbfa;
-  height: 15rem;
-  width: 15rem;
+  height: 20rem;
+  width: 20rem;
 }
+
 
 /* Front side's top section */
 .card-front__tp {
@@ -310,7 +313,7 @@ html { font-size: 80%; }
   clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
   display: flex;
   flex-direction: column;
-  height: 30rem;
+  height: 25rem;
   justify-content: center;
   padding: .75rem;
 }
@@ -392,6 +395,7 @@ html { font-size: 80%; }
   height: 100%;
   text-align: center; 
   width: 100%;
+  margin: 15px;
 }
 
 /* Functionality ====================================*/
