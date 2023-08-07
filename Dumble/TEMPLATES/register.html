@@ -10,10 +10,10 @@ Register Page
 {% block body%}   
 
 <div class="container login card">
-    <div class="row">  
+    <h1 class="font-weight-bold m-3 text-center">Register</h1>
+    <div class="row p-0">  
         <div class="m-3 col p-3 text-center">
-            <h1 class="font-weight-bold m-3">Register</h1>
-            <h4 class="p-3">Welcome back we are happy to see you again!</h4>
+            <h4 class="p-3">Welcome we are happy to host you!</h4>
             <form method="POST" class="form-register" style="color:white" action="">
                 {{forms.hidden_tag()}}
                 {{forms.username.label()}}
@@ -29,13 +29,13 @@ Register Page
                 {{forms.password2(class="form-control", placeholder="Confirm Password")}}
     
                 <br>
-                {{forms.submit(class="btn btn-outline-success")}}
+                {{forms.submit(class="btn btn-outline-success p-2 m-2")}}
             
             </form>
            
-            <a href="{{ url_for('login_page') }}"class="tag-button" id="button">Loginn  account</a>
+            <a href="{{ url_for('login_page') }}"class="tag-button btn-secondary p-2 m-2" id="button">Login account</a>
         </div>
-        <div class="col">
+        <div class="col p-0">
             <img src="https://awol.com.au/wp-content/uploads/2016/03/sign.jpg"></img>
         </div>
     </div>

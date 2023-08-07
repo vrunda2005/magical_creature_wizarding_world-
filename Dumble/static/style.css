@@ -3,12 +3,9 @@
   src: url("font/HarryP-MVZ6w.ttf") format('truetype');
 }
 
-<<<<<<< HEAD
 *{
   font-family: 'MyFont',cursive;
 }
-=======
->>>>>>> b15c5be9751925c3fd6e3d6640980f0546ce841e
 
 body{
     display: grid;
@@ -66,13 +63,8 @@ h3{
  
   display: block;
   border: 1px solid white;
-<<<<<<< HEAD
   font-size: 20px !important;
   top: 100%;
-=======
-  top: 50px;
-  font-size: 20px;
->>>>>>> b15c5be9751925c3fd6e3d6640980f0546ce841e
 }
 .navbar{
   width: 100%;
@@ -345,7 +337,6 @@ img:hover {
 
 .tag-button{
   display: inline-block;
-  padding: 10px 20px;
   background-color: #a9bacb;
   color: #fff;
   text-decoration: none;
@@ -454,16 +445,8 @@ img:hover {
 .login img{
   height: 100%;
   width: 100%;
+  object-fit: fill;
 }
-<<<<<<< HEAD
-.login{
-  background: linear-gradient(
-    to bottom,
-    #201053,
-    #4f51507b
-  );
-}
-=======
 
 
 /* showList page */
@@ -471,4 +454,3 @@ img:hover {
   font-size: 30px;
   font-family: cursive !important;
 }
->>>>>>> b15c5be9751925c3fd6e3d6640980f0546ce841e

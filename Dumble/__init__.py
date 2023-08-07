@@ -22,7 +22,19 @@ app.app_context().push()
 with app.app_context():
         db.create_all() 
         
-app.config['SECRET_KEY']=os.getenv('SECRET_KEY')
+def convert(val):
+        if type(val) != str:
+                return val
+        if val.isnumeric():
+                return int(val)
+        elif val == 'True':
+                return True
+        elif val == 'False':
+                return False
+        else:
+                return val
+app.config['SECRET_KEY']='95e6991c00be2df05c6671fd'
+
 #secret key is required for post method beacuse we are submiting form 
 
 

@@ -7,39 +7,10 @@ login
 {%endblock %}
 
 {% block body %}
-<!-- 
-<body class="text-center" style="color: white;">
-  <div class="container">
-    <form method="POST" class="form-signin" style="color:white">
-        {{ forms.hidden_tag() }}
-        <img class="mb-4" src="{{url_for('static',filename='img/harry logo.png')}}" alt="">
-        <h1 class="h3 mb-3 font-weight-normal">
-            Please Login
-        </h1>
-        <br>
-        {{ forms.username.label() }}
-        {{ forms.username(class="form-control", placeholder="User Name") }}
-
-        {{ forms.password.label() }}
-        {{ forms.password(class="form-control", placeholder="Password") }}
-
-        <br>
-
-
-        <div class="checkbox mb-3">
-           <h6>Do not have an account?</h6>
-           <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
-        </div>
-
-        {{ forms.submit(class="btn btn-lg btn-block btn-primary") }}
-
-    </form>
-    </div>
-</body> -->
 <div class="container login card">
-    <div class="row">  
+    <h1 class="font-weight-bold m-3 text-center">Login</h1>
+    <div class="row p-0">  
         <div class="m-3 col p-3 text-center">
-            <h1 class="font-weight-bold m-3">Login</h1>
             <h4 class="p-3">Welcome back we are happy to see you again!</h4>
             <form method="POST" class="form-signin">
                 {{ forms.hidden_tag() }}
@@ -51,11 +22,11 @@ login
                 {{ forms.password(class="form-control", placeholder="Password") }}
 
                
-                {{ forms.submit(class="tag-button") }}                  
+                {{ forms.submit(class="tag-button p-3 m-3") }}                  
             </form>
-            <a href="{{ url_for('register_page') }}"class="tag-button" id="button">Register new account</a>
+            <a href="{{ url_for('register_page') }}"class="btn-secondary     tag-button m-3 p-3" id="button">Register new account</a>
         </div>
-        <div class="col">
+        <div class="col p-0">
             <img src="https://awol.com.au/wp-content/uploads/2016/03/sign.jpg"></img>
         </div>
     </div>
