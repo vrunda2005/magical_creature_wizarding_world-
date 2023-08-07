@@ -6,8 +6,8 @@
 }
 
 #wand {
-  width: 10vmin;
-  aspect-ratio: 1/ 7;
+  width: 5vmin;
+  aspect-ratio: 1 / 10;
   background: linear-gradient(
     to right, 
     rgb(91, 90, 85) 10%, 
