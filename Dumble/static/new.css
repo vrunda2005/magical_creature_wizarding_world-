@@ -6,7 +6,7 @@
 }
 
 #wand {
-  width: 10vmin;
+  width: 5vmin;
   aspect-ratio: 1 / 10;
   background: linear-gradient(
     to right, 
