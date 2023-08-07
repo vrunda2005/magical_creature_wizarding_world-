@@ -18,7 +18,11 @@ Encyclopedia
                 <p>habitat: {{item[2]}}</p>
                 <p>abilities": {{item[3]}}</p>                
                 <p>interaction_with_human_wizards: {{item[4]}}</p>
-                <a href="{{ url_for('watch_more', item_id=item[0]) }}" class="tag-button" id="button">watch more</a>                
+                <a href="{{ url_for('watch_more', item_id=item[0]) }}" class="tag-button btn btn-info" id="button">watch more</a>    
+                <a href="{{ url_for('add_bookmark', name=item[0]) }}" class="tag-button btn btn-info" id="button">
+                  <i class="fa-solid fa-bookmark"></i>
+                                  Bookmark
+                </a>            
               </div>
             </div>
           </div>

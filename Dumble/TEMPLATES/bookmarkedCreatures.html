@@ -3,11 +3,14 @@
 
 {% extends 'layout.html' %}
 {% block body%}
-Hello Dear {{user_id}} here is your bookmarks !!!
+<p style="color: rgb(232, 211, 211);">
+    Hello Dear {{user_id}} here is your bookmarks !!!
+</p>
+
 {% if bookmarked_beasts %}
 
 {% for result in bookmarked_beasts %}
-<section id="beast" class="container bg-secondary-subtle my-5 p-5 rounded-3 border-5" style="color: black;">
+<section id="beast" class="container bg-secondary-subtle my-5 p-5 rounded-3 border-5" style="color: rgb(25, 13, 28);">
     <div class="row">
         <div class="col-lg-6 text-center">
             <img class="rounded-circle" src="{{result[12]}}" alt="image">

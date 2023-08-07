@@ -57,11 +57,10 @@ h3{
 }
 
 .dropdown:hover .dropdown-menu {
-  margin-top: 55%;
+ 
   display: block;
   border: 1px solid white;
   font-size: 20px !important;
-
   top: 100%;
 }
 .navbar{
@@ -326,12 +325,24 @@ img:hover {
 
  /* Add some visual effects on hover  */
 .tag-button:hover {
-  background-color: #f59ae1; 
+  background-color: #11c35e; 
+  
 }
 
 /* Add more styles when the button is active (clicked) */
 .tag-button:active {
-  background-color: #9967db;
+  background-color: #51189b;
+}
+
+.tag-button{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #a9bacb;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 
