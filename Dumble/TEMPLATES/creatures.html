@@ -17,7 +17,6 @@ Creatures {{name}}
 		</p>        
 	</div>
 </section>
-<main>
         
   <section class="container card-area">
     {% for item in limited_data %}
@@ -28,12 +27,9 @@ Creatures {{name}}
                       <div class="card-front">
                           <div class="card-front__tp card-front__tp--city">
                           <h2 class="card-front__heading">
-                          
                           {{item[0]}}
                       </h2>
-                      
-                          </div>
-
+                      </div>
                           <div class="card-front__bt">
                               <p class="card-front__text-view card-front__text-view--city">
                                   View me
@@ -49,7 +45,6 @@ Creatures {{name}}
               <div class="inside-page">
                   <div class="inside-page__container">
                       <h3 class="inside-page__heading inside-page__heading--city">
-
                           {{item[1]}}
                       </h3>
                       <p class="inside-page__text">
@@ -78,7 +73,7 @@ Creatures {{name}}
         {% endif %}
           <img class="m-5 rounded img-fluid" src="{{item[9]}}" alt="Slide {{ loop.index }}">
             <!-- <div class="carousel-caption">   -->
-           <h3>{{ item[0] }}</h3>
+           <h2>{{ item[0] }}</h2>
            <p>{{ item[1] }}</p>
             <p>{{item[2]}}</p>
               <p>{{item[3]}}</p>

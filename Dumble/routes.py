@@ -393,3 +393,9 @@ def delete_bookmark(bookmark_id):
         flash(f"Error occurred while deleting bookmark: {str(e)}", 'danger')
 
     return render_template('creatures.html')  
+
+
+@app.route('/showList')
+def showList():
+    result=show_users()
+    return render_template("showList.html", result=result)
