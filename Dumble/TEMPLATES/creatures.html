@@ -67,15 +67,15 @@ Creatures {{name}}
 
 
  
-<section id="various-beasts" class="m-5 p-5">
+<section id="various-beasts" class="m-5">
   <div class="container text-center">
     <div id="beast-carousel" class="carousel slide bg-secondary" data-bs-ride="carousel">
       <div class="carousel-inner px-5">
         {% for item in items %}
         {% if loop.index == 1 %}
-        <div class="carousel-item active">
+        <div class="carousel-item active p-5">
         {% else %}
-        <div class="carousel-item">
+        <div class="carousel-item p-5">
         {% endif %}
           <img class="m-5 rounded img-fluid" src="{{item[9]}}" alt="Slide {{ loop.index }}">
             <!-- <div class="carousel-caption">   -->
