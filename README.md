@@ -1,12 +1,10 @@
 # website
 wizarding_world
-@everyone  I can see that many of you have not done documentation. You can follow this template for main `README.md` file
-
-```
 
 # Magical Creatures In hogwards 
-
 Brief project description or tagline.
+
+we used flask so when we deploy our website info render it will show error ,also we tried other platforms also but didn't work well.
 
 Home page for introduction to wizarding world
 Page introducing various types of creatures
@@ -15,25 +13,6 @@ Search functionality for filtering by name
 Login validation to improve user experience
 Bookmark capabilities to save data to reading lists
 
-## Live Demo
-
-### Access Credentials
-
-- **Admin**:
-  - Email: admin@example.com
-  - Password: admin123
-
-- **user**:
-  - Email: student@example.com
-  - Password: student123
-
-[Live Demo Link](https://your-demo-link.com)
-
-## Screenshots
-
-![Screenshot 1](/docs/images/screenshot1.png)
-![Screenshot 2](/docs/images/screenshot2.png)
-![Screenshot 3](/docs/images/screenshot3.png)
 
 ## Project Overview
 
@@ -41,38 +20,26 @@ A brief introduction to the project, explaining its purpose, goals, and signific
 Our goal for this project is to ensure that user will understand about 
 
 ## Features
+we used features like search any creature user will get to know more about it.
+also bookmark feature and watchmore feature.
+we also try our best to make website responsive but some area it is not working.
 
-### Basic Features
--
--
--
--
 
 ### User Features
-
-- 
--
--
-- 
+user can login logout ,register
+also user can view their bookmarks and delete bookmark and add bookmark so that they refer to it.
 
 ### other Features
-
-- 
-- 
+we have added some css style to like cark styles some images styles.
 
 ## Tech Stack
-
 - Frontend: [Framework/Stack]
+HTML,CSS also used bootstrap classes and sone online videoes for making our website look pretty.
 - Backend: [Framework/Stack]
+flask,flask library like flask-sqlalchemy,flask-wtforms,flask-bcrypt for hashing passswords.
+little javascript for some css.
 - Database: [Database System]
+sqlite3 python library 
 
-## Getting Started
 
-### Prerequisites
-
-- [List of prerequisites]
-
-### Installation
-
-### Clone the repository
 ```
