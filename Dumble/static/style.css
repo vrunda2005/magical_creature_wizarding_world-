@@ -67,10 +67,13 @@ h3{
   top: 100%;
 }
 .navbar{
+  position: sticky;
+  top:0;
   width: 100%;
   display: flex;
 }
 .nav-item{   
+  position: sticky;
     display: flex;
     font-size: 25px !important;
     align-items: center;
@@ -453,4 +456,13 @@ img:hover {
 .showList a{
   font-size: 30px;
   font-family: cursive !important;
+}
+
+.login{
+  background: linear-gradient(
+    to right, 
+    rgb(144, 132, 158) 10%, 
+    rgb(74, 8, 118) 45% 55%, 
+    rgb(45, 2, 54) 90%
+  );
 }
