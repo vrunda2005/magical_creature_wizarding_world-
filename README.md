@@ -2,22 +2,20 @@
 wizarding_world
 
 # Magical Creatures In hogwards 
+
 Brief project description or tagline.
 
 we used flask so when we deploy our website info render it will show error ,also we tried other platforms also but didn't work well.
+Home page for introduction to wizarding world some basic information.Page introducing various types of creatures.when user want to wach specific information they can watch it by clicking on watchmore button.Search functionality for filtering by name and show watch user searched in.Login validation to improve user experience it will check all conditions.also it will also check when user register it will check email is correct or not it it is not it will flask message.Bookmark capabilities to save data to reading lists and refer for future.
 
-Home page for introduction to wizarding world
-Page introducing various types of creatures
-Page introducing details of specific creatures
-Search functionality for filtering by name
-Login validation to improve user experience
-Bookmark capabilities to save data to reading lists
 
 
 ## Project Overview
 
 A brief introduction to the project, explaining its purpose, goals, and significance.
-Our goal for this project is to ensure that user will understand about 
+
+Our significance,we have divided categories of magical creatures so user will understand which creature refers to which categories.our purpose is to make website like when user want to search or bookmark something it will do that for them.
+
 
 ## Features
 we used features like search any creature user will get to know more about it.
