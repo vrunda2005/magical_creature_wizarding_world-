@@ -6,7 +6,7 @@ wizarding_world
 Brief project description or tagline.
 
 we used flask so when we deploy our website info render it will show error ,also we tried other platforms also but didn't work well.
-Home page for introduction to wizarding world some basic information.Page introducing various types of creatures.when user want to wach specific information they can watch it by clicking on watchmore button.Search functionality for filtering by name and show watch user searched in.Login validation to improve user experience it will check all conditions.also it will also check when user register it will check email is correct or not it it is not it will flask message.Bookmark capabilities to save data to reading lists and refer for future.
+-we have made Home page for introduction to wizarding world some basic information in that.Page introducing various types of creatures.when user want to wach specific information they can watch it by clicking on watchmore button.Search functionality for filtering by name and show watch user searched in.Login validation to improve user experience it will check all conditions.also it will also check when user register it will check email is correct or not it it is not it will flask message.Bookmark capabilities to save data to reading lists and refer for future.
 
 
 
@@ -28,7 +28,7 @@ user can login logout ,register
 also user can view their bookmarks and delete bookmark and add bookmark so that they refer to it.
 
 ### other Features
-we have added some css style to like cark styles some images styles.
+we have added some css style to like card styles some images styles.
 
 ## Tech Stack
 - Frontend: [Framework/Stack]
