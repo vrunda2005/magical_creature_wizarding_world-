@@ -1,34 +1,63 @@
-# website
-wizarding_world
+# 🧙 Magical Creatures in Hogwarts
 
-# Magical Creatures In Hogwards 
+An interactive encyclopedia website that catalogs various magical creatures from the wizarding world, allowing users to explore, bookmark, and learn about them.
 
-This website serves as an encyclopedia of various creatures of the Magical World by classifying and describing them.
+---
+
+## 🌐 Project Overview
+
+This website serves as an encyclopedia of various magical creatures, classified into different categories with detailed descriptions. It includes user-friendly navigation, search functionality, and personalized features such as bookmarking creatures for later reading.
+
+### Key Pages:
+- **Home Page**: Introduces the wizarding world and types of magical creatures.
+- **Encyclopedia Page**: Displays magical creatures as interactive cards with brief details.
+- **Creature Detail Page**: Offers in-depth information about selected creatures.
+- **Creature List Page**: Lists all magical creature names; each links to a detail view.
+- **Bookmark List Page** *(for logged-in users)*: Allows users to save and revisit favorite creatures.
+
+---
+
+## ✨ Features
+
+- 🧾 Home page introducing the wizarding world  
+- 🐉 Creature category browsing  
+- 🔍 Search creatures by name  
+- 📚 Encyclopedia-style creature cards  
+- 📜 List view of all creature names  
+- ⭐ Bookmark functionality for reading list  
+- 🔐 User registration & login for personalized access
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- HTML5, CSS3, Bootstrap
+- JavaScript (libraries for interactivity)
+
+### Backend
+- Python (Flask)
+- Flask-SQLAlchemy (ORM)
+- Flask-WTF (Forms)
+- Flask-Bcrypt (Password hashing)
+
+### Database
+- SQLite3
+
+---
+
+## 🔗 Live Website
+[🔮 Visit the Magical Creatures Website](https://magical-encyclopedia.onrender.com/)
+
+![image](https://github.com/user-attachments/assets/f9177191-0067-469b-a28a-4fa1ce291635)
+![image](https://github.com/user-attachments/assets/e91b4213-4bd6-4e87-b3e6-e4b333ffae70)
+![image](https://github.com/user-attachments/assets/7dffe990-749d-4d9c-97d2-db77faedd4f6)
+![image](https://github.com/user-attachments/assets/bc396557-faa9-4ebc-a2f3-0828a4667081)
 
 
-## Project Overview
+---
+## 👩‍💻 Developed by
+Vrunda Patel and Jayraj Derasari
 
-There is a Home page for an introduction to the wizarding world some basic information about the wizarding world and an introduction to various types of creatures. If users want to get more information about a specific category of creatures, they can watch it by clicking on the watch more button and getting redirected to a new webpage. Search functionality has been implemented for filtering by name one can search for his favorite creature directly. Users logged in would be able to bookmark any specific creature and save it to their reading list to read later, or they can register for the first time. There is an encyclopedia page with cards of all the magical creatures and quiet details about them. One can redirect to know more about it using the know more button. There is a show list page that lists the names of all magical creatures. One can click on its name to know more about it.
+---
 
-
-## Features
-Home page for an introduction to the wizarding world
-A page introducing various types of creatures
-A page introducing details of specific creatures
-A show list page with names of all magical creatures as a list
-Encyclopedia page with details of creatures as cards
-Search functionality for filtering by name
-
-### other Features
-Bookmark capabilities have been added to save the data of users to reading lists and not miss out.
-
-## Tech Stack
-- Frontend: [Framework/Stack]
-HTML, CSS, Bootstrap, and a couple of JS libraries to make our website look awesome.
-- Backend: [Framework/Stack]
-Python Flask and its subsidiary libraries like flask-sqlalchemy, flask-wtforms, flask-bcrypt for hashing passwords.
-- Database: [Database System]
-sqlite3 python library 
-
-
-```
